@@ -105,12 +105,30 @@
         .btn-limpar {
             background: #0f3460;
             color: #e94560;
-            grid-column: span 2;
-            width: 100%;
         }
 
         .btn-limpar:hover {
             background: #1a4a7a;
+        }
+
+        .btn-salvar {
+            background: #0a8f5c;
+            color: white;
+            grid-column: span 4;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .btn-salvar:hover {
+            background: #0db873;
+        }
+
+        .msg {
+            text-align: center;
+            color: #0a8f5c;
+            font-size: 14px;
+            margin-top: 10px;
+            min-height: 20px;
         }
     </style>
 </head>
@@ -137,11 +155,18 @@
             <button class="btn-igual" onclick="calcular()" style="grid-row: span 2; height: 142px;">=</button>
 
             <button class="btn-numero" onclick="digitar('0')">0</button>
+            <button class="btn-numero" onclick="digitarPonto()">.</button>
             <button class="btn-limpar" onclick="limpar()">C</button>
+
+            <button class="btn-salvar" onclick="salvar()">Salvar Resultado</button>
         </div>
+        <div class="msg" id="msg"></div>
     </div>
 
     <script>
+        const SUPABASE_URL = 'https://lxhbfrvrkfiymqoqzhiq.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4aGJmcnZya2ZpeW1xb3F6aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwNDk4NTgsImV4cCI6MjA5MDYyNTg1OH0.dTCmaPZaLCN_TLv5NUzXJ2SYzo0HlRGXvwpjR02XEt8';
+
         let valorAtual = '0';
         let valorAnterior = null;
         let operadorAtual = null;
@@ -156,6 +181,16 @@
                 novaEntrada = false;
             } else {
                 valorAtual = valorAtual === '0' ? num : valorAtual + num;
+            }
+            display.textContent = valorAtual;
+        }
+
+        function digitarPonto() {
+            if (novaEntrada) {
+                valorAtual = '0.';
+                novaEntrada = false;
+            } else if (!valorAtual.includes('.')) {
+                valorAtual += '.';
             }
             display.textContent = valorAtual;
         }
@@ -197,6 +232,46 @@
             novaEntrada = true;
             display.textContent = '0';
             operacaoDisplay.textContent = '';
+        }
+
+        async function salvar() {
+            const msg = document.getElementById('msg');
+            const operacaoTexto = operacaoDisplay.textContent;
+            const resultado = parseFloat(valorAtual);
+
+            if (!operacaoTexto || isNaN(resultado)) {
+                msg.style.color = '#e94560';
+                msg.textContent = 'Faça um cálculo antes de salvar!';
+                return;
+            }
+
+            try {
+                const res = await fetch(SUPABASE_URL + '/rest/v1/resultados', {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': 'Bearer ' + SUPABASE_KEY,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        operacao: operacaoTexto,
+                        resultado: resultado
+                    })
+                });
+
+                if (res.ok) {
+                    msg.style.color = '#0a8f5c';
+                    msg.textContent = 'Resultado salvo com sucesso!';
+                } else {
+                    throw new Error(res.statusText);
+                }
+            } catch (e) {
+                msg.style.color = '#e94560';
+                msg.textContent = 'Erro ao salvar: ' + e.message;
+            }
+
+            setTimeout(() => msg.textContent = '', 3000);
         }
     </script>
 </body>
