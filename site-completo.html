@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just Fast Technologies — Desenvolvimento Web e Apps</title>
-    <meta name="description" content="Transformamos suas ideias em soluções digitais. Desenvolvimento de sites, sistemas e aplicativos para pequenas empresas.">
+    <title>Just Fast Technologies</title>
+    <meta name="description" content="Transformamos suas ideias em soluções digitais. Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para o seu negócio.">
+    <meta name="keywords" content="desenvolvimento web, aplicativos, sites, sistemas, soluções digitais, Just Fast, tecnologia">
+    <meta name="author" content="Just Fast Technologies">
+    <link rel="canonical" href="https://justfast.com.br/">
     <link rel="icon" type="image/png" href="imagens/logo.png">
+    <link rel="apple-touch-icon" href="imagens/logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://justfast.com.br/">
+    <meta property="og:title" content="Just Fast Technologies — Soluções Digitais">
+    <meta property="og:description" content="Transformamos suas ideias em soluções digitais. Sites, sistemas e aplicativos com velocidade e qualidade.">
+    <meta property="og:image" content="https://justfast.com.br/imagens/logo_completa_2.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Just Fast Technologies">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Just Fast Technologies — Soluções Digitais">
+    <meta name="twitter:description" content="Transformamos suas ideias em soluções digitais. Sites, sistemas e aplicativos.">
+    <meta name="twitter:image" content="https://justfast.com.br/imagens/logo_completa_2.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Just Fast Technologies",
+      "url": "https://justfast.com.br",
+      "logo": "https://justfast.com.br/imagens/logo_completa_2.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-84-99918-3580",
+        "contactType": "customer service",
+        "availableLanguage": ["Portuguese", "English"]
+      },
+      "email": "contato@justfast.com.br"
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EN95ZJG4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S4EN95ZJG4');
+    </script>
     <style>
         * {
             margin: 0;
@@ -252,7 +300,7 @@
 
         .section-subtitle {
             text-align: center;
-            color: #9a9ab0;
+            color: #b0b0c8;
             font-size: 16px;
             margin-bottom: 60px;
             max-width: 500px;
@@ -315,7 +363,7 @@
         }
 
         .servico-card p {
-            color: #9a9ab0;
+            color: #b0b0c8;
             font-size: 15px;
             line-height: 1.6;
         }
@@ -380,7 +428,7 @@
         }
 
         .processo-item p {
-            color: #9a9ab0;
+            color: #b0b0c8;
             font-size: 14px;
             line-height: 1.5;
         }
@@ -434,7 +482,7 @@
         }
 
         .diferencial-item p {
-            color: #9a9ab0;
+            color: #b0b0c8;
             font-size: 14px;
             line-height: 1.5;
         }
@@ -506,12 +554,12 @@
         }
 
         .faq-item.open .faq-answer {
-            max-height: 200px;
+            max-height: 500px;
         }
 
         .faq-answer p {
             padding: 0 24px 20px;
-            color: #9a9ab0;
+            color: #b0b0c8;
             font-size: 15px;
             line-height: 1.7;
         }
@@ -526,46 +574,12 @@
             margin: 0 auto;
         }
 
-        .calendly-container {
-            background: linear-gradient(145deg, #1a1a3a, #222248);
-            border: 1px solid rgba(33, 150, 243, 0.15);
-            border-radius: 16px;
-            overflow: hidden;
-            min-height: 650px;
-            margin-bottom: 40px;
-        }
-
-        .calendly-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            padding: 40px;
+        .btn-calendly {
+            display: block;
             text-align: center;
-            color: #9a9ab0;
-        }
-
-        .calendly-placeholder svg {
-            width: 60px;
-            height: 60px;
-            stroke: #2196F3;
-            fill: none;
-            stroke-width: 1.5;
-            margin-bottom: 20px;
-            opacity: 0.7;
-        }
-
-        .calendly-placeholder h3 {
-            color: #fff;
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .calendly-placeholder p {
-            font-size: 15px;
-            line-height: 1.6;
-            max-width: 400px;
+            margin-bottom: 40px;
+            font-size: 18px;
+            cursor: pointer;
         }
 
         .contato-alt {
@@ -782,7 +796,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #111128;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(33, 150, 243, 0.15) 0%, transparent 60%),
+                #111128;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -873,6 +889,50 @@
             100% { opacity: 0.5; }
         }
 
+        .loading-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(33, 150, 243, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(33, 150, 243, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .loading-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 12s ease-in-out infinite alternate;
+        }
+
+        .loading-orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #2196F3;
+            top: -10%;
+            left: -10%;
+            opacity: 0.12;
+        }
+
+        .loading-orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #64B5F6;
+            bottom: -10%;
+            right: -8%;
+            opacity: 0.1;
+            animation-delay: -4s;
+        }
+
         .loading-screen.hidden {
             opacity: 0;
             visibility: hidden;
@@ -917,60 +977,6 @@
         }
 
         /* ===== GLITCH TEXT ===== */
-        .glitch {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-        }
-
-        .glitch::before {
-            color: #2196F3;
-            z-index: -1;
-        }
-
-        .glitch::after {
-            color: #ff4444;
-            z-index: -1;
-        }
-
-        .glitch:hover::before,
-        .glitch.glitching::before {
-            animation: glitch1 0.3s ease infinite;
-            opacity: 0.8;
-        }
-
-        .glitch:hover::after,
-        .glitch.glitching::after {
-            animation: glitch2 0.3s ease infinite;
-            opacity: 0.8;
-        }
-
-        @keyframes glitch1 {
-            0% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 1px); }
-            25% { clip-path: inset(50% 0 10% 0); transform: translate(2px, -1px); }
-            50% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 2px); }
-            75% { clip-path: inset(70% 0 5% 0); transform: translate(1px, -2px); }
-            100% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 1px); }
-        }
-
-        @keyframes glitch2 {
-            0% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
-            25% { clip-path: inset(10% 0 50% 0); transform: translate(-2px, 1px); }
-            50% { clip-path: inset(70% 0 10% 0); transform: translate(1px, -2px); }
-            75% { clip-path: inset(5% 0 70% 0); transform: translate(-1px, 2px); }
-            100% { clip-path: inset(30% 0 40% 0); transform: translate(2px, -1px); }
-        }
-
         /* ===== TYPEWRITER ===== */
         .typewriter-cursor {
             display: inline-block;
@@ -1090,58 +1096,7 @@
         }
 
         /* ===== TOAST NOTIFICATION ===== */
-        .toast {
-            position: fixed;
-            top: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #1a1a3a, #222248);
-            border: 1px solid rgba(33, 150, 243, 0.3);
-            color: #e8e8f0;
-            padding: 16px 28px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            z-index: 10001;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
 
-        .toast.show {
-            top: 24px;
-        }
-
-        .toast-icon {
-            width: 24px;
-            height: 24px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .toast-icon svg {
-            width: 14px;
-            height: 14px;
-            stroke: #fff;
-            fill: none;
-            stroke-width: 3;
-        }
-
-        /* ===== CURSOR TRAIL (COMETA) ===== */
-        .trail-dot {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            background: radial-gradient(circle, rgba(100, 181, 246, 0.9) 0%, rgba(33, 150, 243, 0.5) 50%, transparent 70%);
-            box-shadow: 0 0 6px rgba(33, 150, 243, 0.6), 0 0 12px rgba(33, 150, 243, 0.3);
-        }
 
         /* ===== ANIMACOES ===== */
         .fade-in {
@@ -1172,6 +1127,7 @@
                 padding: 20px;
                 gap: 16px;
                 border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+                z-index: 1001;
             }
 
             .nav-links.ativo {
@@ -1217,21 +1173,99 @@
                 padding: 60px 20px;
             }
         }
+
+        @media (max-width: 400px) {
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .processo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== WHATSAPP FLUTUANTE ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        /* ===== BOTÃO VOLTAR AO TOPO ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 88px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: rgba(33, 150, 243, 0.15);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.3s;
+            color: #64B5F6;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: rgba(33, 150, 243, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* ===== ACESSIBILIDADE ===== */
+        *:focus-visible {
+            outline: 2px solid #64B5F6;
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body>
 
     <!-- LOADING SCREEN -->
     <div class="loading-screen" id="loadingScreen">
+        <div class="loading-grid"></div>
+        <div class="loading-orb loading-orb-1"></div>
+        <div class="loading-orb loading-orb-2"></div>
         <img src="imagens/logo.png" alt="JF">
         <div class="loading-bar"><div class="loading-bar-fill"></div></div>
     </div>
 
-    <!-- TOAST -->
-    <div class="toast" id="toast">
-        <div class="toast-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span id="toastMsg" data-pt="Mensagem enviada com sucesso!" data-en="Message sent successfully!">Mensagem enviada com sucesso!</span>
-    </div>
 
     <!-- EFEITOS DE LUZ -->
     <div class="cursor-glow" id="cursorGlow"></div>
@@ -1274,7 +1308,7 @@
         <div class="hero-content fade-in">
             <h1 data-pt="Transformamos suas ideias em <span class='destaque'>soluções digitais</span>" data-en="We turn your ideas into <span class='destaque'>digital solutions</span>">Transformamos suas ideias em <span class="destaque">soluções digitais</span></h1>
             <p data-pt="Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para impulsionar o seu negócio." data-en="Website, system and app development with speed and quality to boost your business.">Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para impulsionar o seu negócio.</p>
-            <a href="#contato" class="btn-primary" data-pt="Agende uma Call" data-en="Schedule a Call">Agende uma Call</a>
+            <a href="javascript:void(0)" onclick="openCalendly()" class="btn-primary" data-pt="Agende uma Call" data-en="Schedule a Call">Agende uma Call</a>
         </div>
     </section>
 
@@ -1424,18 +1458,17 @@
         <h2 class="section-title fade-in" data-pt="Agende uma Conversa" data-en="Schedule a Call">Agende uma Conversa</h2>
         <p class="section-subtitle fade-in" data-pt="Conte-nos sobre o seu projeto e agende uma call para conversarmos" data-en="Tell us about your project and schedule a call to chat">Conte-nos sobre o seu projeto e agende uma call para conversarmos</p>
         <div class="contato-wrapper fade-in">
-            <div class="calendly-container">
-                <div class="calendly-inline-widget" data-url="https://calendly.com/contato-justfast/30min?hide_gdpr_banner=1&background_color=1a1a3a&text_color=e8e8f0&primary_color=2196f3" style="min-width:320px;height:650px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-            </div>
+            <a href="javascript:void(0)" onclick="openCalendly()" class="btn-primary btn-calendly" data-pt="Agende uma Call" data-en="Schedule a Call" aria-label="Agendar uma call pelo Calendly">Agende uma Call</a>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
             <div class="contato-alt">
-                <a href="https://wa.me/5584999183580?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20call%20para%20conversar%20sobre%20meu%20projeto." class="contato-alt-item" target="_blank" rel="noopener">
+                <a href="https://wa.me/5584999183580?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20call%20para%20conversar%20sobre%20meu%20projeto." class="contato-alt-item" target="_blank" rel="noopener" aria-label="Enviar mensagem pelo WhatsApp">
                     <div class="contato-alt-icon">
                         <svg class="fill-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </div>
                     <span>+55 84 9918-3580</span>
                 </a>
-                <a href="mailto:contato@justfast.com.br" class="contato-alt-item">
+                <a href="mailto:contato@justfast.com.br" class="contato-alt-item" aria-label="Enviar email para contato@justfast.com.br">
                     <div class="contato-alt-icon">
                         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </div>
@@ -1446,9 +1479,18 @@
     </section>
 
     <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5584999183580?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Just%20Fast." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Conversar pelo WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
     <!-- FOOTER -->
     <footer class="footer">
-        <img src="imagens/logo completa 2.png" alt="Just Fast Digital Solutions">
+        <img src="imagens/logo_completa_2.png" alt="Just Fast Technologies">
         <ul class="footer-links">
             <li><a href="#inicio" data-pt="Início" data-en="Home">Início</a></li>
             <li><a href="#servicos" data-pt="Serviços" data-en="Services">Serviços</a></li>
@@ -1461,6 +1503,13 @@
     </footer>
 
     <script>
+        // ===== CALENDLY POPUP =====
+        function openCalendly() {
+            Calendly.initPopupWidget({
+                url: 'https://calendly.com/contato-justfast/30min?hide_gdpr_banner=1&background_color=1a1a3a&text_color=e8e8f0&primary_color=2196f3'
+            });
+        }
+
         // ===== LOADING SCREEN =====
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -1500,56 +1549,11 @@
             type();
         }
 
-        // ===== GLITCH TEXT (periodic) =====
-        setInterval(() => {
-            const glitch = document.querySelector('.glitch');
-            if (glitch) {
-                glitch.classList.add('glitching');
-                setTimeout(() => glitch.classList.remove('glitching'), 300);
-            }
-        }, 3000);
 
-        // ===== CURSOR TRAIL (COMETA) =====
-        const trailDots = [];
-        const TRAIL_LENGTH = 20;
-
-        for (let i = 0; i < TRAIL_LENGTH; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'trail-dot';
-            dot.style.opacity = '0';
-            const size = 14 - (i * 0.6);
-            dot.style.width = size + 'px';
-            dot.style.height = size + 'px';
-            document.body.appendChild(dot);
-            trailDots.push({ el: dot, x: 0, y: 0 });
-        }
-
-        let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateTrail() {
-            let prevX = mouseX, prevY = mouseY;
-            trailDots.forEach((dot, i) => {
-                const speed = 0.5 - (i * 0.018);
-                dot.x += (prevX - dot.x) * speed;
-                dot.y += (prevY - dot.y) * speed;
-                dot.el.style.left = dot.x + 'px';
-                dot.el.style.top = dot.y + 'px';
-                const opacity = (1 - i / TRAIL_LENGTH) * 0.8;
-                dot.el.style.opacity = opacity;
-                dot.el.style.transform = `translate(-50%, -50%)`;
-                prevX = dot.x;
-                prevY = dot.y;
-            });
-            requestAnimationFrame(animateTrail);
-        }
-        animateTrail();
 
         // ===== RIPPLE CLICK (GLOBAL - MINI EXPLOSÃO) =====
         document.addEventListener('click', (e) => {
+            if (e.target.closest('a, button, input, textarea, select, [onclick], .btn-primary, .faq-question, .lang-btn, .menu-toggle, .nav-links a, .contato-alt-item, .whatsapp-float, .back-to-top, .footer-links a')) return;
             const size = 140;
 
             // Círculo principal (maior e mais brilhante)
@@ -1620,7 +1624,9 @@
         resizeStarCanvas();
         window.addEventListener('resize', resizeStarCanvas);
 
-        for (let i = 0; i < 250; i++) {
+        const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+        const starCount = isMobile ? 80 : 250;
+        for (let i = 0; i < starCount; i++) {
             stars.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
@@ -1653,6 +1659,8 @@
 
         let scrollY = 0;
         const navbar = document.querySelector('.navbar');
+        const backToTop = document.getElementById('backToTop');
+
         window.addEventListener('scroll', () => {
             scrollY = window.scrollY;
             if (scrollY > 50) {
@@ -1660,6 +1668,15 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+            if (scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         function animateStars() {
@@ -1742,12 +1759,6 @@
         applyTilt(document.querySelectorAll('.servico-card'), 20);
         applyTilt(document.querySelectorAll('.diferencial-item'), 14);
 
-        // ===== TOAST NOTIFICATION =====
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3500);
-        }
 
         // Menu mobile
         const menuToggle = document.getElementById('menuToggle');
@@ -1775,14 +1786,16 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Cursor glow
-        const cursorGlow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-        });
-        document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
-        document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
+        // Cursor glow (desktop only)
+        if (!isMobile) {
+            const cursorGlow = document.getElementById('cursorGlow');
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+            document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
+            document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
+        }
 
         // Partículas animadas
         const canvas = document.getElementById('particles');
@@ -1826,7 +1839,8 @@
             }
         }
 
-        for (let i = 0; i < 280; i++) {
+        const particleCount = isMobile ? 100 : 280;
+        for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
 
@@ -1885,9 +1899,7 @@
                 el.placeholder = el.getAttribute('data-' + lang + '-ph');
             });
 
-            document.title = lang === 'pt'
-                ? 'Just Fast Technologies — Desenvolvimento Web e Apps'
-                : 'Just Fast Technologies — Web & App Development';
+            document.title = 'Just Fast Technologies';
         })();
 
         // FAQ Accordion

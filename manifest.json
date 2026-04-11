@@ -1,0 +1,16 @@
+{
+  "name": "Just Fast Technologies",
+  "short_name": "Just Fast",
+  "description": "Transformamos suas ideias em soluções digitais.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111128",
+  "theme_color": "#2196F3",
+  "icons": [
+    {
+      "src": "imagens/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
