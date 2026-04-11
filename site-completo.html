@@ -232,18 +232,24 @@
             text-align: center;
             padding: 120px 20px 80px;
             position: relative;
+            z-index: 0;
             background: radial-gradient(ellipse at 50% 0%, rgba(33, 150, 243, 0.15) 0%, transparent 60%);
         }
 
         .hero-content {
             max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title-wrapper {
+            margin-bottom: 20px;
         }
 
         .hero h1 {
             font-size: 48px;
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 20px;
             color: #fff;
         }
 
@@ -285,6 +291,7 @@
             box-shadow: 0 8px 30px rgba(33, 150, 243, 0.5);
         }
 
+
         /* ===== SECTIONS BASE ===== */
         section {
             padding: 100px 40px;
@@ -311,21 +318,42 @@
         /* ===== SERVICOS ===== */
         #servicos {
             background: transparent;
+            position: relative;
+        }
+
+        #servicos::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(33, 150, 243, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #servicos > * {
+            position: relative;
+            z-index: 1;
         }
 
         .servicos-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 800px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .servico-card {
-            background: linear-gradient(145deg, #1a1a3a, #222248);
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(33, 150, 243, 0.1);
             border-radius: 16px;
-            padding: 40px 30px;
+            padding: 40px 24px;
             text-align: center;
             transition: transform 0.3s, border-color 0.3s;
         }
@@ -333,6 +361,22 @@
         .servico-card:hover {
             transform: translateY(-6px);
             border-color: rgba(33, 150, 243, 0.4);
+        }
+
+        .servico-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #2196F3, #1565C0);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.35);
+            z-index: 2;
+            transform: translateZ(40px);
         }
 
         .servico-icon {
@@ -460,31 +504,170 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
         .diferencial-item {
             text-align: center;
-            padding: 30px 16px;
+            padding: 36px 20px;
+            background: linear-gradient(145deg, #1a1a3a, #1e1e42);
+            border: 1px solid rgba(33, 150, 243, 0.08);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .diferencial-item::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(33, 150, 243, 0.3) 0%, rgba(33, 150, 243, 0.08) 40%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .diferencial-item:hover::before {
+            opacity: 1;
+        }
+
+        .diferencial-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(33, 150, 243, 0.4);
+            box-shadow: 0 8px 32px rgba(33, 150, 243, 0.12), inset 0 0 20px rgba(33, 150, 243, 0.03);
+        }
+
+        .diferencial-item > * {
+            position: relative;
+            z-index: 1;
         }
 
         .diferencial-icon {
-            font-size: 36px;
-            margin-bottom: 16px;
-            display: block;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 18px;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diferencial-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #64B5F6;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .diferencial-item h4 {
             color: #fff;
             font-size: 16px;
-            margin-bottom: 8px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .diferencial-item p {
             color: #b0b0c8;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        .diferencial-item:nth-child(1) { animation-delay: 0.1s; }
+        .diferencial-item:nth-child(2) { animation-delay: 0.2s; }
+        .diferencial-item:nth-child(3) { animation-delay: 0.3s; }
+        .diferencial-item:nth-child(4) { animation-delay: 0.4s; }
+
+        /* ===== TECNOLOGIAS CARROSSEL ===== */
+        .tech-section {
+            margin-top: 56px;
+            text-align: center;
+        }
+
+        .tech-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2196F3, transparent);
+            margin: 0 auto 28px;
+        }
+
+        .tech-section h3 {
+            color: #b0b0c8;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+        }
+
+        .tech-marquee-wrapper {
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        .tech-marquee {
+            display: flex;
+            gap: 48px;
+            animation: techScroll 25s linear infinite;
+            width: max-content;
+        }
+
+        .tech-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes techScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+            transition: opacity 0.3s, transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .tech-item:hover {
+            opacity: 1;
+            transform: translateY(-4px);
+        }
+
+        .tech-item svg,
+        .tech-item img {
+            width: 44px;
+            height: 44px;
+            filter: drop-shadow(0 0 0px transparent);
+            transition: filter 0.3s;
+        }
+
+        .tech-item:hover svg,
+        .tech-item:hover img {
+            filter: drop-shadow(0 0 8px rgba(33, 150, 243, 0.4));
+        }
+
+        .tech-item span {
+            font-size: 12px;
+            color: #b0b0c8;
+            font-weight: 500;
+            white-space: nowrap;
         }
 
         /* ===== FAQ ===== */
@@ -993,6 +1176,74 @@
             50% { opacity: 0; }
         }
 
+        .hero-rotating-word {
+            display: inline;
+            background: linear-gradient(135deg, #2196F3, #64B5F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            animation: bounceDown 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 36px;
+            height: 36px;
+            stroke: rgba(255, 255, 255, 0.7);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+            50% { transform: translateX(-50%) translateY(12px); opacity: 1; }
+        }
+
+        /* ===== HERO BADGES ===== */
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 1px solid rgba(33, 150, 243, 0.25);
+            border-radius: 50px;
+            background: rgba(33, 150, 243, 0.08);
+        }
+
+        .hero-badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: #64B5F6;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
         /* ===== RIPPLE CLICK (GLOBAL) ===== */
         .ripple-global {
             position: fixed;
@@ -1041,7 +1292,9 @@
 
         /* ===== HOVER GLOW CARDS ===== */
         .servico-card {
-            background: linear-gradient(145deg, #1a1a3a, #222248);
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             position: relative;
             overflow: hidden;
         }
@@ -1076,21 +1329,15 @@
             transition: transform 0.15s ease, border-color 0.3s;
         }
 
-        .servico-card > * {
+        .servico-card > *:not(.servico-badge) {
             transform: translateZ(30px);
         }
 
         .diferencial-item {
-            transition: transform 0.15s ease;
             transform-style: preserve-3d;
-            border-radius: 12px;
         }
 
-        .diferencial-item:hover {
-            background: rgba(33, 150, 243, 0.05);
-        }
-
-        .servico-card > * {
+        .servico-card > *:not(.servico-badge) {
             position: relative;
             z-index: 1;
         }
@@ -1118,8 +1365,8 @@
 
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 56px;
                 left: 0;
                 width: 100%;
                 background: rgba(17, 17, 40, 0.98);
@@ -1127,7 +1374,7 @@
                 padding: 20px;
                 gap: 16px;
                 border-bottom: 1px solid rgba(33, 150, 243, 0.1);
-                z-index: 1001;
+                z-index: 10000;
             }
 
             .nav-links.ativo {
@@ -1146,21 +1393,121 @@
                 font-size: 16px;
             }
 
+            .hero-badges {
+                gap: 16px;
+            }
+
+            .hero-badge {
+                font-size: 12px;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+
             .servicos-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .servico-card {
+                padding: 24px 16px;
+            }
+
+            .servico-icon {
+                width: 44px;
+                height: 44px;
+                margin: 0 auto 12px;
+            }
+
+            .servico-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .servico-card h3 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .servico-card p {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+
+            .servico-badge {
+                position: static;
+                display: inline-block;
+                margin-top: 10px;
+                font-size: 10px;
+                padding: 3px 10px;
             }
 
             .diferenciais-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .diferencial-item {
+                padding: 24px 16px;
+            }
+
+            .diferencial-icon {
+                width: 44px;
+                height: 44px;
+                margin: 0 auto 12px;
+            }
+
+            .diferencial-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .diferencial-item h4 {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .diferencial-item p {
+                font-size: 12px;
+                line-height: 1.4;
             }
 
             .processo-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding-left: 50px;
+                position: relative;
             }
 
             .processo-grid::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 22px;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(180deg, transparent, rgba(33, 150, 243, 0.4), rgba(33, 150, 243, 0.4), transparent);
+            }
+
+            .processo-grid::after {
                 display: none;
+            }
+
+            .processo-item {
+                text-align: left;
+                padding: 20px 16px 20px 24px;
+                position: relative;
+            }
+
+            .processo-numero {
+                position: absolute;
+                left: -50px;
+                top: 20px;
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
             }
 
             .contato-alt {
@@ -1178,17 +1525,13 @@
             .diferenciais-grid {
                 grid-template-columns: 1fr;
             }
-
-            .processo-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* ===== WHATSAPP FLUTUANTE ===== */
         .whatsapp-float {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            bottom: 32px;
+            right: 32px;
             width: 56px;
             height: 56px;
             background: #25D366;
@@ -1215,10 +1558,10 @@
         /* ===== BOTÃO VOLTAR AO TOPO ===== */
         .back-to-top {
             position: fixed;
-            bottom: 88px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
+            bottom: 100px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
             background: rgba(33, 150, 243, 0.15);
             border: 1px solid rgba(33, 150, 243, 0.3);
             border-radius: 50%;
@@ -1244,8 +1587,8 @@
         }
 
         .back-to-top svg {
-            width: 22px;
-            height: 22px;
+            width: 26px;
+            height: 26px;
         }
 
         /* ===== ACESSIBILIDADE ===== */
@@ -1306,10 +1649,16 @@
     <!-- HERO -->
     <section class="hero" id="inicio">
         <div class="hero-content fade-in">
-            <h1 data-pt="Transformamos suas ideias em <span class='destaque'>soluções digitais</span>" data-en="We turn your ideas into <span class='destaque'>digital solutions</span>">Transformamos suas ideias em <span class="destaque">soluções digitais</span></h1>
+            <div class="hero-title-wrapper">
+                <h1 data-pt="Transformamos suas ideias em <span class='destaque'>soluções digitais</span>" data-en="We turn your ideas into <span class='destaque'>digital solutions</span>">Transformamos suas ideias em <span class="destaque">soluções digitais</span></h1>
+            </div>
             <p data-pt="Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para impulsionar o seu negócio." data-en="Website, system and app development with speed and quality to boost your business.">Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para impulsionar o seu negócio.</p>
             <a href="javascript:void(0)" onclick="openCalendly()" class="btn-primary" data-pt="Agende uma Call" data-en="Schedule a Call">Agende uma Call</a>
+
         </div>
+        <a href="#servicos" class="scroll-indicator" aria-label="Rolar para baixo" style="display:none;">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
     </section>
 
     <!-- SERVICOS -->
@@ -1330,6 +1679,21 @@
                 </div>
                 <h3 data-pt="Desenvolvimento de Apps" data-en="App Development">Desenvolvimento de Apps</h3>
                 <p data-pt="Aplicativos modernos para Android e iOS que conectam sua empresa aos seus clientes." data-en="Modern Android and iOS apps that connect your business to your customers.">Aplicativos modernos para Android e iOS que conectam sua empresa aos seus clientes.</p>
+            </div>
+            <div class="servico-card fade-in">
+                <div class="servico-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <h3 data-pt="Design UI/UX" data-en="UI/UX Design">Design UI/UX</h3>
+                <p data-pt="Interfaces intuitivas e experiências digitais que encantam seus usuários e fortalecem sua marca." data-en="Intuitive interfaces and digital experiences that delight your users and strengthen your brand.">Interfaces intuitivas e experiências digitais que encantam seus usuários e fortalecem sua marca.</p>
+            </div>
+            <div class="servico-card fade-in">
+                <div class="servico-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <h3 data-pt="Ajustes & Suporte" data-en="Maintenance & Support">Ajustes & Suporte</h3>
+                <p data-pt="Correções, atualizações e suporte técnico para manter seu projeto sempre no ar." data-en="Fixes, updates and technical support to keep your project running smoothly.">Correções, atualizações e suporte técnico para manter seu projeto sempre no ar.</p>
+                <span class="servico-badge" data-pt="Mais procurado" data-en="Most popular">Mais procurado</span>
             </div>
         </div>
     </section>
@@ -1378,24 +1742,99 @@
         <p class="section-subtitle fade-in" data-pt="O que faz a Just Fast ser diferente" data-en="What makes Just Fast different">O que faz a Just Fast ser diferente</p>
         <div class="diferenciais-grid">
             <div class="diferencial-item fade-in">
-                <span class="diferencial-icon">&#9889;</span>
+                <div class="diferencial-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
                 <h4 data-pt="Entrega Rápida" data-en="Fast Delivery">Entrega Rápida</h4>
                 <p data-pt="Projetos entregues com agilidade, sem perder a qualidade" data-en="Projects delivered with agility, without compromising quality">Projetos entregues com agilidade, sem perder a qualidade</p>
             </div>
             <div class="diferencial-item fade-in">
-                <span class="diferencial-icon">&#128176;</span>
+                <div class="diferencial-icon">
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
                 <h4 data-pt="Preço Justo" data-en="Fair Pricing">Preço Justo</h4>
                 <p data-pt="Soluções que cabem no orçamento de pequenas empresas" data-en="Solutions that fit small business budgets">Soluções que cabem no orçamento de pequenas empresas</p>
             </div>
             <div class="diferencial-item fade-in">
-                <span class="diferencial-icon">&#129309;</span>
+                <div class="diferencial-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
                 <h4 data-pt="Suporte Dedicado" data-en="Dedicated Support">Suporte Dedicado</h4>
                 <p data-pt="Atendimento próximo e humanizado do início ao fim" data-en="Close and personalized support from start to finish">Atendimento próximo e humanizado do início ao fim</p>
             </div>
             <div class="diferencial-item fade-in">
-                <span class="diferencial-icon">&#128640;</span>
+                <div class="diferencial-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+                </div>
                 <h4 data-pt="Tecnologia Moderna" data-en="Modern Technology">Tecnologia Moderna</h4>
                 <p data-pt="Utilizamos as melhores ferramentas e práticas do mercado" data-en="We use the best tools and practices in the industry">Utilizamos as melhores ferramentas e práticas do mercado</p>
+            </div>
+        </div>
+
+        <div class="tech-section fade-in">
+            <div class="tech-divider"></div>
+            <h3 data-pt="Ferramentas que utilizamos" data-en="Tools we use">Ferramentas que utilizamos</h3>
+            <div class="tech-marquee-wrapper">
+                <div class="tech-marquee">
+                    <!-- Primeiro set -->
+                    <div class="tech-item">
+                        <img src="imagens/html.svg" alt="HTML/CSS">
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/javascript.svg" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/flutter.svg" alt="Flutter">
+                        <span>Flutter</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/supabase.svg" alt="Supabase">
+                        <span>Supabase</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/firebase.svg" alt="Firebase">
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/git.svg" alt="Git">
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/claude.svg" alt="Claude AI">
+                        <span>Claude AI</span>
+                    </div>
+                    <!-- Segundo set (duplicado para loop) -->
+                    <div class="tech-item">
+                        <img src="imagens/html.svg" alt="HTML/CSS">
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/javascript.svg" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/flutter.svg" alt="Flutter">
+                        <span>Flutter</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/supabase.svg" alt="Supabase">
+                        <span>Supabase</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/firebase.svg" alt="Firebase">
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/git.svg" alt="Git">
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="imagens/claude.svg" alt="Claude AI">
+                        <span>Claude AI</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1526,6 +1965,21 @@
             const text = currentLang === 'en' ? enText : ptText;
             const plainText = text.replace(/<[^>]*>/g, '');
 
+            // Travar altura do wrapper antes de começar
+            const wrapper = document.querySelector('.hero-title-wrapper');
+            const allWords = {
+                pt: ['soluções digitais', 'sites modernos', 'apps incríveis', 'sistemas robustos'],
+                en: ['digital solutions', 'modern websites', 'amazing apps', 'robust systems']
+            };
+            let maxHeight = h1.offsetHeight;
+            const originalHTML = h1.innerHTML;
+            allWords[currentLang].forEach(word => {
+                h1.innerHTML = text.replace(/<span class='destaque'>.*?<\/span>/, '<span class="destaque">' + word + '</span>');
+                if (h1.offsetHeight > maxHeight) maxHeight = h1.offsetHeight;
+            });
+            h1.innerHTML = originalHTML;
+            wrapper.style.height = maxHeight + 'px';
+
             h1.innerHTML = '';
             h1.style.visibility = 'visible';
 
@@ -1542,11 +1996,63 @@
                 } else {
                     // Replace with full HTML version after typing
                     setTimeout(() => {
-                        h1.innerHTML = text + '<span class="typewriter-cursor"></span>';
+                        h1.innerHTML = text.replace(
+                            /<span class='destaque'>(.*?)<\/span>/,
+                            '<span class="hero-rotating-word">$1</span>'
+                        ) + '<span class="typewriter-cursor"></span>';
+                        startWordRotation();
                     }, 500);
                 }
             }
             type();
+        }
+
+        // ===== ROTAÇÃO DE PALAVRAS HERO =====
+        function startWordRotation() {
+            const words = {
+                pt: ['soluções digitais', 'sites modernos', 'apps incríveis', 'sistemas robustos'],
+                en: ['digital solutions', 'modern websites', 'amazing apps', 'robust systems']
+            };
+            const rotatingEl = document.querySelector('.hero-rotating-word');
+            const cursorEl = rotatingEl.nextElementSibling;
+            if (!rotatingEl) return;
+
+            let index = 0;
+            let running = false;
+
+            function eraseAndType() {
+                if (running) return;
+                running = true;
+                index = (index + 1) % words[currentLang].length;
+                const currentText = rotatingEl.textContent;
+                const newText = words[currentLang][index];
+                let charIndex = currentText.length;
+
+                // Apagar letra por letra
+                function erase() {
+                    if (charIndex > 0) {
+                        charIndex--;
+                        rotatingEl.textContent = currentText.substring(0, charIndex);
+                        setTimeout(erase, 60);
+                    } else {
+                        // Digitar nova palavra
+                        let typeIndex = 0;
+                        function typeWord() {
+                            if (typeIndex < newText.length) {
+                                typeIndex++;
+                                rotatingEl.textContent = newText.substring(0, typeIndex);
+                                setTimeout(typeWord, 40 + Math.random() * 30);
+                            } else {
+                                running = false;
+                            }
+                        }
+                        setTimeout(typeWord, 200);
+                    }
+                }
+                erase();
+            }
+
+            setInterval(eraseAndType, 4000);
         }
 
 
