@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Fast Technologies — Desenvolvimento Web e Apps</title>
+    <meta name="description" content="Transformamos suas ideias em soluções digitais. Desenvolvimento de sites, sistemas e aplicativos para pequenas empresas.">
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111128;
+            color: #e8e8f0;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            backdrop-filter: none;
+            z-index: 1000;
+            border-bottom: none;
+            transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
+        }
+
+        .navbar.scrolled {
+            background: rgba(17, 17, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-logo .navbar-icon {
+            height: 38px;
+        }
+
+        .navbar-logo .navbar-text {
+            height: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8b8cc;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            padding: 6px 0;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2196F3, #64B5F6, #2196F3, transparent);
+            border-radius: 2px;
+            transform: translateX(-50%);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #64B5F6;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px #2196F3, 0 0 16px rgba(33, 150, 243, 0.5);
+            transition: width 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 12px rgba(33, 150, 243, 0.6);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover::after {
+            width: 6px;
+            opacity: 1;
+        }
+
+        .nav-links a:active {
+            transform: scale(0.95);
+        }
+
+
+        /* ===== LANG SWITCH ===== */
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            margin-left: 16px;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 8px;
+            padding: 3px;
+        }
+
+        .lang-btn {
+            padding: 5px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            background: transparent;
+            color: #8a8aa0;
+        }
+
+        .lang-btn.ativo {
+            background: #2196F3;
+            color: #fff;
+        }
+
+        .lang-btn:hover:not(.ativo) {
+            color: #fff;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            background: radial-gradient(ellipse at 50% 0%, rgba(33, 150, 243, 0.15) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero h1 .destaque {
+            background: linear-gradient(135deg, #2196F3, #64B5F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-logo {
+            max-width: 500px;
+            width: 90%;
+            margin-bottom: 28px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #b0b0c0;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.5);
+        }
+
+        /* ===== SECTIONS BASE ===== */
+        section {
+            padding: 100px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9a9ab0;
+            font-size: 16px;
+            margin-bottom: 60px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== SERVICOS ===== */
+        #servicos {
+            background: transparent;
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .servico-card {
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(33, 150, 243, 0.4);
+        }
+
+        .servico-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .servico-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: #2196F3;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .servico-card h3 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .servico-card p {
+            color: #9a9ab0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ===== PROCESSO ===== */
+        #processo {
+            background: transparent;
+        }
+
+        .processo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .processo-grid::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.3), rgba(33, 150, 243, 0.5), rgba(33, 150, 243, 0.3), transparent);
+            z-index: 0;
+        }
+
+        .processo-item {
+            text-align: center;
+            padding: 30px 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .processo-numero {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            border: 2px solid rgba(33, 150, 243, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #2196F3;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .processo-item:hover .processo-numero {
+            border-color: #2196F3;
+            box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
+        }
+
+        .processo-item h4 {
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .processo-item p {
+            color: #9a9ab0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* ===== SOBRE ===== */
+        #sobre {
+            background: transparent;
+        }
+
+        .sobre-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .sobre-content p {
+            font-size: 17px;
+            color: #b0b0c0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* ===== DIFERENCIAIS ===== */
+        #diferenciais {
+            background: transparent;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .diferencial-item {
+            text-align: center;
+            padding: 30px 16px;
+        }
+
+        .diferencial-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .diferencial-item h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .diferencial-item p {
+            color: #9a9ab0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* ===== FAQ ===== */
+        #faq {
+            background: transparent;
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(33, 150, 243, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .faq-question:hover {
+            color: #64B5F6;
+        }
+
+        .faq-chevron {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            stroke: #2196F3;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            padding: 0 24px 20px;
+            color: #9a9ab0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ===== CONTATO ===== */
+        #contato {
+            background: transparent;
+        }
+
+        .contato-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .calendly-container {
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            border: 1px solid rgba(33, 150, 243, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 650px;
+            margin-bottom: 40px;
+        }
+
+        .calendly-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            padding: 40px;
+            text-align: center;
+            color: #9a9ab0;
+        }
+
+        .calendly-placeholder svg {
+            width: 60px;
+            height: 60px;
+            stroke: #2196F3;
+            fill: none;
+            stroke-width: 1.5;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .calendly-placeholder h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .calendly-placeholder p {
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .contato-alt {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contato-alt-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #b0b0c0;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .contato-alt-item:hover {
+            color: #2196F3;
+        }
+
+        .contato-alt-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contato-alt-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #2196F3;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contato-alt-icon svg.fill-icon {
+            fill: #2196F3;
+            stroke: none;
+        }
+
+        /* ===== WHATSAPP FLUTUANTE ===== */
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(13, 13, 34, 0.6);
+            padding: 40px 40px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(33, 150, 243, 0.08);
+        }
+
+        .footer img {
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+
+        .footer p {
+            color: #7a7a90;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #8a8aa0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #2196F3;
+        }
+
+        /* ===== CURSOR GLOW ===== */
+        .cursor-glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(33, 150, 243, 0.12) 0%, rgba(33, 150, 243, 0.04) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+        }
+
+        /* ===== PARTICULAS BACKGROUND ===== */
+        .particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .navbar, .hero, section, .footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== ORBS DE LUZ ===== */
+        .light-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            pointer-events: none;
+            animation: orbFloat 12s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        .light-orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #2196F3;
+            top: 5%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .light-orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #64B5F6;
+            top: 25%;
+            right: -8%;
+            animation-delay: -4s;
+        }
+
+        .light-orb-3 {
+            width: 350px;
+            height: 350px;
+            background: #1565C0;
+            top: 50%;
+            left: 10%;
+            animation-delay: -8s;
+        }
+
+        .light-orb-4 {
+            width: 450px;
+            height: 450px;
+            background: #42A5F5;
+            top: 45%;
+            right: -5%;
+            animation-delay: -2s;
+            opacity: 0.1;
+        }
+
+        .light-orb-5 {
+            width: 380px;
+            height: 380px;
+            background: #1E88E5;
+            top: 70%;
+            left: -5%;
+            animation-delay: -6s;
+            opacity: 0.1;
+        }
+
+        .light-orb-6 {
+            width: 320px;
+            height: 320px;
+            background: #64B5F6;
+            top: 85%;
+            right: 15%;
+            animation-delay: -10s;
+            opacity: 0.08;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+            100% { transform: translate(30px, -10px) scale(1.05); }
+        }
+
+        /* ===== GRID LUMINOSO HERO ===== */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(33, 150, 243, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(33, 150, 243, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ===== LOADING SKELETON ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111128;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            overflow: hidden;
+        }
+
+        .loading-screen::before,
+        .loading-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .loading-screen::before {
+            background:
+                radial-gradient(1px 1px at 2% 8%, rgba(200, 220, 255, 0.9), transparent),
+                radial-gradient(1.2px 1.2px at 5% 25%, rgba(180, 210, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 8% 52%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1.5px 1.5px at 3% 78%, rgba(220, 230, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 7% 93%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1.3px 1.3px at 12% 15%, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 15% 42%, rgba(180, 210, 255, 0.6), transparent),
+                radial-gradient(1.5px 1.5px at 11% 67%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(1px 1px at 18% 88%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1px 1px at 22% 5%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1.4px 1.4px at 25% 33%, rgba(180, 210, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 20% 58%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 28% 72%, rgba(220, 230, 255, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 23% 95%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1px 1px at 32% 12%, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1.2px 1.2px at 35% 28%, rgba(180, 210, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 38% 48%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 33% 65%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(1px 1px at 37% 82%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1.3px 1.3px at 42% 7%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 45% 22%, rgba(180, 210, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 48% 40%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1.5px 1.5px at 43% 55%, rgba(220, 230, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 47% 75%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1.2px 1.2px at 50% 90%, rgba(200, 220, 255, 0.8), transparent);
+            animation: starsTwinkle 3s ease-in-out infinite alternate;
+        }
+
+        .loading-screen::after {
+            background:
+                radial-gradient(1px 1px at 53% 10%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 55% 30%, rgba(220, 230, 255, 0.9), transparent),
+                radial-gradient(1px 1px at 58% 50%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 52% 68%, rgba(180, 210, 255, 0.7), transparent),
+                radial-gradient(1.3px 1.3px at 57% 85%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1px 1px at 62% 5%, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1.4px 1.4px at 65% 22%, rgba(220, 230, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 68% 45%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 63% 62%, rgba(180, 210, 255, 0.8), transparent),
+                radial-gradient(1.5px 1.5px at 67% 78%, rgba(200, 220, 255, 0.5), transparent),
+                radial-gradient(1px 1px at 72% 15%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1.2px 1.2px at 75% 35%, rgba(220, 230, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 78% 55%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 73% 72%, rgba(180, 210, 255, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 77% 92%, rgba(200, 220, 255, 0.9), transparent),
+                radial-gradient(1px 1px at 82% 8%, rgba(200, 220, 255, 0.6), transparent),
+                radial-gradient(1.3px 1.3px at 85% 28%, rgba(220, 230, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 88% 48%, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 83% 65%, rgba(180, 210, 255, 0.5), transparent),
+                radial-gradient(1.5px 1.5px at 87% 82%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 92% 18%, rgba(200, 220, 255, 0.8), transparent),
+                radial-gradient(1.2px 1.2px at 95% 38%, rgba(220, 230, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 97% 58%, rgba(200, 220, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 93% 75%, rgba(180, 210, 255, 0.9), transparent),
+                radial-gradient(1.5px 1.5px at 98% 95%, rgba(200, 220, 255, 0.5), transparent);
+            animation: starsTwinkle2 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes starsTwinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes starsTwinkle2 {
+            0% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-screen img {
+            max-width: 140px;
+            width: 40%;
+            margin-bottom: 32px;
+            animation: loadPulse 1.2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .loading-bar {
+            position: relative;
+            z-index: 1;
+            width: 180px;
+            height: 3px;
+            background: rgba(33, 150, 243, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .loading-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #2196F3, #64B5F6);
+            border-radius: 3px;
+            animation: loadProgress 1.8s ease-in-out forwards;
+        }
+
+        @keyframes loadPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== GLITCH TEXT ===== */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .glitch::before {
+            color: #2196F3;
+            z-index: -1;
+        }
+
+        .glitch::after {
+            color: #ff4444;
+            z-index: -1;
+        }
+
+        .glitch:hover::before,
+        .glitch.glitching::before {
+            animation: glitch1 0.3s ease infinite;
+            opacity: 0.8;
+        }
+
+        .glitch:hover::after,
+        .glitch.glitching::after {
+            animation: glitch2 0.3s ease infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes glitch1 {
+            0% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 1px); }
+            25% { clip-path: inset(50% 0 10% 0); transform: translate(2px, -1px); }
+            50% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 2px); }
+            75% { clip-path: inset(70% 0 5% 0); transform: translate(1px, -2px); }
+            100% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 1px); }
+        }
+
+        @keyframes glitch2 {
+            0% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+            25% { clip-path: inset(10% 0 50% 0); transform: translate(-2px, 1px); }
+            50% { clip-path: inset(70% 0 10% 0); transform: translate(1px, -2px); }
+            75% { clip-path: inset(5% 0 70% 0); transform: translate(-1px, 2px); }
+            100% { clip-path: inset(30% 0 40% 0); transform: translate(2px, -1px); }
+        }
+
+        /* ===== TYPEWRITER ===== */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #2196F3;
+            margin-left: 4px;
+            vertical-align: text-bottom;
+            animation: cursorBlink 0.7s step-end infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ===== RIPPLE CLICK (GLOBAL) ===== */
+        .ripple-global {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            transform: scale(0);
+            animation: rippleGlobal 0.7s ease-out forwards;
+        }
+
+        .ripple-global-ring {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            border: 2px solid rgba(33, 150, 243, 0.7);
+            transform: scale(0);
+            animation: rippleRing 0.8s ease-out forwards;
+        }
+
+        @keyframes rippleGlobal {
+            0% { transform: scale(0); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        @keyframes rippleRing {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .btn-primary, .btn-enviar, .servico-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== STAR FIELD ===== */
+        .starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== HOVER GLOW CARDS ===== */
+        .servico-card {
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servico-card::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(33, 150, 243, 0.35) 0%, rgba(33, 150, 243, 0.1) 40%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .servico-card:hover::before {
+            opacity: 1;
+        }
+
+        .servico-card:hover {
+            border-color: rgba(33, 150, 243, 0.5);
+            box-shadow: 0 0 20px rgba(33, 150, 243, 0.15), inset 0 0 20px rgba(33, 150, 243, 0.05);
+        }
+
+        /* ===== TILT CARDS ===== */
+        .servico-card {
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease, border-color 0.3s;
+        }
+
+        .servico-card > * {
+            transform: translateZ(30px);
+        }
+
+        .diferencial-item {
+            transition: transform 0.15s ease;
+            transform-style: preserve-3d;
+            border-radius: 12px;
+        }
+
+        .diferencial-item:hover {
+            background: rgba(33, 150, 243, 0.05);
+        }
+
+        .servico-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast {
+            position: fixed;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1a1a3a, #222248);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            color: #e8e8f0;
+            padding: 16px 28px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 10001;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .toast.show {
+            top: 24px;
+        }
+
+        .toast-icon {
+            width: 24px;
+            height: 24px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .toast-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 3;
+        }
+
+        /* ===== CURSOR TRAIL (COMETA) ===== */
+        .trail-dot {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            background: radial-gradient(circle, rgba(100, 181, 246, 0.9) 0%, rgba(33, 150, 243, 0.5) 50%, transparent 70%);
+            box-shadow: 0 0 6px rgba(33, 150, 243, 0.6), 0 0 12px rgba(33, 150, 243, 0.3);
+        }
+
+        /* ===== ANIMACOES ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(17, 17, 40, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+            }
+
+            .nav-links.ativo {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .servicos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .processo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .processo-grid::before {
+                display: none;
+            }
+
+            .contato-alt {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <img src="imagens/logo.png" alt="JF">
+        <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <div class="toast-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span id="toastMsg" data-pt="Mensagem enviada com sucesso!" data-en="Message sent successfully!">Mensagem enviada com sucesso!</span>
+    </div>
+
+    <!-- EFEITOS DE LUZ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <canvas class="starfield" id="starfield"></canvas>
+    <canvas class="particles-canvas" id="particles"></canvas>
+    <div class="light-orb light-orb-1"></div>
+    <div class="light-orb light-orb-2"></div>
+    <div class="light-orb light-orb-3"></div>
+    <div class="light-orb light-orb-4"></div>
+    <div class="light-orb light-orb-5"></div>
+    <div class="light-orb light-orb-6"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">
+            <img src="imagens/logo.png" alt="JF" class="navbar-icon">
+            <img src="imagens/sublogo.png" alt="Just Fast" class="navbar-text">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio" data-pt="Início" data-en="Home">Início</a></li>
+            <li><a href="#servicos" data-pt="Serviços" data-en="Services">Serviços</a></li>
+            <li><a href="#processo" data-pt="Processo" data-en="Process">Processo</a></li>
+            <li><a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a></li>
+            <li><a href="#faq" data-pt="FAQ" data-en="FAQ">FAQ</a></li>
+            <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
+        </ul>
+        <div class="lang-switch">
+            <button class="lang-btn ativo" onclick="setLang('pt')">PT</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content fade-in">
+            <h1 data-pt="Transformamos suas ideias em <span class='destaque'>soluções digitais</span>" data-en="We turn your ideas into <span class='destaque'>digital solutions</span>">Transformamos suas ideias em <span class="destaque">soluções digitais</span></h1>
+            <p data-pt="Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para impulsionar o seu negócio." data-en="Website, system and app development with speed and quality to boost your business.">Desenvolvimento de sites, sistemas e aplicativos com velocidade e qualidade para impulsionar o seu negócio.</p>
+            <a href="#contato" class="btn-primary" data-pt="Agende uma Call" data-en="Schedule a Call">Agende uma Call</a>
+        </div>
+    </section>
+
+    <!-- SERVICOS -->
+    <section id="servicos">
+        <h2 class="section-title fade-in" data-pt="Nossos Serviços" data-en="Our Services">Nossos Serviços</h2>
+        <p class="section-subtitle fade-in" data-pt="Soluções sob medida para o seu negócio crescer no digital" data-en="Tailored solutions to grow your business in the digital world">Soluções sob medida para o seu negócio crescer no digital</p>
+        <div class="servicos-grid">
+            <div class="servico-card fade-in">
+                <div class="servico-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3 data-pt="Desenvolvimento Web" data-en="Web Development">Desenvolvimento Web</h3>
+                <p data-pt="Sites institucionais, landing pages, e-commerces e sistemas web personalizados para sua empresa." data-en="Institutional websites, landing pages, e-commerce and custom web systems for your business.">Sites institucionais, landing pages, e-commerces e sistemas web personalizados para sua empresa.</p>
+            </div>
+            <div class="servico-card fade-in">
+                <div class="servico-icon">
+                    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+                </div>
+                <h3 data-pt="Desenvolvimento de Apps" data-en="App Development">Desenvolvimento de Apps</h3>
+                <p data-pt="Aplicativos modernos para Android e iOS que conectam sua empresa aos seus clientes." data-en="Modern Android and iOS apps that connect your business to your customers.">Aplicativos modernos para Android e iOS que conectam sua empresa aos seus clientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section id="processo">
+        <h2 class="section-title fade-in" data-pt="Como Trabalhamos" data-en="How We Work">Como Trabalhamos</h2>
+        <p class="section-subtitle fade-in" data-pt="Um processo simples e transparente do início ao fim" data-en="A simple and transparent process from start to finish">Um processo simples e transparente do início ao fim</p>
+        <div class="processo-grid">
+            <div class="processo-item fade-in">
+                <div class="processo-numero">01</div>
+                <h4 data-pt="Briefing" data-en="Briefing">Briefing</h4>
+                <p data-pt="Entendemos suas necessidades em uma call inicial" data-en="We understand your needs in an initial call">Entendemos suas necessidades em uma call inicial</p>
+            </div>
+            <div class="processo-item fade-in">
+                <div class="processo-numero">02</div>
+                <h4 data-pt="Proposta" data-en="Proposal">Proposta</h4>
+                <p data-pt="Apresentamos escopo, prazo e investimento" data-en="We present scope, timeline and investment">Apresentamos escopo, prazo e investimento</p>
+            </div>
+            <div class="processo-item fade-in">
+                <div class="processo-numero">03</div>
+                <h4 data-pt="Desenvolvimento" data-en="Development">Desenvolvimento</h4>
+                <p data-pt="Construímos sua solução com atualizações frequentes" data-en="We build your solution with frequent updates">Construímos sua solução com atualizações frequentes</p>
+            </div>
+            <div class="processo-item fade-in">
+                <div class="processo-numero">04</div>
+                <h4 data-pt="Entrega" data-en="Delivery">Entrega</h4>
+                <p data-pt="Lançamento, treinamento e suporte contínuo" data-en="Launch, training and ongoing support">Lançamento, treinamento e suporte contínuo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <h2 class="section-title fade-in" data-pt="Sobre Nós" data-en="About Us">Sobre Nós</h2>
+        <p class="section-subtitle fade-in" data-pt="Conheça a Just Fast Technologies" data-en="Get to know Just Fast Technologies">Conheça a Just Fast Technologies</p>
+        <div class="sobre-content fade-in">
+            <p data-pt="A <strong style='color:#2196F3'>Just Fast Technologies</strong> nasceu com um propósito claro: ajudar pequenas empresas a entrarem no mundo digital de forma rápida, acessível e profissional." data-en="<strong style='color:#2196F3'>Just Fast Technologies</strong> was born with a clear purpose: to help small businesses enter the digital world quickly, affordably and professionally.">A <strong style="color:#2196F3">Just Fast Technologies</strong> nasceu com um propósito claro: ajudar pequenas empresas a entrarem no mundo digital de forma rápida, acessível e profissional.</p>
+            <p data-pt="Acreditamos que toda empresa, independente do tamanho, merece ter presença digital de qualidade. Por isso, entregamos soluções que combinam design moderno, tecnologia de ponta e um atendimento próximo e dedicado." data-en="We believe every business, regardless of size, deserves a quality digital presence. That's why we deliver solutions that combine modern design, cutting-edge technology and dedicated support.">Acreditamos que toda empresa, independente do tamanho, merece ter presença digital de qualidade. Por isso, entregamos soluções que combinam design moderno, tecnologia de ponta e um atendimento próximo e dedicado.</p>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais">
+        <h2 class="section-title fade-in" data-pt="Por que nos escolher?" data-en="Why choose us?">Por que nos escolher?</h2>
+        <p class="section-subtitle fade-in" data-pt="O que faz a Just Fast ser diferente" data-en="What makes Just Fast different">O que faz a Just Fast ser diferente</p>
+        <div class="diferenciais-grid">
+            <div class="diferencial-item fade-in">
+                <span class="diferencial-icon">&#9889;</span>
+                <h4 data-pt="Entrega Rápida" data-en="Fast Delivery">Entrega Rápida</h4>
+                <p data-pt="Projetos entregues com agilidade, sem perder a qualidade" data-en="Projects delivered with agility, without compromising quality">Projetos entregues com agilidade, sem perder a qualidade</p>
+            </div>
+            <div class="diferencial-item fade-in">
+                <span class="diferencial-icon">&#128176;</span>
+                <h4 data-pt="Preço Justo" data-en="Fair Pricing">Preço Justo</h4>
+                <p data-pt="Soluções que cabem no orçamento de pequenas empresas" data-en="Solutions that fit small business budgets">Soluções que cabem no orçamento de pequenas empresas</p>
+            </div>
+            <div class="diferencial-item fade-in">
+                <span class="diferencial-icon">&#129309;</span>
+                <h4 data-pt="Suporte Dedicado" data-en="Dedicated Support">Suporte Dedicado</h4>
+                <p data-pt="Atendimento próximo e humanizado do início ao fim" data-en="Close and personalized support from start to finish">Atendimento próximo e humanizado do início ao fim</p>
+            </div>
+            <div class="diferencial-item fade-in">
+                <span class="diferencial-icon">&#128640;</span>
+                <h4 data-pt="Tecnologia Moderna" data-en="Modern Technology">Tecnologia Moderna</h4>
+                <p data-pt="Utilizamos as melhores ferramentas e práticas do mercado" data-en="We use the best tools and practices in the industry">Utilizamos as melhores ferramentas e práticas do mercado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2 class="section-title fade-in" data-pt="Perguntas Frequentes" data-en="FAQ">Perguntas Frequentes</h2>
+        <p class="section-subtitle fade-in" data-pt="Tire suas dúvidas antes de agendar" data-en="Get your questions answered before scheduling">Tire suas dúvidas antes de agendar</p>
+        <div class="faq-container">
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-pt="Quanto tempo leva para desenvolver um projeto?" data-en="How long does it take to develop a project?">Quanto tempo leva para desenvolver um projeto?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p data-pt="Depende da complexidade. Um site institucional leva em média 2 a 4 semanas, enquanto sistemas e apps mais complexos podem levar de 1 a 3 meses. Na call inicial, definimos prazos realistas para o seu projeto." data-en="It depends on complexity. An institutional website takes on average 2 to 4 weeks, while more complex systems and apps can take 1 to 3 months. In the initial call, we set realistic deadlines for your project.">Depende da complexidade. Um site institucional leva em média 2 a 4 semanas, enquanto sistemas e apps mais complexos podem levar de 1 a 3 meses. Na call inicial, definimos prazos realistas para o seu projeto.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-pt="Qual o investimento para criar um site ou app?" data-en="What's the investment to create a website or app?">Qual o investimento para criar um site ou app?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p data-pt="Cada projeto é único, por isso trabalhamos com orçamentos personalizados. Agende uma call para conversarmos sobre suas necessidades e apresentarmos uma proposta que cabe no seu bolso." data-en="Each project is unique, so we work with custom budgets. Schedule a call to discuss your needs and we'll present a proposal that fits your budget.">Cada projeto é único, por isso trabalhamos com orçamentos personalizados. Agende uma call para conversarmos sobre suas necessidades e apresentarmos uma proposta que cabe no seu bolso.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-pt="Como funciona o processo de trabalho?" data-en="How does the work process work?">Como funciona o processo de trabalho?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p data-pt="Começamos com uma call de briefing para entender seu projeto. Depois, enviamos uma proposta detalhada. Aprovada, iniciamos o desenvolvimento com atualizações frequentes até a entrega final." data-en="We start with a briefing call to understand your project. Then, we send a detailed proposal. Once approved, we begin development with frequent updates until final delivery.">Começamos com uma call de briefing para entender seu projeto. Depois, enviamos uma proposta detalhada. Aprovada, iniciamos o desenvolvimento com atualizações frequentes até a entrega final.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-pt="Vocês oferecem suporte após a entrega?" data-en="Do you offer support after delivery?">Vocês oferecem suporte após a entrega?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p data-pt="Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias." data-en="Yes! We offer ongoing support and maintenance to ensure everything works perfectly. We're always available for adjustments and improvements.">Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias.</p>
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-pt="Quais tecnologias vocês utilizam?" data-en="What technologies do you use?">Quais tecnologias vocês utilizam?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p data-pt="Utilizamos as tecnologias mais modernas do mercado, como React, Node.js, Flutter e outras, sempre escolhendo a melhor stack para cada tipo de projeto." data-en="We use the most modern technologies on the market, such as React, Node.js, Flutter and others, always choosing the best stack for each type of project.">Utilizamos as tecnologias mais modernas do mercado, como React, Node.js, Flutter e outras, sempre escolhendo a melhor stack para cada tipo de projeto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <h2 class="section-title fade-in" data-pt="Agende uma Conversa" data-en="Schedule a Call">Agende uma Conversa</h2>
+        <p class="section-subtitle fade-in" data-pt="Conte-nos sobre o seu projeto e agende uma call para conversarmos" data-en="Tell us about your project and schedule a call to chat">Conte-nos sobre o seu projeto e agende uma call para conversarmos</p>
+        <div class="contato-wrapper fade-in">
+            <div class="calendly-container">
+                <div class="calendly-inline-widget" data-url="https://calendly.com/contato-justfast/30min?hide_gdpr_banner=1&background_color=1a1a3a&text_color=e8e8f0&primary_color=2196f3" style="min-width:320px;height:650px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            </div>
+            <div class="contato-alt">
+                <a href="https://wa.me/5584999183580?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20call%20para%20conversar%20sobre%20meu%20projeto." class="contato-alt-item" target="_blank" rel="noopener">
+                    <div class="contato-alt-icon">
+                        <svg class="fill-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <span>+55 84 9918-3580</span>
+                </a>
+                <a href="mailto:contato@justfast.com.br" class="contato-alt-item">
+                    <div class="contato-alt-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <span>contato@justfast.com.br</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <!-- FOOTER -->
+    <footer class="footer">
+        <img src="imagens/logo completa 2.png" alt="Just Fast Digital Solutions">
+        <ul class="footer-links">
+            <li><a href="#inicio" data-pt="Início" data-en="Home">Início</a></li>
+            <li><a href="#servicos" data-pt="Serviços" data-en="Services">Serviços</a></li>
+            <li><a href="#processo" data-pt="Processo" data-en="Process">Processo</a></li>
+            <li><a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a></li>
+            <li><a href="#faq" data-pt="FAQ" data-en="FAQ">FAQ</a></li>
+            <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
+        </ul>
+        <p data-pt="&copy; 2026 Just Fast Technologies. Todos os direitos reservados." data-en="&copy; 2026 Just Fast Technologies. All rights reserved.">&copy; 2026 Just Fast Technologies. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // ===== LOADING SCREEN =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+                startTypewriter();
+            }, 2000);
+        });
+
+        // ===== TYPEWRITER HERO =====
+        function startTypewriter() {
+            const h1 = document.querySelector('.hero h1');
+            const ptText = h1.getAttribute('data-pt');
+            const enText = h1.getAttribute('data-en');
+            const text = currentLang === 'en' ? enText : ptText;
+            const plainText = text.replace(/<[^>]*>/g, '');
+
+            h1.innerHTML = '';
+            h1.style.visibility = 'visible';
+
+            let i = 0;
+            const cursor = document.createElement('span');
+            cursor.className = 'typewriter-cursor';
+            h1.appendChild(cursor);
+
+            function type() {
+                if (i < plainText.length) {
+                    cursor.insertAdjacentText('beforebegin', plainText[i]);
+                    i++;
+                    setTimeout(type, 40 + Math.random() * 30);
+                } else {
+                    // Replace with full HTML version after typing
+                    setTimeout(() => {
+                        h1.innerHTML = text + '<span class="typewriter-cursor"></span>';
+                    }, 500);
+                }
+            }
+            type();
+        }
+
+        // ===== GLITCH TEXT (periodic) =====
+        setInterval(() => {
+            const glitch = document.querySelector('.glitch');
+            if (glitch) {
+                glitch.classList.add('glitching');
+                setTimeout(() => glitch.classList.remove('glitching'), 300);
+            }
+        }, 3000);
+
+        // ===== CURSOR TRAIL (COMETA) =====
+        const trailDots = [];
+        const TRAIL_LENGTH = 20;
+
+        for (let i = 0; i < TRAIL_LENGTH; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'trail-dot';
+            dot.style.opacity = '0';
+            const size = 14 - (i * 0.6);
+            dot.style.width = size + 'px';
+            dot.style.height = size + 'px';
+            document.body.appendChild(dot);
+            trailDots.push({ el: dot, x: 0, y: 0 });
+        }
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateTrail() {
+            let prevX = mouseX, prevY = mouseY;
+            trailDots.forEach((dot, i) => {
+                const speed = 0.5 - (i * 0.018);
+                dot.x += (prevX - dot.x) * speed;
+                dot.y += (prevY - dot.y) * speed;
+                dot.el.style.left = dot.x + 'px';
+                dot.el.style.top = dot.y + 'px';
+                const opacity = (1 - i / TRAIL_LENGTH) * 0.8;
+                dot.el.style.opacity = opacity;
+                dot.el.style.transform = `translate(-50%, -50%)`;
+                prevX = dot.x;
+                prevY = dot.y;
+            });
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+
+        // ===== RIPPLE CLICK (GLOBAL - MINI EXPLOSÃO) =====
+        document.addEventListener('click', (e) => {
+            const size = 140;
+
+            // Círculo principal (maior e mais brilhante)
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple-global';
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - size / 2) + 'px';
+            ripple.style.top = (e.clientY - size / 2) + 'px';
+            ripple.style.background = 'radial-gradient(circle, rgba(33, 150, 243, 0.5) 0%, rgba(33, 150, 243, 0.15) 40%, transparent 70%)';
+            document.body.appendChild(ripple);
+
+            // Anel externo
+            const ring = document.createElement('div');
+            ring.className = 'ripple-global-ring';
+            ring.style.width = ring.style.height = size + 'px';
+            ring.style.left = (e.clientX - size / 2) + 'px';
+            ring.style.top = (e.clientY - size / 2) + 'px';
+            document.body.appendChild(ring);
+
+            // Segundo anel (mais lento)
+            const ring2 = document.createElement('div');
+            ring2.className = 'ripple-global-ring';
+            ring2.style.width = ring2.style.height = (size * 0.7) + 'px';
+            ring2.style.left = (e.clientX - size * 0.35) + 'px';
+            ring2.style.top = (e.clientY - size * 0.35) + 'px';
+            ring2.style.animationDelay = '0.1s';
+            document.body.appendChild(ring2);
+
+            // Partículas de explosão (mais, maiores, mais distantes)
+            const sparkCount = 10;
+            for (let i = 0; i < sparkCount; i++) {
+                const spark = document.createElement('div');
+                const sparkSize = 3 + Math.random() * 5;
+                spark.style.cssText = `
+                    position: fixed; width: ${sparkSize}px; height: ${sparkSize}px; border-radius: 50%;
+                    background: ${Math.random() > 0.5 ? '#64B5F6' : '#90CAF9'};
+                    pointer-events: none; z-index: 9997;
+                    left: ${e.clientX}px; top: ${e.clientY}px;
+                    box-shadow: 0 0 6px rgba(33, 150, 243, 0.8);
+                    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                `;
+                document.body.appendChild(spark);
+                const angle = (Math.PI * 2 / sparkCount) * i + (Math.random() - 0.5) * 0.5;
+                const dist = 35 + Math.random() * 45;
+                requestAnimationFrame(() => {
+                    spark.style.left = (e.clientX + Math.cos(angle) * dist) + 'px';
+                    spark.style.top = (e.clientY + Math.sin(angle) * dist) + 'px';
+                    spark.style.opacity = '0';
+                    spark.style.transform = `scale(0) rotate(${Math.random() * 180}deg)`;
+                });
+                setTimeout(() => spark.remove(), 600);
+            }
+
+            ripple.addEventListener('animationend', () => ripple.remove());
+            ring.addEventListener('animationend', () => ring.remove());
+            ring2.addEventListener('animationend', () => ring2.remove());
+        });
+
+        // ===== STAR FIELD =====
+        const starCanvas = document.getElementById('starfield');
+        const starCtx = starCanvas.getContext('2d');
+        let stars = [];
+
+        function resizeStarCanvas() {
+            starCanvas.width = window.innerWidth;
+            starCanvas.height = window.innerHeight;
+        }
+        resizeStarCanvas();
+        window.addEventListener('resize', resizeStarCanvas);
+
+        for (let i = 0; i < 250; i++) {
+            stars.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 2 + 0.3,
+                speed: Math.random() * 0.5 + 0.1,
+                opacity: Math.random() * 0.7 + 0.2,
+                pulse: Math.random() * Math.PI * 2
+            });
+        }
+
+        // Shooting stars (estrelas cadentes)
+        let shootingStars = [];
+
+        function spawnShootingStar() {
+            shootingStars.push({
+                x: Math.random() * starCanvas.width,
+                y: Math.random() * starCanvas.height * 0.5,
+                length: 60 + Math.random() * 80,
+                speed: 4 + Math.random() * 4,
+                opacity: 0.7 + Math.random() * 0.3,
+                angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+                life: 1
+            });
+        }
+
+        // Gerar estrela cadente a cada 3-6s
+        setInterval(() => {
+            if (shootingStars.length < 3) spawnShootingStar();
+        }, 3000 + Math.random() * 3000);
+
+        let scrollY = 0;
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            if (scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function animateStars() {
+            starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+
+            // Estrelas normais
+            stars.forEach(star => {
+                star.pulse += 0.015;
+                const twinkle = Math.sin(star.pulse) * 0.3 + 0.7;
+                const parallaxY = (star.y - (scrollY * star.speed * 0.15) % starCanvas.height + starCanvas.height) % starCanvas.height;
+
+                starCtx.beginPath();
+                starCtx.arc(star.x, parallaxY, star.size, 0, Math.PI * 2);
+                starCtx.fillStyle = `rgba(200, 220, 255, ${star.opacity * twinkle})`;
+                starCtx.fill();
+            });
+
+            // Estrelas cadentes
+            shootingStars.forEach((s, i) => {
+                s.x += Math.cos(s.angle) * s.speed;
+                s.y += Math.sin(s.angle) * s.speed;
+                s.life -= 0.015;
+
+                if (s.life <= 0) {
+                    shootingStars.splice(i, 1);
+                    return;
+                }
+
+                const tailX = s.x - Math.cos(s.angle) * s.length;
+                const tailY = s.y - Math.sin(s.angle) * s.length;
+
+                const gradient = starCtx.createLinearGradient(tailX, tailY, s.x, s.y);
+                gradient.addColorStop(0, 'rgba(100, 181, 246, 0)');
+                gradient.addColorStop(0.7, `rgba(100, 181, 246, ${s.opacity * s.life * 0.4})`);
+                gradient.addColorStop(1, `rgba(255, 255, 255, ${s.opacity * s.life})`);
+
+                starCtx.beginPath();
+                starCtx.moveTo(tailX, tailY);
+                starCtx.lineTo(s.x, s.y);
+                starCtx.strokeStyle = gradient;
+                starCtx.lineWidth = 1.5;
+                starCtx.stroke();
+
+                // Ponto brilhante na ponta
+                starCtx.beginPath();
+                starCtx.arc(s.x, s.y, 2, 0, Math.PI * 2);
+                starCtx.fillStyle = `rgba(255, 255, 255, ${s.opacity * s.life})`;
+                starCtx.fill();
+            });
+
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // ===== HOVER GLOW + TILT CARDS =====
+        function applyTilt(elements, intensity = 15) {
+            elements.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -intensity;
+                    const rotateY = ((x - centerX) / centerX) * intensity;
+
+                    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                    card.style.boxShadow = `${-rotateY * 0.8}px ${rotateX * 0.8}px 25px rgba(33, 150, 243, 0.2)`;
+                    card.style.setProperty('--mouse-x', x + 'px');
+                    card.style.setProperty('--mouse-y', y + 'px');
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+        }
+
+        applyTilt(document.querySelectorAll('.servico-card'), 20);
+        applyTilt(document.querySelectorAll('.diferencial-item'), 14);
+
+        // ===== TOAST NOTIFICATION =====
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // Menu mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('ativo');
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('ativo');
+            });
+        });
+
+        // Animação de scroll (fade-in)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visivel');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Cursor glow
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseleave', () => cursorGlow.style.opacity = '0');
+        document.addEventListener('mouseenter', () => cursorGlow.style.opacity = '1');
+
+        // Partículas animadas
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = document.body.scrollHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.5 + 0.15;
+                this.pulse = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.pulse += 0.02;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+            draw() {
+                const glow = Math.sin(this.pulse) * 0.15 + 0.85;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(33, 150, 243, ${this.opacity * glow})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 280; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawLines() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(33, 150, 243, ${0.1 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            drawLines();
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Troca de idioma
+        let currentLang = 'pt';
+
+        function setLang(lang) {
+            localStorage.setItem('jf-lang', lang);
+            location.reload();
+        }
+
+        // Aplicar idioma salvo ao carregar
+        (function applyLang() {
+            const lang = localStorage.getItem('jf-lang') || 'pt';
+            currentLang = lang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('ativo', btn.textContent === lang.toUpperCase());
+            });
+
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                const text = el.getAttribute('data-' + lang);
+                if (text) el.innerHTML = text;
+            });
+
+            document.querySelectorAll('[data-' + lang + '-ph]').forEach(el => {
+                el.placeholder = el.getAttribute('data-' + lang + '-ph');
+            });
+
+            document.title = lang === 'pt'
+                ? 'Just Fast Technologies — Desenvolvimento Web e Apps'
+                : 'Just Fast Technologies — Web & App Development';
+        })();
+
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            // Fechar todos
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+            // Abrir o clicado (se não estava aberto)
+            if (!isOpen) item.classList.add('open');
+        }
+    </script>
+
+</body>
+</html>
