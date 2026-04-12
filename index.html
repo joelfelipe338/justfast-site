@@ -74,10 +74,101 @@
             overflow-x: hidden;
         }
 
-        /* ===== NAVBAR ===== */
-        .navbar {
+        /* ===== BANNER DE LANÇAMENTO ===== */
+        .launch-banner {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            background: linear-gradient(90deg,
+                rgba(33, 150, 243, 0.18),
+                rgba(21, 101, 192, 0.22),
+                rgba(33, 150, 243, 0.18));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .launch-banner:hover {
+            background: linear-gradient(90deg,
+                rgba(33, 150, 243, 0.28),
+                rgba(21, 101, 192, 0.32),
+                rgba(33, 150, 243, 0.28));
+        }
+
+        .launch-banner-content {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #e8e8f0;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        .launch-banner-spark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(100, 181, 246, 0.18);
+            color: #64B5F6;
+            flex-shrink: 0;
+            animation: launchPulse 2.4s ease-in-out infinite;
+        }
+
+        .launch-banner-spark svg {
+            width: 12px;
+            height: 12px;
+            display: block;
+        }
+
+        @keyframes launchPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(100, 181, 246, 0.25); }
+            50% { box-shadow: 0 0 0 3px rgba(100, 181, 246, 0); }
+        }
+
+        .launch-banner-content strong {
+            color: #64B5F6;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .launch-banner-divider {
+            color: rgba(232, 232, 240, 0.35);
+            margin: 0 2px;
+        }
+
+        .launch-banner-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #64B5F6;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .launch-banner-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .launch-banner:hover .launch-banner-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: absolute;
+            top: 40px;
             left: 0;
             width: 100%;
             padding: 16px 40px;
@@ -92,9 +183,9 @@
         }
 
         .navbar.scrolled {
-            background: rgba(17, 17, 40, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+            background: transparent;
+            backdrop-filter: none;
+            border-bottom: none;
         }
 
         .navbar-logo {
@@ -820,7 +911,6 @@
             background: rgba(13, 13, 34, 0.6);
             padding: 40px 40px 24px;
             text-align: center;
-            border-top: 1px solid rgba(33, 150, 243, 0.08);
         }
 
         .footer img {
@@ -877,7 +967,7 @@
             z-index: 0;
         }
 
-        .navbar, .hero, section, .footer {
+        .hero, section, .footer {
             position: relative;
             z-index: 1;
         }
@@ -1361,14 +1451,35 @@
 
         /* ===== RESPONSIVO ===== */
         @media (max-width: 768px) {
+            .launch-banner {
+                padding: 8px 14px;
+            }
+
+            .launch-banner-content {
+                font-size: 11.5px;
+                gap: 8px;
+                letter-spacing: 0.2px;
+            }
+
+            .launch-banner-spark {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+
+            .launch-banner-cta {
+                display: none;
+            }
+
             .navbar {
                 padding: 14px 20px;
+                top: 50px;
             }
 
             .nav-links {
                 display: none;
                 position: fixed;
-                top: 56px;
+                top: 106px;
                 left: 0;
                 width: 100%;
                 background: rgba(17, 17, 40, 0.98);
@@ -1533,7 +1644,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 32px;
-            right: 32px;
+            right: 12px;
             width: 56px;
             height: 56px;
             background: #25D366;
@@ -1544,10 +1655,11 @@
             z-index: 999;
             box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
             transition: transform 0.3s, box-shadow 0.3s;
+            transform: translateY(calc(var(--float-offset, 0px) * -1));
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: translateY(calc(var(--float-offset, 0px) * -1)) scale(1.1);
             box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
         }
 
@@ -1561,7 +1673,7 @@
         .back-to-top {
             position: fixed;
             bottom: 100px;
-            right: 32px;
+            right: 12px;
             width: 56px;
             height: 56px;
             background: rgba(33, 150, 243, 0.15);
@@ -1576,6 +1688,7 @@
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.3s;
             color: #64B5F6;
+            transform: translateY(calc(var(--float-offset, 0px) * -1));
         }
 
         .back-to-top.visible {
@@ -1585,7 +1698,7 @@
 
         .back-to-top:hover {
             background: rgba(33, 150, 243, 0.3);
-            transform: translateY(-3px);
+            transform: translateY(calc(var(--float-offset, 0px) * -1 - 3px));
         }
 
         .back-to-top svg {
@@ -1601,6 +1714,16 @@
     </style>
 </head>
 <body>
+
+    <!-- BANNER DE LANÇAMENTO -->
+    <div class="launch-banner" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">
+        <div class="launch-banner-content">
+            <span class="launch-banner-spark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 L14.2 9.8 L22.5 12 L14.2 14.2 L12 22.5 L9.8 14.2 L1.5 12 L9.8 9.8 Z"/></svg></span>
+            <span data-pt="<strong>Em fase de lançamento</strong> — aceitamos projetos piloto com condições especiais"
+                  data-en="<strong>We're launching</strong> — accepting pilot projects with special conditions"><strong>Em fase de lançamento</strong> — aceitamos projetos piloto com condições especiais</span>
+            <span class="launch-banner-arrow">→</span>
+        </div>
+    </div>
 
     <!-- LOADING SCREEN -->
     <div class="loading-screen" id="loadingScreen">
@@ -1882,15 +2005,6 @@
                     <p data-pt="Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias." data-en="Yes! We offer ongoing support and maintenance to ensure everything works perfectly. We're always available for adjustments and improvements.">Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias.</p>
                 </div>
             </div>
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span data-pt="Quais tecnologias vocês utilizam?" data-en="What technologies do you use?">Quais tecnologias vocês utilizam?</span>
-                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-answer">
-                    <p data-pt="Utilizamos as tecnologias mais modernas do mercado, como React, Node.js, Flutter e outras, sempre escolhendo a melhor stack para cada tipo de projeto." data-en="We use the most modern technologies on the market, such as React, Node.js, Flutter and others, always choosing the best stack for each type of project.">Utilizamos as tecnologias mais modernas do mercado, como React, Node.js, Flutter e outras, sempre escolhendo a melhor stack para cada tipo de projeto.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -2168,6 +2282,15 @@
         let scrollY = 0;
         const navbar = document.querySelector('.navbar');
         const backToTop = document.getElementById('backToTop');
+        const footerEl = document.querySelector('.footer');
+
+        function updateFloatOffset() {
+            if (!footerEl) return;
+            const rect = footerEl.getBoundingClientRect();
+            const overlap = Math.max(0, window.innerHeight - rect.top);
+            const offset = Math.max(0, overlap - 24);
+            document.documentElement.style.setProperty('--float-offset', offset + 'px');
+        }
 
         window.addEventListener('scroll', () => {
             scrollY = window.scrollY;
@@ -2181,7 +2304,10 @@
             } else {
                 backToTop.classList.remove('visible');
             }
-        });
+            updateFloatOffset();
+        }, { passive: true });
+        window.addEventListener('resize', updateFloatOffset);
+        updateFloatOffset();
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
