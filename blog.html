@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Just Fast Technologies</title>
+    <meta name="description" content="Artigos sobre desenvolvimento web, apps, inteligência artificial e tecnologia. Dicas e insights para impulsionar seu negócio digital.">
+    <link rel="canonical" href="https://justfast.com.br/blog.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon-16x16.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111128;
+            color: #e8e8f0;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            background: rgba(17, 17, 40, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(33, 150, 243, 0.08);
+        }
+        .navbar img { height: 36px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: #b0b0c0;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #2196F3; }
+
+        .blog-hero {
+            padding: 140px 40px 60px;
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff, #64B5F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .blog-hero p {
+            color: #b0b0c0;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .blog-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(33, 150, 243, 0.3);
+            box-shadow: 0 12px 40px rgba(33, 150, 243, 0.12);
+        }
+
+        .blog-card-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(33, 150, 243, 0.12);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #64B5F6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+
+        .blog-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e8e8f0;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .blog-card p {
+            color: #8a8aa0;
+            font-size: 14px;
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .blog-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(33, 150, 243, 0.08);
+            padding-top: 16px;
+        }
+
+        .blog-card-date {
+            font-size: 12px;
+            color: #6a6a80;
+        }
+
+        .blog-card-read {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2196F3;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.3s;
+        }
+        .blog-card:hover .blog-card-read { gap: 8px; }
+
+        .footer {
+            background: rgba(13, 13, 34, 0.6);
+            padding: 40px 40px 24px;
+            text-align: center;
+        }
+        .footer img { height: 80px; margin-bottom: 20px; opacity: 0.85; }
+        .footer p { color: #7a7a90; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .blog-hero { padding: 100px 20px 40px; }
+            .blog-hero h1 { font-size: 28px; }
+            .blog-hero p { font-size: 15px; }
+            .blog-grid {
+                grid-template-columns: 1fr;
+                padding: 0 16px 60px;
+                gap: 16px;
+            }
+            .blog-card { padding: 24px 20px; }
+            .footer { padding: 32px 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html"><img src="imagens/logo_completa_2.png" alt="Just Fast Technologies"></a>
+        <ul class="nav-links">
+            <li><a href="index.html" data-pt="Início" data-en="Home" data-es="Inicio">Home</a></li>
+            <li><a href="index.html#servicos" data-pt="Serviços" data-en="Services" data-es="Servicios">Services</a></li>
+            <li><a href="index.html#portfolio" data-pt="Exemplos" data-en="Examples" data-es="Ejemplos">Examples</a></li>
+            <li><a href="index.html#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-hero">
+        <h1 data-pt="Blog" data-en="Blog" data-es="Blog">Blog</h1>
+        <p data-pt="Artigos sobre tecnologia, desenvolvimento e inteligência artificial para impulsionar seu negócio" data-en="Articles about technology, development and artificial intelligence to boost your business" data-es="Artículos sobre tecnología, desarrollo e inteligencia artificial para impulsar tu negocio">Articles about technology, development and artificial intelligence to boost your business</p>
+    </div>
+
+    <div class="blog-grid">
+
+        <a href="blog/quanto-custa-criar-site.html" class="blog-card">
+            <span class="blog-card-tag" data-pt="Desenvolvimento Web" data-en="Web Development" data-es="Desarrollo Web">Web Development</span>
+            <h2 data-pt="Quanto custa criar um site profissional em 2026?" data-en="How much does a professional website cost in 2026?" data-es="¿Cuánto cuesta crear un sitio web profesional en 2026?">How much does a professional website cost in 2026?</h2>
+            <p data-pt="Descubra os fatores que influenciam o preço de um site e como escolher a melhor opção para seu negócio." data-en="Discover the factors that influence website pricing and how to choose the best option for your business." data-es="Descubre los factores que influyen en el precio de un sitio web y cómo elegir la mejor opción para tu negocio.">Discover the factors that influence website pricing and how to choose the best option for your business.</p>
+            <div class="blog-card-footer">
+                <span class="blog-card-date">15 Set 2026</span>
+                <span class="blog-card-read" data-pt="Ler artigo →" data-en="Read article →" data-es="Leer artículo →">Read article →</span>
+            </div>
+        </a>
+
+        <a href="blog/chatbot-com-ia.html" class="blog-card">
+            <span class="blog-card-tag" data-pt="Inteligência Artificial" data-en="Artificial Intelligence" data-es="Inteligencia Artificial">Artificial Intelligence</span>
+            <h2 data-pt="Chatbot com IA: como funciona e quanto custa" data-en="AI Chatbot: how it works and how much it costs" data-es="Chatbot con IA: cómo funciona y cuánto cuesta">AI Chatbot: how it works and how much it costs</h2>
+            <p data-pt="Entenda como um chatbot com inteligência artificial pode automatizar seu atendimento e gerar mais leads." data-en="Understand how an AI chatbot can automate your customer service and generate more leads." data-es="Entiende cómo un chatbot con inteligencia artificial puede automatizar tu atención y generar más leads.">Understand how an AI chatbot can automate your customer service and generate more leads.</p>
+            <div class="blog-card-footer">
+                <span class="blog-card-date">15 Set 2026</span>
+                <span class="blog-card-read" data-pt="Ler artigo →" data-en="Read article →" data-es="Leer artículo →">Read article →</span>
+            </div>
+        </a>
+
+        <a href="blog/app-personalizado-vs-pronto.html" class="blog-card">
+            <span class="blog-card-tag" data-pt="Apps Mobile" data-en="Mobile Apps" data-es="Apps Móviles">Mobile Apps</span>
+            <h2 data-pt="App personalizado vs app pronto: qual escolher?" data-en="Custom app vs off-the-shelf: which to choose?" data-es="App personalizada vs app lista: ¿cuál elegir?">Custom app vs off-the-shelf: which to choose?</h2>
+            <p data-pt="Compare as vantagens de um app sob medida versus soluções prontas e descubra qual faz mais sentido." data-en="Compare the advantages of a custom app versus ready-made solutions and find out which makes more sense." data-es="Compara las ventajas de una app a medida versus soluciones listas y descubre cuál tiene más sentido.">Compare the advantages of a custom app versus ready-made solutions and find out which makes more sense.</p>
+            <div class="blog-card-footer">
+                <span class="blog-card-date">15 Set 2026</span>
+                <span class="blog-card-read" data-pt="Ler artigo →" data-en="Read article →" data-es="Leer artículo →">Read article →</span>
+            </div>
+        </a>
+
+        <a href="blog/o-que-e-dashboard.html" class="blog-card">
+            <span class="blog-card-tag">Dashboard</span>
+            <h2 data-pt="O que é um dashboard e por que sua empresa precisa de um" data-en="What is a dashboard and why your business needs one" data-es="Qué es un dashboard y por qué tu empresa necesita uno">What is a dashboard and why your business needs one</h2>
+            <p data-pt="Saiba como um painel de gestão personalizado pode transformar a tomada de decisão no seu negócio." data-en="Learn how a custom management panel can transform decision-making in your business." data-es="Aprende cómo un panel de gestión personalizado puede transformar la toma de decisiones en tu negocio.">Learn how a custom management panel can transform decision-making in your business.</p>
+            <div class="blog-card-footer">
+                <span class="blog-card-date">15 Set 2026</span>
+                <span class="blog-card-read" data-pt="Ler artigo →" data-en="Read article →" data-es="Leer artículo →">Read article →</span>
+            </div>
+        </a>
+
+        <a href="blog/ia-geracao-conteudo.html" class="blog-card">
+            <span class="blog-card-tag" data-pt="Inteligência Artificial" data-en="Artificial Intelligence" data-es="Inteligencia Artificial">Artificial Intelligence</span>
+            <h2 data-pt="Como a IA pode gerar conteúdo para seu negócio" data-en="How AI can generate content for your business" data-es="Cómo la IA puede generar contenido para tu negocio">How AI can generate content for your business</h2>
+            <p data-pt="Explore as possibilidades de automação de conteúdo com inteligência artificial e aumente sua produtividade." data-en="Explore content automation possibilities with artificial intelligence and boost your productivity." data-es="Explora las posibilidades de automatización de contenido con inteligencia artificial y aumenta tu productividad.">Explore content automation possibilities with artificial intelligence and boost your productivity.</p>
+            <div class="blog-card-footer">
+                <span class="blog-card-date">15 Set 2026</span>
+                <span class="blog-card-read" data-pt="Ler artigo →" data-en="Read article →" data-es="Leer artículo →">Read article →</span>
+            </div>
+        </a>
+
+        <a href="blog/ecommerce-sob-medida-vs-shopify.html" class="blog-card">
+            <span class="blog-card-tag">E-commerce</span>
+            <h2 data-pt="E-commerce sob medida vs Shopify: quando vale a pena" data-en="Custom e-commerce vs Shopify: when it's worth it" data-es="E-commerce a medida vs Shopify: cuándo vale la pena">Custom e-commerce vs Shopify: when it's worth it</h2>
+            <p data-pt="Analise os prós e contras de cada abordagem e entenda quando investir em uma loja virtual personalizada." data-en="Analyze the pros and cons of each approach and understand when to invest in a custom online store." data-es="Analiza los pros y contras de cada enfoque y entiende cuándo invertir en una tienda virtual personalizada.">Analyze the pros and cons of each approach and understand when to invest in a custom online store.</p>
+            <div class="blog-card-footer">
+                <span class="blog-card-date">15 Set 2026</span>
+                <span class="blog-card-read" data-pt="Ler artigo →" data-en="Read article →" data-es="Leer artículo →">Read article →</span>
+            </div>
+        </a>
+
+    </div>
+
+    <footer class="footer">
+        <img src="imagens/logo_completa_2.png" alt="Just Fast Technologies" loading="lazy" width="200" height="60">
+        <p data-pt="&copy; 2026 Just Fast Technologies. Todos os direitos reservados." data-en="&copy; 2026 Just Fast Technologies. All rights reserved." data-es="&copy; 2026 Just Fast Technologies. Todos los derechos reservados.">&copy; 2026 Just Fast Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function() {
+            var saved = localStorage.getItem('jf-lang');
+            var lang;
+            if (saved) { lang = saved; }
+            else {
+                var b = (navigator.language || 'en').toLowerCase();
+                if (b.startsWith('pt')) lang = 'pt';
+                else if (b.startsWith('es')) lang = 'es';
+                else lang = 'en';
+            }
+            var htmlLangs = { pt: 'pt-BR', en: 'en', es: 'es' };
+            document.documentElement.lang = htmlLangs[lang] || 'en';
+            document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                if (text) el.innerHTML = text;
+            });
+        })();
+    </script>
+
+</body>
+</html>
