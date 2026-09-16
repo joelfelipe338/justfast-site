@@ -3575,7 +3575,13 @@
 
         // ===== CONFIRMAÇÃO DE ENVIO =====
         function mostrarConfirmacao(tipo) {
-            var lang = localStorage.getItem('jf-lang') || 'pt';
+            var lang = localStorage.getItem('jf-lang');
+            if (!lang) {
+                var b = (navigator.language || 'en').toLowerCase();
+                if (b.startsWith('pt')) lang = 'pt';
+                else if (b.startsWith('es')) lang = 'es';
+                else lang = 'en';
+            }
             var overlay = document.getElementById('confirmOverlay');
             var title = document.getElementById('confirmTitle');
             var text = document.getElementById('confirmText');
@@ -4179,6 +4185,7 @@
                 else lang = 'en';
             }
             currentLang = lang;
+            localStorage.setItem('jf-lang', lang);
 
             var htmlLangs = { pt: 'pt-BR', en: 'en', es: 'es' };
             document.documentElement.lang = htmlLangs[lang] || 'en';
