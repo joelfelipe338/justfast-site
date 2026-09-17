@@ -326,6 +326,48 @@
                 font-size: 0.9rem;
             }
         }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #b8b8cc;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(17, 17, 40, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 8px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid rgba(33, 150, 243, 0.1);
+            }
+            .navbar-links.active { right: 0; }
+            .navbar-links a { font-size: 16px; padding: 12px 0; }
+            .menu-toggle { display: flex; }
+        }
     </style>
 </head>
 <body>
@@ -335,11 +377,14 @@
         <a href="../index.html" class="navbar-logo">
             <img src="../imagens/logo_completa_2.png" alt="Just Fast Technologies Logo">
         </a>
-        <ul class="navbar-links">
+        <ul class="navbar-links" id="navLinks">
             <li><a href="../index.html" data-pt="Início" data-en="Home" data-es="Inicio">Início</a></li>
             <li><a href="../blog.html" data-pt="Blog" data-en="Blog" data-es="Blog">Blog</a></li>
             <li><a href="../index.html#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a></li>
         </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <!-- ===== ARTICLE ===== -->
@@ -547,6 +592,24 @@
             <a href="../index.html#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
         </p>
     </footer>
+
+    <!-- Menu Mobile -->
+    <script>
+        (function() {
+            var toggle = document.getElementById('menuToggle');
+            var navLinks = document.getElementById('navLinks');
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        })();
+    </script>
 
     <!-- ===== TRANSLATION SCRIPT ===== -->
     <script>
