@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Criar um App com Assinatura — Modelo de Receita Recorrente que Funciona | Just Fast Technologies</title>
+    <meta name="description" content="Guia pratico: como criar um app com assinatura e pagamento recorrente. Stripe, RevenueCat, planos premium, custos reais e timeline. Experiencia real de desenvolvimento.">
+    <meta name="keywords" content="como criar app com assinatura, app com pagamento recorrente, modelo de assinatura para app, como cobrar mensalidade no app, app com planos premium, receita recorrente app mobile, Just Fast Technologies">
+    <meta name="author" content="Just Fast Technologies">
+    <link rel="canonical" href="https://justfast.com.br/blog/como-criar-app-com-assinatura.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://justfast.com.br/blog/como-criar-app-com-assinatura.html">
+    <link rel="alternate" hreflang="en" href="https://justfast.com.br/blog/como-criar-app-com-assinatura.html">
+    <link rel="alternate" hreflang="es" href="https://justfast.com.br/blog/como-criar-app-com-assinatura.html">
+    <link rel="alternate" hreflang="x-default" href="https://justfast.com.br/blog/como-criar-app-com-assinatura.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="../imagens/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../imagens/favicon-16x16.png">
+    <meta name="theme-color" content="#2196F3">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://justfast.com.br/blog/como-criar-app-com-assinatura.html">
+    <meta property="og:title" content="Como Criar um App com Assinatura — Modelo de Receita Recorrente que Funciona | Just Fast Technologies">
+    <meta property="og:description" content="Guia pratico: como criar um app com assinatura e pagamento recorrente. Stripe, RevenueCat, planos premium, custos reais e timeline.">
+    <meta property="og:image" content="https://justfast.com.br/imagens/bannerUrl.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:site_name" content="Just Fast Technologies">
+    <meta property="article:published_time" content="2026-09-17">
+    <meta property="article:author" content="Just Fast Technologies">
+    <meta property="article:section" content="Guia Pratico">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Como Criar um App com Assinatura — Modelo de Receita Recorrente que Funciona | Just Fast Technologies">
+    <meta name="twitter:description" content="Guia pratico: como criar app com assinatura, pagamento recorrente, Stripe, RevenueCat, planos premium e custos reais.">
+    <meta name="twitter:image" content="https://justfast.com.br/imagens/bannerUrl.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Como Criar um App com Assinatura — Modelo de Receita Recorrente que Funciona",
+      "description": "Guia pratico: como criar um app com assinatura e pagamento recorrente. Stripe, RevenueCat, planos premium, custos reais e timeline de desenvolvimento.",
+      "image": "https://justfast.com.br/imagens/bannerUrl.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Just Fast Technologies",
+        "url": "https://justfast.com.br"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Just Fast Technologies",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://justfast.com.br/imagens/logo_completa_2.png"
+        }
+      },
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://justfast.com.br/blog/como-criar-app-com-assinatura.html"
+      },
+      "wordCount": 1100,
+      "inLanguage": "pt-BR",
+      "keywords": ["como criar app com assinatura", "app com pagamento recorrente", "modelo de assinatura para app", "como cobrar mensalidade no app", "app com planos premium", "receita recorrente app mobile"]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111128;
+            color: #e8e8f0;
+            overflow-x: hidden;
+            max-width: 100vw;
+            line-height: 1.7;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            background: rgba(17, 17, 40, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(33, 150, 243, 0.08);
+        }
+        .navbar img { height: 36px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: #b0b0c0;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #2196F3; }
+
+        /* Article Header */
+        .article-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 40px 40px;
+        }
+        .article-tag {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(33, 150, 243, 0.12);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #64B5F6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .article-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #64B5F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: #7a7a90;
+            font-size: 14px;
+        }
+        .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px 60px;
+        }
+        .article-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin: 48px 0 20px;
+            line-height: 1.3;
+        }
+        .article-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #e0e0f0;
+            margin: 32px 0 14px;
+        }
+        .article-content p {
+            color: #c0c0d0;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+        .article-content strong {
+            color: #e8e8f0;
+        }
+        .article-content a.inline-link {
+            color: #64B5F6;
+            border-bottom: 1px solid rgba(100, 181, 246, 0.3);
+            transition: border-color 0.3s;
+        }
+        .article-content a.inline-link:hover {
+            border-color: #64B5F6;
+        }
+
+        /* Benefit List */
+        .benefit-list {
+            list-style: none;
+            margin: 20px 0 28px;
+            padding: 0;
+        }
+        .benefit-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            color: #c0c0d0;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .benefit-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background: #2196F3;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+        }
+
+        /* Glassmorphism Callout */
+        .callout-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.15);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+
+        /* Features Table */
+        .features-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 32px;
+            font-size: 15px;
+        }
+        .features-table th,
+        .features-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+        }
+        .features-table th {
+            color: #64B5F6;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(33, 150, 243, 0.06);
+        }
+        .features-table td {
+            color: #c0c0d0;
+        }
+        .features-table tr:hover td {
+            background: rgba(33, 150, 243, 0.04);
+        }
+
+        /* ROI Highlight */
+        .roi-highlight {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.15);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        .roi-highlight .stat {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .roi-highlight .stat-item {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+        }
+        .roi-highlight .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #2196F3;
+            line-height: 1;
+        }
+        .roi-highlight .stat-label {
+            font-size: 14px;
+            color: #8a8aa0;
+            margin-top: 8px;
+        }
+
+        /* CTA Card */
+        .cta-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            border-radius: 20px;
+            padding: 48px 40px;
+            margin: 56px 0 20px;
+            text-align: center;
+        }
+        .cta-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 16px !important;
+        }
+        .cta-card p {
+            color: #a0a0b8;
+            font-size: 16px;
+            margin-bottom: 28px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.45);
+        }
+
+        /* Back to blog */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64B5F6;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: gap 0.3s;
+        }
+        .back-link:hover { gap: 10px; }
+
+        /* Price comparison boxes */
+        .price-compare {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 24px 0 32px;
+        }
+        .price-box {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.12);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+        }
+        .price-box.highlight {
+            border-color: rgba(33, 150, 243, 0.4);
+            box-shadow: 0 0 24px rgba(33, 150, 243, 0.12);
+        }
+        .price-box .label {
+            font-size: 13px;
+            color: #8a8aa0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .price-box .price {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .price-box.highlight .price {
+            color: #2196F3;
+        }
+        .price-box .note {
+            font-size: 13px;
+            color: #7a7a90;
+            margin-top: 6px;
+        }
+
+        /* Plan tier cards */
+        .plan-tiers {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 24px 0 32px;
+        }
+        .plan-card {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.12);
+            border-radius: 14px;
+            padding: 28px 24px;
+        }
+        .plan-card.featured {
+            border-color: rgba(33, 150, 243, 0.4);
+            box-shadow: 0 0 24px rgba(33, 150, 243, 0.12);
+        }
+        .plan-card .plan-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .plan-card.featured .plan-name {
+            color: #64B5F6;
+        }
+        .plan-card .plan-price {
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .plan-card .plan-price span {
+            font-size: 14px;
+            font-weight: 400;
+            color: #7a7a90;
+        }
+        .plan-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .plan-card ul li {
+            color: #b0b0c0;
+            font-size: 14px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .plan-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(13, 13, 34, 0.6);
+            padding: 40px 40px 24px;
+            text-align: center;
+        }
+        .footer img { height: 80px; margin-bottom: 20px; opacity: 0.85; }
+        .footer p { color: #7a7a90; font-size: 14px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links { display: none; }
+            .article-header {
+                padding: 100px 20px 30px;
+            }
+            .article-header h1 { font-size: 28px; }
+            .article-content { padding: 0 20px 40px; }
+            .article-content h2 { font-size: 22px; margin-top: 36px; }
+            .article-content h3 { font-size: 18px; }
+            .cta-card { padding: 32px 20px; }
+            .cta-card h2 { font-size: 22px; }
+            .roi-highlight .stat { gap: 20px; }
+            .roi-highlight .stat-number { font-size: 32px; }
+            .features-table th,
+            .features-table td { padding: 10px 12px; font-size: 14px; }
+            .price-box .price { font-size: 26px; }
+            .plan-card .plan-price { font-size: 24px; }
+            .footer { padding: 32px 16px 20px; }
+        }
+
+        @media (max-width: 400px) {
+            .article-header { padding: 90px 16px 24px; }
+            .article-header h1 { font-size: 24px; }
+            .article-meta { flex-direction: column; gap: 8px; }
+            .article-content { padding: 0 16px 32px; }
+            .article-content p { font-size: 15px; }
+            .benefit-list li { font-size: 15px; }
+            .cta-card { padding: 28px 16px; margin: 40px 0 16px; }
+            .callout-card, .roi-highlight { padding: 24px 16px; }
+            .roi-highlight .stat { flex-direction: column; gap: 16px; }
+            .price-compare { flex-direction: column; }
+            .plan-tiers { flex-direction: column; }
+            .features-table { font-size: 13px; }
+            .features-table th,
+            .features-table td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html"><img src="../imagens/logo_completa_2.png" alt="Just Fast Technologies"></a>
+        <ul class="nav-links">
+            <li><a href="../index.html" data-en="Home" data-es="Inicio">Inicio</a></li>
+            <li><a href="../index.html#servicos" data-en="Services" data-es="Servicios">Servicos</a></li>
+            <li><a href="../blog.html" data-en="Blog" data-es="Blog">Blog</a></li>
+            <li><a href="../index.html#contato" data-en="Contact" data-es="Contacto">Contato</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <div class="article-header">
+            <a href="../blog.html" class="back-link" data-en="&larr; Back to Blog" data-es="&larr; Volver al Blog">&larr; Voltar ao Blog</a>
+            <span class="article-tag" data-en="Practical Guide" data-es="Guia Practica">Guia Pratico</span>
+            <h1 data-en="How to Build a Subscription App — A Recurring Revenue Model That Works" data-es="Como Crear una App con Suscripcion — Modelo de Ingreso Recurrente que Funciona">Como Criar um App com Assinatura — Modelo de Receita Recorrente que Funciona</h1>
+            <div class="article-meta">
+                <span data-en="Sep 17, 2026" data-es="17 Sep 2026">17 Set 2026</span>
+                <span data-en="10 min read" data-es="10 min de lectura">10 min de leitura</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+
+            <!-- 1. Intro: Por que assinatura -->
+            <p data-en="If you're thinking about building an app and want a sustainable business model, I'll tell you straight: subscriptions are the best path. I've built apps with one-time purchases, ads, and freemium models — but none of them compare to the predictability of recurring revenue. You know exactly how much comes in each month, you can plan growth, and your users stay engaged because they're paying for ongoing value." data-es="Si estas pensando en crear una app y quieres un modelo de negocio sostenible, te lo digo directo: las suscripciones son el mejor camino. He construido apps con compras unicas, anuncios y modelos freemium — pero ninguno se compara con la previsibilidad del ingreso recurrente. Sabes exactamente cuanto entra cada mes, puedes planificar el crecimiento y tus usuarios se mantienen comprometidos porque pagan por valor continuo.">Se voce esta pensando em <strong>criar um app</strong> e quer um modelo de negocio sustentavel, vou ser direto: <strong>assinatura e o melhor caminho</strong>. Ja construi apps com compra unica, anuncios e modelos freemium — mas nenhum se compara com a previsibilidade da receita recorrente. Voce sabe exatamente quanto entra por mes, consegue planejar crescimento, e seus usuarios ficam engajados porque estao pagando por valor continuo.</p>
+
+            <p data-en="In this guide, I share everything I've learned building subscription apps — from choosing payment providers to pricing tiers, real costs, and timeline. This is based on real projects I've delivered, including a content generation app I built for $2,000 (which you can read about in detail)." data-es="En esta guia, comparto todo lo que he aprendido construyendo apps con suscripcion — desde elegir proveedores de pago hasta niveles de precios, costos reales y cronograma. Esto se basa en proyectos reales que he entregado, incluyendo una app de generacion de contenido que construi por $2.000 (puedes leer los detalles).">Neste guia, compartilho tudo que aprendi construindo <strong>apps com pagamento recorrente</strong> — desde escolher provedores de pagamento ate definir planos, custos reais e cronograma. Isso e baseado em projetos reais que entreguei, incluindo um <a href="app-com-ia-geracao-conteudo-2000-dolares.html" class="inline-link" data-en="content generation app I built for $2,000 (read the full case study)" data-es="app de generacion de contenido que construi por $2.000 (lee el caso completo)">app de geracao de conteudo que construi por $2.000 (leia o caso completo)</a>.</p>
+
+            <!-- 2. Que tipos de app funcionam com assinatura -->
+            <h2 data-en="What Types of Apps Work with Subscriptions?" data-es="Que Tipos de Apps Funcionan con Suscripciones?">Que Tipos de App Funcionam com Assinatura?</h2>
+
+            <p data-en="Not every app should use subscriptions. The model works best when there's ongoing value — the user keeps getting something new each month. Here are the categories that convert best:" data-es="No todas las apps deberian usar suscripciones. El modelo funciona mejor cuando hay valor continuo — el usuario sigue recibiendo algo nuevo cada mes. Estas son las categorias que mejor convierten:">Nem todo app deveria usar assinatura. O <strong>modelo de assinatura para app</strong> funciona melhor quando existe valor continuo — o usuario continua recebendo algo novo a cada mes. Veja as categorias que mais convertem:</p>
+
+            <ul class="benefit-list">
+                <li data-en="Content &amp; Media — news apps, exclusive content, courses, podcasts. The user subscribes for continuous access to new material." data-es="Contenido y Medios — apps de noticias, contenido exclusivo, cursos, podcasts. El usuario se suscribe para acceso continuo a material nuevo."><strong>Conteudo e Midia</strong> — apps de noticias, conteudo exclusivo, cursos, podcasts. O usuario assina para acesso continuo a material novo.</li>
+                <li data-en="Fitness &amp; Health — workout plans, meal planning, meditation, habit tracking. Users pay for personalized routines that update." data-es="Fitness y Salud — planes de entrenamiento, planificacion de comidas, meditacion, seguimiento de habitos. Los usuarios pagan por rutinas personalizadas que se actualizan."><strong>Fitness e Saude</strong> — planos de treino, planejamento alimentar, meditacao, rastreamento de habitos. Usuarios pagam por rotinas personalizadas que se atualizam.</li>
+                <li data-en="SaaS &amp; Productivity — project management, CRM, invoicing, analytics dashboards. Businesses pay monthly for tools they use daily." data-es="SaaS y Productividad — gestion de proyectos, CRM, facturacion, dashboards de analiticas. Las empresas pagan mensualmente por herramientas que usan diariamente."><strong>SaaS e Produtividade</strong> — gestao de projetos, CRM, faturamento, dashboards de analytics. Empresas pagam mensalmente por ferramentas que usam diariamente.</li>
+                <li data-en="Tools with AI — content generators, design assistants, code helpers. AI costs are per-use, so subscriptions align costs with revenue naturally." data-es="Herramientas con IA — generadores de contenido, asistentes de diseno, ayudantes de codigo. Los costos de IA son por uso, asi que las suscripciones alinean costos con ingresos naturalmente."><strong>Ferramentas com IA</strong> — geradores de conteudo, assistentes de design, helpers de codigo. Custos de IA sao por uso, entao assinatura alinha custos com receita naturalmente.</li>
+                <li data-en="Education — language learning, exam prep, tutoring platforms. Continuous learning means continuous payment." data-es="Educacion — aprendizaje de idiomas, preparacion de examenes, plataformas de tutoria. Aprendizaje continuo significa pago continuo."><strong>Educacao</strong> — aprendizado de idiomas, preparacao para provas, plataformas de tutoria. Aprendizado continuo significa pagamento continuo.</li>
+            </ul>
+
+            <!-- 3. Como funciona tecnicamente -->
+            <h2 data-en="How the Subscription System Works Technically" data-es="Como Funciona el Sistema de Suscripcion Tecnicamente">Como Funciona o Sistema de Assinatura Tecnicamente</h2>
+
+            <p data-en="This is where most people get confused. There are different payment providers for different platforms, and each has its own rules. Here's the comparison I use to choose:" data-es="Aqui es donde la mayoria se confunde. Hay diferentes proveedores de pago para diferentes plataformas, y cada uno tiene sus propias reglas. Esta es la comparacion que uso para elegir:">Aqui e onde a maioria das pessoas se confunde. Existem diferentes provedores de pagamento para diferentes plataformas, e cada um tem suas proprias regras. Veja a comparacao que uso para decidir:</p>
+
+            <h3 data-en="Payment Providers Comparison" data-es="Comparacion de Proveedores de Pago">Comparacao de Provedores de Pagamento</h3>
+
+            <table class="features-table">
+                <thead>
+                    <tr>
+                        <th data-en="Provider" data-es="Proveedor">Provedor</th>
+                        <th data-en="Best For" data-es="Mejor Para">Melhor Para</th>
+                        <th data-en="Fee" data-es="Tarifa">Taxa</th>
+                        <th data-en="Complexity" data-es="Complejidad">Complexidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Stripe</strong></td>
+                        <td data-en="Web apps, landing pages, server-side billing" data-es="Apps web, landing pages, facturacion del lado del servidor">Web apps, landing pages, cobranca server-side</td>
+                        <td data-en="2.9% + $0.30" data-es="2.9% + $0.30">2,9% + $0,30</td>
+                        <td data-en="Medium" data-es="Media">Media</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RevenueCat</strong></td>
+                        <td data-en="Mobile apps (iOS + Android), handles Apple/Google billing" data-es="Apps moviles (iOS + Android), maneja facturacion Apple/Google">Apps mobile (iOS + Android), abstrai billing Apple/Google</td>
+                        <td data-en="Free up to $2.5k MRR, then 1%" data-es="Gratis hasta $2.5k MRR, luego 1%">Gratis ate $2.5k MRR, depois 1%</td>
+                        <td data-en="Low" data-es="Baja">Baixa</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Apple In-App Purchase (direct)" data-es="Apple In-App Purchase (directo)"><strong>Apple IAP</strong> (direto)</td>
+                        <td data-en="iOS only, mandatory for digital goods on App Store" data-es="Solo iOS, obligatorio para bienes digitales en App Store">Apenas iOS, obrigatorio para bens digitais na App Store</td>
+                        <td data-en="15-30% commission" data-es="15-30% de comision">15-30% de comissao</td>
+                        <td data-en="High" data-es="Alta">Alta</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Google Play Billing (direct)" data-es="Google Play Billing (directo)"><strong>Google Play Billing</strong> (direto)</td>
+                        <td data-en="Android only, required for digital goods on Play Store" data-es="Solo Android, requerido para bienes digitales en Play Store">Apenas Android, obrigatorio para bens digitais na Play Store</td>
+                        <td data-en="15-30% commission" data-es="15-30% de comision">15-30% de comissao</td>
+                        <td data-en="High" data-es="Alta">Alta</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p data-en="My recommendation: use RevenueCat for the mobile app (it wraps Apple and Google billing into a single, clean SDK) and Stripe for any web-based billing (landing page purchases, admin panel upgrades). RevenueCat's free tier covers up to $2,500 in monthly recurring revenue — more than enough for most launches." data-es="Mi recomendacion: usa RevenueCat para la app movil (envuelve la facturacion de Apple y Google en un SDK unico y limpio) y Stripe para cualquier facturacion web (compras en landing page, upgrades en panel admin). El nivel gratuito de RevenueCat cubre hasta $2.500 en ingresos recurrentes mensuales — mas que suficiente para la mayoria de los lanzamientos.">Minha recomendacao: use <strong>RevenueCat para o app mobile</strong> (ele encapsula o billing da Apple e Google num SDK unico e limpo) e <strong>Stripe para cobranca web</strong> (compras em landing page, upgrades no painel admin). O plano gratuito do RevenueCat cobre ate $2.500 de receita recorrente mensal — mais que suficiente para a maioria dos lancamentos.</p>
+
+            <!-- 4. Exemplo de planos -->
+            <h2 data-en="Plan Tiers Example: Free / Premium / Pro" data-es="Ejemplo de Planes: Gratis / Premium / Pro">Exemplo de Planos: Free / Premium / Pro</h2>
+
+            <p data-en="Every subscription app needs well-defined tiers. Here's a real example structure I use as a starting point for most projects:" data-es="Toda app con suscripcion necesita niveles bien definidos. Aqui hay una estructura real que uso como punto de partida para la mayoria de los proyectos:">Todo <strong>app com planos premium</strong> precisa de niveis bem definidos. Veja uma estrutura real que uso como ponto de partida na maioria dos projetos:</p>
+
+            <div class="plan-tiers">
+                <div class="plan-card">
+                    <div class="plan-name" data-en="Free" data-es="Gratis">Free</div>
+                    <div class="plan-price" data-en="$0 &lt;span&gt;/month&lt;/span&gt;" data-es="$0 &lt;span&gt;/mes&lt;/span&gt;">R$0 <span>/mes</span></div>
+                    <ul>
+                        <li data-en="Limited features (enough to hook)" data-es="Funciones limitadas (suficientes para enganchar)">Funcionalidades limitadas (suficiente pra engajar)</li>
+                        <li data-en="Ads or usage caps" data-es="Anuncios o limites de uso">Anuncios ou limites de uso</li>
+                        <li data-en="Basic support" data-es="Soporte basico">Suporte basico</li>
+                        <li data-en="Goal: user acquisition" data-es="Objetivo: adquisicion de usuarios">Objetivo: aquisicao de usuarios</li>
+                    </ul>
+                </div>
+                <div class="plan-card featured">
+                    <div class="plan-name">Premium</div>
+                    <div class="plan-price" data-en="$4.99 &lt;span&gt;/month&lt;/span&gt;" data-es="$4.99 &lt;span&gt;/mes&lt;/span&gt;">R$19,90 <span>/mes</span></div>
+                    <ul>
+                        <li data-en="All features unlocked" data-es="Todas las funciones desbloqueadas">Todas as funcionalidades</li>
+                        <li data-en="No ads" data-es="Sin anuncios">Sem anuncios</li>
+                        <li data-en="Priority support" data-es="Soporte prioritario">Suporte prioritario</li>
+                        <li data-en="7-day free trial" data-es="Prueba gratuita de 7 dias">Trial gratuito de 7 dias</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">Pro</div>
+                    <div class="plan-price" data-en="$9.99 &lt;span&gt;/month&lt;/span&gt;" data-es="$9.99 &lt;span&gt;/mes&lt;/span&gt;">R$39,90 <span>/mes</span></div>
+                    <ul>
+                        <li data-en="Everything in Premium" data-es="Todo en Premium">Tudo do Premium</li>
+                        <li data-en="Advanced/AI features" data-es="Funciones avanzadas/IA">Funcionalidades avancadas/IA</li>
+                        <li data-en="Custom integrations" data-es="Integraciones personalizadas">Integracoes customizadas</li>
+                        <li data-en="Dedicated support" data-es="Soporte dedicado">Suporte dedicado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p data-en="Key insights about pricing: the free tier exists solely for user acquisition — its job is to demonstrate value. The Premium tier is where 60-70% of revenue comes from. The Pro tier captures power users willing to pay 2x for advanced capabilities. Always offer a 7-day free trial on Premium — it increases conversion by 40-60% in my experience." data-es="Insights clave sobre precios: el nivel gratuito existe unicamente para adquisicion de usuarios — su trabajo es demostrar valor. El nivel Premium es donde viene el 60-70% de los ingresos. El nivel Pro captura usuarios avanzados dispuestos a pagar 2x por capacidades avanzadas. Siempre ofrece una prueba gratuita de 7 dias en Premium — aumenta la conversion un 40-60% en mi experiencia.">Insights sobre precificacao: o plano Free existe exclusivamente para aquisicao de usuarios — o trabalho dele e demonstrar valor. O Premium e onde 60-70% da receita vem. O Pro captura power users dispostos a pagar 2x por recursos avancados. Sempre ofereca <strong>trial gratuito de 7 dias</strong> no Premium — aumenta conversao em 40-60% na minha experiencia.</p>
+
+            <!-- 5. O que voce precisa construir -->
+            <h2 data-en="What You Need to Build" data-es="Lo que Necesitas Construir">O Que Voce Precisa Construir</h2>
+
+            <p data-en="A subscription app has three main pillars. Here's the stack I use and recommend:" data-es="Una app con suscripcion tiene tres pilares principales. Este es el stack que uso y recomiendo:">Um <strong>app com pagamento recorrente</strong> tem tres pilares principais. Veja o stack que eu uso e recomendo:</p>
+
+            <table class="features-table">
+                <thead>
+                    <tr>
+                        <th data-en="Pillar" data-es="Pilar">Pilar</th>
+                        <th data-en="Technology" data-es="Tecnologia">Tecnologia</th>
+                        <th data-en="Why" data-es="Por que">Por Que</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-en="Mobile App" data-es="App Movil"><strong>App Mobile</strong></td>
+                        <td>Flutter</td>
+                        <td data-en="One codebase for iOS + Android. Saves 40-50% dev time vs native." data-es="Una base de codigo para iOS + Android. Ahorra 40-50% de tiempo vs nativo.">Uma codebase para iOS + Android. Economiza 40-50% do tempo vs nativo.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backend</strong></td>
+                        <td>Firebase</td>
+                        <td data-en="Auth, database, Cloud Functions, push notifications — all managed, no server to maintain." data-es="Auth, base de datos, Cloud Functions, notificaciones push — todo administrado, sin servidor que mantener.">Auth, banco de dados, Cloud Functions, push notifications — tudo gerenciado, sem servidor pra manter.</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Payments" data-es="Pagos"><strong>Pagamentos</strong></td>
+                        <td>RevenueCat + Stripe</td>
+                        <td data-en="RevenueCat for in-app (mobile), Stripe for web. Together they cover every platform." data-es="RevenueCat para in-app (movil), Stripe para web. Juntos cubren todas las plataformas.">RevenueCat para in-app (mobile), Stripe para web. Juntos cobrem todas as plataformas.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p data-en="The subscription flow works like this: user downloads the app (free) &rarr; uses limited features &rarr; hits paywall &rarr; starts 7-day free trial &rarr; RevenueCat processes the payment through Apple/Google &rarr; Firebase Cloud Function receives webhook &rarr; unlocks premium features. Cancellation, upgrades, and downgrades are all handled by RevenueCat automatically." data-es="El flujo de suscripcion funciona asi: usuario descarga la app (gratis) &rarr; usa funciones limitadas &rarr; llega al paywall &rarr; inicia prueba gratuita de 7 dias &rarr; RevenueCat procesa el pago a traves de Apple/Google &rarr; Cloud Function de Firebase recibe webhook &rarr; desbloquea funciones premium. Cancelacion, upgrades y downgrades son manejados por RevenueCat automaticamente.">O fluxo de assinatura funciona assim: usuario baixa o app (gratis) &rarr; usa funcionalidades limitadas &rarr; encontra o paywall &rarr; inicia trial gratuito de 7 dias &rarr; RevenueCat processa o pagamento via Apple/Google &rarr; Cloud Function do Firebase recebe webhook &rarr; desbloqueia funcionalidades premium. Cancelamento, upgrades e downgrades sao tratados pelo RevenueCat automaticamente.</p>
+
+            <!-- 6. Quanto custa -->
+            <h2 data-en="Pricing Reality: How Much Does It Cost?" data-es="Realidad de Precios: Cuanto Cuesta?">Realidade de Precos: Quanto Custa?</h2>
+
+            <p data-en="Let's talk real numbers. A well-built subscription app — with Flutter, Firebase, payment integration, three plan tiers, trial period, and App Store submission — costs from $2,500 (around R$4,000). Here's how that breaks down:" data-es="Hablemos de numeros reales. Una app con suscripcion bien construida — con Flutter, Firebase, integracion de pagos, tres niveles de planes, periodo de prueba y envio a la App Store — cuesta desde $2.500 (alrededor de R$4.000). Asi se desglosa:">Vamos falar de numeros reais. Um <strong>app com sistema de assinatura</strong> bem construido — com Flutter, Firebase, integracao de pagamentos, tres niveis de plano, periodo de teste e submissao para App Store — custa a partir de <strong>R$4.000 / $2.500</strong>. Veja como se distribui:</p>
+
+            <div class="roi-highlight">
+                <div class="stat">
+                    <div class="stat-item">
+                        <div class="stat-number">R$4k</div>
+                        <div class="stat-label" data-en="starting from (app + backend + payments)" data-es="a partir de (app + backend + pagos)">a partir de (app + backend + pagamentos)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-en="20-40" data-es="20-40">20-40</div>
+                        <div class="stat-label" data-en="business days" data-es="dias habiles">dias uteis</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label" data-en="codebase for iOS + Android" data-es="base de codigo para iOS + Android">codebase para iOS + Android</div>
+                    </div>
+                </div>
+            </div>
+
+            <p data-en="The timeline depends on complexity. A straightforward subscription app with 5-8 screens takes 20 business days. Something more complex — with admin panel, AI features, analytics — takes 30-40 business days. I always define the full scope in week 1 to avoid surprises." data-es="El cronograma depende de la complejidad. Una app de suscripcion sencilla con 5-8 pantallas toma 20 dias habiles. Algo mas complejo — con panel admin, funciones de IA, analiticas — toma 30-40 dias habiles. Siempre defino el alcance completo en la semana 1 para evitar sorpresas.">O cronograma depende da complexidade. Um app de assinatura direto com 5-8 telas leva <strong>20 dias uteis</strong>. Algo mais complexo — com painel admin, funcionalidades de IA, analytics — leva <strong>30-40 dias uteis</strong>. Sempre defino o escopo completo na semana 1 para evitar surpresas.</p>
+
+            <!-- 7. Custos recorrentes -->
+            <h2 data-en="Ongoing Costs You Need to Know" data-es="Costos Recurrentes que Debes Conocer">Custos Recorrentes que Voce Precisa Saber</h2>
+
+            <p data-en="Building the app is one cost. Running it is another. Here's what you'll pay monthly/yearly to keep a subscription app live:" data-es="Construir la app es un costo. Mantenerla en funcionamiento es otro. Esto es lo que pagaras mensual/anualmente para mantener una app con suscripcion activa:">Construir o app e um custo. Manter ele rodando e outro. Veja o que voce vai pagar mensal/anualmente para manter um <strong>app com assinatura</strong> ativo:</p>
+
+            <table class="features-table">
+                <thead>
+                    <tr>
+                        <th data-en="Item" data-es="Item">Item</th>
+                        <th data-en="Cost" data-es="Costo">Custo</th>
+                        <th data-en="Frequency" data-es="Frecuencia">Frequencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apple Developer Program</td>
+                        <td>$99</td>
+                        <td data-en="per year" data-es="por ano">/ano</td>
+                    </tr>
+                    <tr>
+                        <td>Google Play Console</td>
+                        <td>$25</td>
+                        <td data-en="one-time" data-es="unica vez">unica vez</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Stripe fees" data-es="Tarifas Stripe">Taxas Stripe</td>
+                        <td data-en="~2.9% + $0.30 per transaction" data-es="~2.9% + $0.30 por transaccion">~2,9% + $0,30 por transacao</td>
+                        <td data-en="per sale" data-es="por venta">por venda</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Apple/Google commission" data-es="Comision Apple/Google">Comissao Apple/Google</td>
+                        <td data-en="15% (first $1M/year) or 30%" data-es="15% (primer $1M/ano) o 30%">15% (primeiro $1M/ano) ou 30%</td>
+                        <td data-en="per in-app sale" data-es="por venta in-app">por venda in-app</td>
+                    </tr>
+                    <tr>
+                        <td>RevenueCat</td>
+                        <td data-en="Free up to $2.5k MRR, then 1%" data-es="Gratis hasta $2.5k MRR, luego 1%">Gratis ate $2.5k MRR, depois 1%</td>
+                        <td data-en="monthly" data-es="mensual">mensal</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Firebase (Blaze plan)" data-es="Firebase (plan Blaze)">Firebase (plano Blaze)</td>
+                        <td data-en="$0-25/month for most apps" data-es="$0-25/mes para la mayoria de las apps">$0-25/mes para a maioria dos apps</td>
+                        <td data-en="monthly" data-es="mensual">mensal</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p data-en="The good news: most of these costs scale with your revenue. When you're making $0, your costs are near $0 (just the $99/year Apple fee). When revenue grows, the percentage-based fees grow proportionally — but you're profitable." data-es="La buena noticia: la mayoria de estos costos escalan con tus ingresos. Cuando ganas $0, tus costos son cercanos a $0 (solo la tarifa de $99/ano de Apple). Cuando los ingresos crecen, las tarifas basadas en porcentaje crecen proporcionalmente — pero eres rentable.">A boa noticia: a maioria desses custos escala com sua receita. Quando voce ganha $0, seus custos sao perto de $0 (so a taxa de $99/ano da Apple). Quando a receita cresce, as taxas percentuais crescem proporcionalmente — mas voce ja esta lucrando.</p>
+
+            <!-- 8. Caso real -->
+            <h2 data-en="Real Example: The Content Generation App" data-es="Ejemplo Real: La App de Generacion de Contenido">Exemplo Real: O App de Geracao de Conteudo</h2>
+
+            <p data-en="I recently built a content generation app with a subscription system. The client had a digital content business and needed an app that would generate posts automatically using AI and charge users monthly. It had three subscription tiers (Free/Premium/Pro), RevenueCat for mobile payments, Stripe for web, and Firebase on the backend. Total cost: $2,000. Three months after launch, the client was making $1,200/month in recurring revenue with 340+ active subscribers." data-es="Recientemente construi una app de generacion de contenido con sistema de suscripcion. El cliente tenia un negocio de contenido digital y necesitaba una app que generara posts automaticamente usando IA y cobrara a los usuarios mensualmente. Tenia tres niveles de suscripcion (Gratis/Premium/Pro), RevenueCat para pagos moviles, Stripe para web y Firebase en el backend. Costo total: $2.000. Tres meses despues del lanzamiento, el cliente ganaba $1.200/mes en ingresos recurrentes con 340+ suscriptores activos.">Recentemente construi um <a href="app-com-ia-geracao-conteudo-2000-dolares.html" class="inline-link" data-en="content generation app with a full subscription system" data-es="app de generacion de contenido con sistema completo de suscripcion">app de geracao de conteudo com sistema completo de assinatura</a>. O cliente tinha um negocio de conteudo digital e precisava de um app que gerasse posts automaticamente com IA e cobrasse usuarios mensalmente. Tinha tres planos (Free/Premium/Pro), RevenueCat para pagamentos mobile, Stripe para web e Firebase no backend. Custo total: $2.000. Tres meses apos o lancamento, o cliente estava faturando $1.200/mes em <strong>receita recorrente</strong> com 340+ assinantes ativos.</p>
+
+            <p data-en="The app paid for itself in under 2 months. That's the power of recurring revenue — once the users are there, the money keeps coming in every month without you having to sell anything new." data-es="La app se pago sola en menos de 2 meses. Ese es el poder del ingreso recurrente — una vez que los usuarios estan ahi, el dinero sigue entrando cada mes sin que tengas que vender nada nuevo.">O app se pagou em menos de 2 meses. Esse e o poder da receita recorrente — uma vez que os usuarios estao la, o dinheiro continua entrando todo mes sem voce precisar vender nada novo.</p>
+
+            <!-- 9. Dicas finais -->
+            <h2 data-en="Final Tips for Your Subscription App" data-es="Consejos Finales para tu App con Suscripcion">Dicas Finais para Seu App com Assinatura</h2>
+
+            <ul class="benefit-list">
+                <li data-en="Always offer a free trial — 7 days is the sweet spot. Users need to experience the value before committing to monthly payments." data-es="Siempre ofrece una prueba gratuita — 7 dias es el punto ideal. Los usuarios necesitan experimentar el valor antes de comprometerse con pagos mensuales."><strong>Sempre ofereca trial gratuito</strong> — 7 dias e o ponto ideal. Usuarios precisam experimentar o valor antes de se comprometerem com pagamentos mensais.</li>
+                <li data-en="Make cancellation easy — counterintuitive, but easy cancellation builds trust and actually reduces churn. Apple and Google require it anyway." data-es="Haz la cancelacion facil — contraintuitivo, pero la cancelacion facil genera confianza y realmente reduce el churn. Apple y Google lo requieren de todos modos."><strong>Facilite o cancelamento</strong> — parece contraintuitivo, mas cancelamento facil gera confianca e na verdade reduz churn. Apple e Google exigem isso de qualquer forma.</li>
+                <li data-en="Invest in onboarding — the first 3 minutes decide whether a user converts. Show value fast, guide them to the 'aha moment' before the paywall." data-es="Invierte en onboarding — los primeros 3 minutos deciden si un usuario convierte. Muestra valor rapido, guialo al 'momento aha' antes del paywall."><strong>Invista em onboarding</strong> — os primeiros 3 minutos decidem se o usuario converte. Mostre valor rapido, guie ate o "momento aha" antes do paywall.</li>
+                <li data-en="Track metrics from day 1 — MRR (Monthly Recurring Revenue), churn rate, trial-to-paid conversion, LTV (Lifetime Value). RevenueCat gives you all of this out of the box." data-es="Rastrea metricas desde el dia 1 — MRR (Ingresos Recurrentes Mensuales), tasa de cancelacion, conversion de prueba a pago, LTV (Valor de Vida). RevenueCat te da todo esto listo para usar."><strong>Acompanhe metricas desde o dia 1</strong> — MRR (Receita Recorrente Mensal), taxa de churn, conversao trial-para-pago, LTV (Lifetime Value). O RevenueCat te da tudo isso pronto.</li>
+                <li data-en="Annual plans increase LTV — offer a 20% discount for annual subscriptions. It locks in revenue and reduces monthly churn significantly." data-es="Los planes anuales aumentan el LTV — ofrece un 20% de descuento para suscripciones anuales. Asegura ingresos y reduce el churn mensual significativamente."><strong>Planos anuais aumentam LTV</strong> — ofereca 20% de desconto para assinaturas anuais. Isso trava receita e reduz churn mensal significativamente.</li>
+            </ul>
+
+            <!-- 10. CTA -->
+            <div class="cta-card">
+                <h2 data-en="Ready to Build Your Subscription App?" data-es="Listo para Crear tu App con Suscripcion?">Pronto para Criar Seu App com Assinatura?</h2>
+                <p data-en="Whether it's a SaaS tool, a fitness app, or a content platform — I build subscription apps with Flutter, Firebase, and battle-tested payment integrations. Let's talk about your project." data-es="Ya sea una herramienta SaaS, una app de fitness o una plataforma de contenido — construyo apps con suscripcion con Flutter, Firebase e integraciones de pago probadas en batalla. Hablemos de tu proyecto.">Seja uma ferramenta SaaS, um app fitness ou uma plataforma de conteudo — eu construo apps com assinatura usando Flutter, Firebase e integracoes de pagamento testadas em producao. Vamos conversar sobre seu projeto.</p>
+                <a href="../index.html#contato" class="cta-button" data-en="Request a Free Quote" data-es="Solicitar Presupuesto Gratis">Solicitar Orcamento Gratis</a>
+            </div>
+
+        </div>
+    </article>
+
+    <footer class="footer">
+        <img src="../imagens/logo_completa_2.png" alt="Just Fast Technologies" loading="lazy" width="200" height="60">
+        <p data-en="&copy; 2026 Just Fast Technologies. All rights reserved." data-es="&copy; 2026 Just Fast Technologies. Todos los derechos reservados.">&copy; 2026 Just Fast Technologies. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        (function() {
+            var saved = localStorage.getItem('jf-lang');
+            var lang;
+            if (saved) { lang = saved; }
+            else {
+                var b = (navigator.language || 'en').toLowerCase();
+                if (b.startsWith('pt')) lang = 'pt';
+                else if (b.startsWith('es')) lang = 'es';
+                else lang = 'en';
+            }
+            var htmlLangs = { pt: 'pt-BR', en: 'en', es: 'es' };
+            document.documentElement.lang = htmlLangs[lang] || 'en';
+            if (lang === 'pt') return;
+            document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+                var text = el.getAttribute('data-' + lang);
+                if (text) el.innerHTML = text;
+            });
+        })();
+    </script>
+
+</body>
+</html>
