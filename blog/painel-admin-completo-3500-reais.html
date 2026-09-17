@@ -162,91 +162,6 @@
             transform: scale(0.95);
         }
 
-        /* ===== LANG SWITCH ===== */
-        .lang-switch {
-            display: none;
-            position: relative;
-            margin-left: 16px;
-        }
-
-        .lang-current {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: rgba(33, 150, 243, 0.12);
-            border: 1px solid rgba(33, 150, 243, 0.2);
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #64B5F6;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .lang-current:hover {
-            background: rgba(33, 150, 243, 0.2);
-        }
-
-        .lang-current svg {
-            width: 12px;
-            height: 12px;
-            stroke: #64B5F6;
-            fill: none;
-            stroke-width: 2.5;
-            transition: transform 0.3s;
-        }
-
-        .lang-switch.aberto .lang-current svg {
-            transform: rotate(180deg);
-        }
-
-        .lang-dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: rgba(17, 17, 40, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(33, 150, 243, 0.15);
-            border-radius: 10px;
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: 0.3s;
-            min-width: 140px;
-        }
-
-        .lang-switch.aberto .lang-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .lang-option {
-            display: block;
-            width: 100%;
-            padding: 10px 16px;
-            background: none;
-            border: none;
-            color: #b8b8cc;
-            font-size: 14px;
-            text-align: left;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .lang-option:hover {
-            background: rgba(33, 150, 243, 0.12);
-            color: #fff;
-        }
-
-        .lang-option.ativo {
-            color: #64B5F6;
-            font-weight: 600;
-        }
-
         /* ===== MENU MOBILE ===== */
         .menu-toggle {
             display: none;
@@ -692,10 +607,6 @@
                 display: flex;
             }
 
-            .lang-switch {
-                margin-left: auto;
-                margin-right: 12px;
-            }
 
             .article-wrapper {
                 padding: 80px 20px 40px;
@@ -772,17 +683,6 @@
             <li><a href="../blog.html" data-pt="Blog" data-en="Blog" data-es="Blog">Blog</a></li>
             <li><a href="../index.html#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a></li>
         </ul>
-        <div class="lang-switch" id="langSwitch">
-            <div class="lang-current" id="langCurrent">
-                <span id="langLabel">PT</span>
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="lang-dropdown">
-                <button class="lang-option ativo" onclick="setLang('pt')">Portugues</button>
-                <button class="lang-option" onclick="setLang('en')">English</button>
-                <button class="lang-option" onclick="setLang('es')">Espanol</button>
-            </div>
-        </div>
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
             <span></span>
             <span></span>
@@ -1017,27 +917,6 @@
             });
         })();
 
-        // ===== LANG SWITCH =====
-        function setLang(lang) {
-            localStorage.setItem('jf-lang', lang);
-            location.reload();
-        }
-
-        (function() {
-            var sw = document.getElementById('langSwitch');
-            var cur = document.getElementById('langCurrent');
-            cur.addEventListener('click', function(e) {
-                e.stopPropagation();
-                sw.classList.toggle('aberto');
-            });
-            document.addEventListener('click', function() {
-                sw.classList.remove('aberto');
-            });
-            sw.querySelector('.lang-dropdown').addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        })();
-
         // ===== APPLY LANGUAGE =====
         (function applyLang() {
             var saved = localStorage.getItem('jf-lang');
@@ -1054,23 +933,10 @@
             var htmlLangs = { pt: 'pt-BR', en: 'en', es: 'es' };
             document.documentElement.lang = htmlLangs[lang] || 'en';
 
-            var langNames = { pt: 'PT', en: 'EN', es: 'ES' };
-            var label = document.getElementById('langLabel');
-            if (label) label.textContent = langNames[lang] || 'EN';
-
-            document.querySelectorAll('.lang-option').forEach(function(btn) {
-                var btnText = btn.textContent.trim().toLowerCase();
-                btn.classList.toggle('ativo', btnText.includes(lang === 'pt' ? 'portug' : lang === 'en' ? 'english' : 'espanol'));
-            });
-
             document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
                 var text = el.getAttribute('data-' + lang);
                 if (text) el.innerHTML = text;
             });
-
-            // Show lang switch
-            var sw = document.getElementById('langSwitch');
-            if (sw) sw.style.display = 'block';
         })();
     </script>
 
