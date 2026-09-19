@@ -28,7 +28,7 @@ Este documento lista tudo que os posts do blog prometem aos clientes.
 
 ---
 
-## 2. Site com Conteúdo IA — a partir de R$1.500 / $900
+## 2. Site com Conteúdo IA — a partir de R$1.500 / $500
 
 **Posts:** quanto-custa-criar-site.html + ia-geracao-conteudo.html
 
@@ -128,7 +128,7 @@ Este documento lista tudo que os posts do blog prometem aos clientes.
 
 ## 8. App com IA (Caso Real) — $2.000
 
-**Post:** app-com-ia-geracao-conteudo-2000-dolares.html
+**Post:** app-com-ia-geracao-conteudo-3200-dolares.html
 
 - [ ] Prazo: 30 dias úteis
 - [ ] App mobile (Flutter): Feed, categorias, favoritos, push notifications, gestão de assinatura

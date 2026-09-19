@@ -436,12 +436,12 @@
         }
 
         /* ===== SERVICOS ===== */
-        #servicos {
+        #serviços {
             background: transparent;
             position: relative;
         }
 
-        #servicos::after {
+        #serviços::after {
             content: '';
             position: absolute;
             top: 0;
@@ -454,12 +454,12 @@
             z-index: 0;
         }
 
-        #servicos > * {
+        #serviços > * {
             position: relative;
             z-index: 1;
         }
 
-        .servicos-grid {
+        .serviços-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
@@ -467,7 +467,7 @@
             margin: 0 auto;
         }
 
-        .servico-card {
+        .serviço-card {
             background: rgba(26, 26, 58, 0.5);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -478,12 +478,12 @@
             transition: transform 0.3s, border-color 0.3s;
         }
 
-        .servico-card:hover {
+        .serviço-card:hover {
             transform: translateY(-6px);
             border-color: rgba(33, 150, 243, 0.4);
         }
 
-        .servico-badge {
+        .serviço-badge {
             position: absolute;
             top: 12px;
             right: 12px;
@@ -499,7 +499,7 @@
             transform: translateZ(40px);
         }
 
-        .servico-icon {
+        .serviço-icon {
             width: 60px;
             height: 60px;
             margin: 0 auto 20px;
@@ -510,7 +510,7 @@
             justify-content: center;
         }
 
-        .servico-icon svg {
+        .serviço-icon svg {
             width: 30px;
             height: 30px;
             stroke: #2196F3;
@@ -520,13 +520,13 @@
             stroke-linejoin: round;
         }
 
-        .servico-card h3 {
+        .serviço-card h3 {
             font-size: 22px;
             color: #fff;
             margin-bottom: 12px;
         }
 
-        .servico-card p {
+        .serviço-card p {
             color: #b0b0c8;
             font-size: 15px;
             line-height: 1.6;
@@ -1143,7 +1143,7 @@
             margin-bottom: 16px;
         }
 
-        .portfolio-preco {
+        .portfolio-preço {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -1157,7 +1157,7 @@
             margin-bottom: 12px;
         }
 
-        .portfolio-preco small {
+        .portfolio-preço small {
             font-size: 11px;
             font-weight: 400;
             color: #8a8aa0;
@@ -1180,7 +1180,7 @@
         }
 
         /* ===== SERVIÇOS COMPLEMENTARES ===== */
-        .servicos-extra {
+        .serviços-extra {
             display: flex;
             justify-content: center;
             gap: 24px;
@@ -1189,7 +1189,7 @@
             flex-wrap: wrap;
         }
 
-        .servico-extra-card {
+        .serviço-extra-card {
             flex: 1;
             min-width: 260px;
             background: rgba(26, 26, 58, 0.5);
@@ -1203,12 +1203,12 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .servico-extra-card:hover {
+        .serviço-extra-card:hover {
             border-color: rgba(33, 150, 243, 0.3);
             box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
         }
 
-        .servico-extra-icon {
+        .serviço-extra-icon {
             width: 48px;
             height: 48px;
             background: rgba(33, 150, 243, 0.1);
@@ -1219,7 +1219,7 @@
             flex-shrink: 0;
         }
 
-        .servico-extra-icon svg {
+        .serviço-extra-icon svg {
             width: 24px;
             height: 24px;
             stroke: #2196F3;
@@ -1229,31 +1229,31 @@
             stroke-linejoin: round;
         }
 
-        .servico-extra-info h4 {
+        .serviço-extra-info h4 {
             color: #e8e8f0;
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
         }
 
-        .servico-extra-preco {
+        .serviço-extra-preço {
             color: #64B5F6;
             font-size: 15px;
             font-weight: 600;
         }
 
-        .servico-extra-desc {
+        .serviço-extra-desc {
             color: #8a8aa0;
             font-size: 13px;
             margin-top: 4px;
         }
 
         @media (max-width: 768px) {
-            .servicos-extra {
+            .serviços-extra {
                 gap: 16px;
             }
 
-            .servico-extra-card {
+            .serviço-extra-card {
                 min-width: 100%;
                 padding: 20px 16px;
             }
@@ -1683,7 +1683,7 @@
             }
         }
 
-        .cta-intermediario {
+        .cta-intermediário {
             text-align: center;
             padding: 32px 20px 0;
         }
@@ -2229,7 +2229,7 @@
             100% { transform: scale(2); opacity: 0; }
         }
 
-        .btn-primary, .btn-enviar, .servico-card {
+        .btn-primary, .btn-enviar, .serviço-card {
             position: relative;
             overflow: hidden;
         }
@@ -2246,7 +2246,7 @@
         }
 
         /* ===== HOVER GLOW CARDS ===== */
-        .servico-card {
+        .serviço-card {
             background: rgba(26, 26, 58, 0.5);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -2254,7 +2254,7 @@
             overflow: hidden;
         }
 
-        .servico-card::before {
+        .serviço-card::before {
             content: '';
             position: absolute;
             top: var(--mouse-y, 50%);
@@ -2269,22 +2269,22 @@
             z-index: 0;
         }
 
-        .servico-card:hover::before {
+        .serviço-card:hover::before {
             opacity: 1;
         }
 
-        .servico-card:hover {
+        .serviço-card:hover {
             border-color: rgba(33, 150, 243, 0.5);
             box-shadow: 0 0 20px rgba(33, 150, 243, 0.15), inset 0 0 20px rgba(33, 150, 243, 0.05);
         }
 
         /* ===== TILT CARDS ===== */
-        .servico-card {
+        .serviço-card {
             transform-style: preserve-3d;
             transition: transform 0.15s ease, border-color 0.3s;
         }
 
-        .servico-card > *:not(.servico-badge) {
+        .serviço-card > *:not(.serviço-badge) {
             transform: translateZ(30px);
         }
 
@@ -2292,7 +2292,7 @@
             transform-style: preserve-3d;
         }
 
-        .servico-card > *:not(.servico-badge) {
+        .serviço-card > *:not(.serviço-badge) {
             position: relative;
             z-index: 1;
         }
@@ -2388,37 +2388,37 @@
                 bottom: 20px;
             }
 
-            .servicos-grid {
+            .serviços-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
 
-            .servico-card {
+            .serviço-card {
                 padding: 24px 16px;
             }
 
-            .servico-icon {
+            .serviço-icon {
                 width: 44px;
                 height: 44px;
                 margin: 0 auto 12px;
             }
 
-            .servico-icon svg {
+            .serviço-icon svg {
                 width: 22px;
                 height: 22px;
             }
 
-            .servico-card h3 {
+            .serviço-card h3 {
                 font-size: 15px;
                 margin-bottom: 6px;
             }
 
-            .servico-card p {
+            .serviço-card p {
                 font-size: 12px;
                 line-height: 1.4;
             }
 
-            .servico-badge {
+            .serviço-badge {
                 position: static;
                 display: inline-block;
                 margin-top: 10px;
@@ -2750,52 +2750,52 @@
     </section>
 
     <!-- SERVICOS -->
-    <section id="servicos">
+    <section id="serviços">
         <h2 class="section-title fade-in" data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</h2>
         <p class="section-subtitle fade-in" data-pt="Soluções sob medida para o seu negócio crescer no digital" data-en="Tailored solutions to grow your business in the digital world" data-es="Soluciones a medida para que tu negocio crezca en lo digital">Soluções sob medida para o seu negócio crescer no digital</p>
-        <div class="servicos-grid">
-            <div class="servico-card fade-in">
-                <div class="servico-icon">
+        <div class="serviços-grid">
+            <div class="serviço-card fade-in">
+                <div class="serviço-icon">
                     <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                 </div>
                 <h3 data-pt="Desenvolvimento Web" data-en="Web Development" data-es="Desarrollo Web">Desenvolvimento Web</h3>
                 <p data-pt="Sites institucionais, landing pages, e-commerces e sistemas web personalizados para sua empresa." data-en="Institutional websites, landing pages, e-commerce and custom web systems for your business." data-es="Sitios institucionales, landing pages, e-commerce y sistemas web personalizados para tu empresa.">Sites institucionais, landing pages, e-commerces e sistemas web personalizados para sua empresa.</p>
             </div>
-            <div class="servico-card fade-in">
-                <div class="servico-icon">
+            <div class="serviço-card fade-in">
+                <div class="serviço-icon">
                     <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
                 </div>
                 <h3 data-pt="Desenvolvimento de Apps" data-en="App Development" data-es="Desarrollo de Apps">Desenvolvimento de Apps</h3>
                 <p data-pt="Aplicativos para Android, iOS e Web com Flutter. Apps com assinatura, pagamento recorrente e modelo de receita recorrente para seu negócio." data-en="Android, iOS and Web apps with Flutter. Subscription apps, recurring payments and recurring revenue models for your business." data-es="Aplicaciones para Android, iOS y Web con Flutter. Apps con suscripción, pago recurrente y modelo de ingresos recurrentes para tu negocio.">Aplicativos para Android, iOS e Web com Flutter. Apps com assinatura, pagamento recorrente e modelo de receita recorrente para seu negócio.</p>
             </div>
-            <div class="servico-card fade-in">
-                <div class="servico-icon">
+            <div class="serviço-card fade-in">
+                <div class="serviço-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                 </div>
                 <h3 data-pt="Design UI/UX" data-en="UI/UX Design" data-es="Diseño UI/UX">Design UI/UX</h3>
                 <p data-pt="Interfaces intuitivas e experiências digitais que encantam seus usuários e fortalecem sua marca." data-en="Intuitive interfaces and digital experiences that delight your users and strengthen your brand." data-es="Interfaces intuitivas y experiencias digitales que encantan a tus usuarios y fortalecen tu marca.">Interfaces intuitivas e experiências digitais que encantam seus usuários e fortalecem sua marca.</p>
             </div>
-            <div class="servico-card fade-in">
-                <div class="servico-icon">
+            <div class="serviço-card fade-in">
+                <div class="serviço-icon">
                     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                 </div>
                 <h3 data-pt="Dashboards & Painéis" data-en="Dashboards & Panels" data-es="Dashboards & Paneles">Dashboards & Painéis</h3>
                 <p data-pt="Painéis administrativos com gráficos, relatórios e gestão em tempo real para seu negócio." data-en="Admin panels with charts, reports and real-time management for your business." data-es="Paneles administrativos con gráficos, informes y gestión en tiempo real para tu negocio.">Painéis administrativos com gráficos, relatórios e gestão em tempo real para seu negócio.</p>
             </div>
-            <div class="servico-card fade-in">
-                <div class="servico-icon">
+            <div class="serviço-card fade-in">
+                <div class="serviço-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><circle cx="12" cy="6" r="1.5"/></svg>
                 </div>
                 <h3 data-pt="Soluções com IA" data-en="AI Solutions" data-es="Soluciones con IA">Soluções com IA</h3>
                 <p data-pt="Chatbots, automações e geração de conteúdo usando inteligência artificial integrada ao seu projeto." data-en="Chatbots, automations and content generation using AI integrated into your project." data-es="Chatbots, automatizaciones y generación de contenido usando IA integrada a tu proyecto.">Chatbots, automações e geração de conteúdo usando inteligência artificial integrada ao seu projeto.</p>
             </div>
-            <div class="servico-card fade-in">
-                <div class="servico-icon">
+            <div class="serviço-card fade-in">
+                <div class="serviço-icon">
                     <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
                 <h3 data-pt="Ajustes & Suporte" data-en="Maintenance & Support" data-es="Ajustes y Soporte">Ajustes & Suporte</h3>
                 <p data-pt="Correções, atualizações e suporte técnico para manter seu projeto sempre no ar." data-en="Fixes, updates and technical support to keep your project running smoothly." data-es="Correcciones, actualizaciones y soporte técnico para mantener tu proyecto siempre activo.">Correções, atualizações e suporte técnico para manter seu projeto sempre no ar.</p>
-                <span class="servico-badge" data-pt="Mais procurado" data-en="Most popular" data-es="Más solicitado">Mais procurado</span>
+                <span class="serviço-badge" data-pt="Mais procurado" data-en="Most popular" data-es="Más solicitado">Mais procurado</span>
             </div>
         </div>
     </section>
@@ -2803,7 +2803,7 @@
     <!-- PROCESSO -->
     <section id="processo">
         <h2 class="section-title fade-in" data-pt="Como Trabalhamos" data-en="How We Work" data-es="Cómo Trabajamos">Como Trabalhamos</h2>
-        <p class="section-subtitle fade-in" data-pt="Um processo simples e transparente do início ao fim" data-en="A simple and transparent process from start to finish" data-es="Un proceso simple y transparente de principio a fin">Um processo simples e transparente do início ao fim</p>
+        <p class="section-subtitle fade-in" data-pt="Um processo simples é transparente do início ao fim" data-en="A simple and transparent process from start to finish" data-es="Un proceso simple y transparente de principio a fin">Um processo simples é transparente do início ao fim</p>
         <div class="processo-grid">
             <div class="processo-item fade-in">
                 <div class="processo-numero">01</div>
@@ -2988,25 +2988,25 @@
     <!-- SERVIÇOS COMPLEMENTARES -->
     <section style="padding-top:0; padding-bottom:40px;">
         <h3 class="section-title fade-in" style="font-size:22px; margin-bottom:24px;" data-pt="Serviços Sob Demanda" data-en="On-Demand Services" data-es="Servicios Bajo Demanda">Serviços Sob Demanda</h3>
-        <div class="servicos-extra">
-            <div class="servico-extra-card fade-in">
-                <div class="servico-extra-icon">
+        <div class="serviços-extra">
+            <div class="serviço-extra-card fade-in">
+                <div class="serviço-extra-icon">
                     <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
                 </div>
-                <div class="servico-extra-info">
+                <div class="serviço-extra-info">
                     <h4 data-pt="Manutenção & Suporte" data-en="Maintenance & Support" data-es="Mantenimiento & Soporte">Manutenção & Suporte</h4>
-                    <div class="servico-extra-preco" data-pt="A partir de R$ 300/mês" data-en="From $100/mo" data-es="Desde $100/mes">A partir de R$ 300/mês</div>
-                    <div class="servico-extra-desc" data-pt="Atualizações, monitoramento e suporte contínuo" data-en="Updates, monitoring and ongoing support" data-es="Actualizaciones, monitoreo y soporte continuo">Atualizações, monitoramento e suporte contínuo</div>
+                    <div class="serviço-extra-preço" data-pt="A partir de R$ 300/mês" data-en="From $130/mo" data-es="Desde $130/mes">A partir de R$ 300/mês</div>
+                    <div class="serviço-extra-desc" data-pt="Atualizações, monitoramento e suporte contínuo" data-en="Updates, monitoring and ongoing support" data-es="Actualizaciones, monitoreo y soporte continuo">Atualizações, monitoramento e suporte contínuo</div>
                 </div>
             </div>
-            <div class="servico-extra-card fade-in">
-                <div class="servico-extra-icon">
+            <div class="serviço-extra-card fade-in">
+                <div class="serviço-extra-icon">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <div class="servico-extra-info">
+                <div class="serviço-extra-info">
                     <h4 data-pt="Correções & Ajustes" data-en="Fixes & Adjustments" data-es="Correcciones & Ajustes">Correções & Ajustes</h4>
-                    <div class="servico-extra-preco" data-pt="R$ 100/hora" data-en="$40/hour" data-es="$40/hora">R$ 100/hora</div>
-                    <div class="servico-extra-desc" data-pt="Bug fixes, melhorias pontuais e ajustes rápidos" data-en="Bug fixes, specific improvements and quick adjustments" data-es="Corrección de errores, mejoras puntuales y ajustes rápidos">Bug fixes, melhorias pontuais e ajustes rápidos</div>
+                    <div class="serviço-extra-preço" data-pt="R$ 100/hora" data-en="$45/hour" data-es="$45/hora">R$ 100/hora</div>
+                    <div class="serviço-extra-desc" data-pt="Bug fixes, melhorias pontuais e ajustes rápidos" data-en="Bug fixes, specific improvements and quick adjustments" data-es="Corrección de errores, mejoras puntuales y ajustes rápidos">Bug fixes, melhorias pontuais e ajustes rápidos</div>
                 </div>
             </div>
         </div>
@@ -3048,7 +3048,7 @@
                 </div>
                 <div class="portfolio-info">
                     <h3 data-pt="Chatbot com Inteligência Artificial" data-en="AI-Powered Chatbot" data-es="Chatbot con Inteligencia Artificial">Chatbot com Inteligência Artificial</h3>
-                    <div class="portfolio-preco" data-pt="A partir de R$ 2.000" data-en="From $1,200" data-es="Desde $1,200">A partir de R$ 2.000</div>
+                    <div class="portfolio-preço" data-pt="A partir de R$ 2.000" data-en="From $900" data-es="Desde $900">A partir de R$ 2.000</div>
                     <p data-pt="Assistente virtual integrado ao site que responde dúvidas, qualifica leads e agenda reuniões automaticamente usando IA generativa." data-en="Virtual assistant integrated into the website that answers questions, qualifies leads and schedules meetings automatically using generative AI." data-es="Asistente virtual integrado al sitio que responde dudas, califica leads y agenda reuniones automáticamente usando IA generativa.">Assistente virtual integrado ao site que responde dúvidas, qualifica leads e agenda reuniões automaticamente usando IA generativa.</p>
                 </div>
             </div>
@@ -3090,8 +3090,8 @@
                 </div>
                 <div class="portfolio-info">
                     <h3 data-pt="Geração de Conteúdo com IA" data-en="AI Content Generation" data-es="Generación de Contenido con IA">Geração de Conteúdo com IA</h3>
-                    <div class="portfolio-preco" data-pt="A partir de R$ 1.500" data-en="From $900" data-es="Desde $900">A partir de R$ 1.500</div>
-                    <p data-pt="Sistema que gera textos, descrições de produtos e artigos de blog de forma dinâmica e personalizada para cada visitante usando inteligência artificial." data-en="System that generates texts, product descriptions and blog articles dynamically and personalized for each visitor using artificial intelligence." data-es="Sistema que genera textos, descripciones de productos y artículos de blog de forma dinámica y personalizada para cada visitante usando inteligencia artificial.">Sistema que gera textos, descrições de produtos e artigos de blog de forma dinâmica e personalizada para cada visitante usando inteligência artificial.</p>
+                    <div class="portfolio-preço" data-pt="A partir de R$ 1.500" data-en="From $700" data-es="Desde $700">A partir de R$ 1.500</div>
+                    <p data-pt="Sistema que gera textos, descrições de produtos e artigos de blog de forma dinâmica é personalizada para cada visitante usando inteligência artificial." data-en="System that generates texts, product descriptions and blog articles dynamically and personalized for each visitor using artificial intelligence." data-es="Sistema que genera textos, descripciones de productos y artículos de blog de forma dinámica y personalizada para cada visitante usando inteligencia artificial.">Sistema que gera textos, descrições de produtos e artigos de blog de forma dinâmica é personalizada para cada visitante usando inteligência artificial.</p>
                 </div>
             </div>
 
@@ -3125,7 +3125,7 @@
                 </div>
                 <div class="portfolio-info">
                     <h3 data-pt="Loja Virtual Completa" data-en="Complete Online Store" data-es="Tienda Virtual Completa">Loja Virtual Completa</h3>
-                    <div class="portfolio-preco" data-pt="A partir de R$ 3.500" data-en="From $2,000" data-es="Desde $2,000">A partir de R$ 3.500</div>
+                    <div class="portfolio-preço" data-pt="A partir de R$ 3.500" data-en="From $1,600" data-es="Desde $1,600">A partir de R$ 3.500</div>
                     <p data-pt="Plataforma de vendas online com catálogo de produtos, carrinho inteligente, pagamento integrado e painel administrativo para gestão de pedidos." data-en="Online sales platform with product catalog, smart cart, integrated payments and admin panel for order management." data-es="Plataforma de ventas online con catálogo de productos, carrito inteligente, pago integrado y panel administrativo para gestión de pedidos.">Plataforma de vendas online com catálogo de produtos, carrinho inteligente, pagamento integrado e painel administrativo para gestão de pedidos.</p>
                 </div>
             </div>
@@ -3156,7 +3156,7 @@
                 </div>
                 <div class="portfolio-info">
                     <h3 data-pt="Aplicativo sob Medida" data-en="Custom Mobile App" data-es="Aplicación a Medida">Aplicativo sob Medida</h3>
-                    <div class="portfolio-preco" data-pt="A partir de R$ 4.000" data-en="From $2,500" data-es="Desde $2,500">A partir de R$ 4.000</div>
+                    <div class="portfolio-preço" data-pt="A partir de R$ 4.000" data-en="From $1,800" data-es="Desde $1,800">A partir de R$ 4.000</div>
                     <p data-pt="App nativo com design intuitivo, notificações push, integração com APIs externas e publicação nas lojas Google Play e App Store." data-en="Native app with intuitive design, push notifications, external API integration and publishing on Google Play and App Store." data-es="App nativo con diseño intuitivo, notificaciones push, integración con APIs externas y publicación en Google Play y App Store.">App nativo com design intuitivo, notificações push, integração com APIs externas e publicação nas lojas Google Play e App Store.</p>
                 </div>
             </div>
@@ -3197,7 +3197,7 @@
                 </div>
                 <div class="portfolio-info">
                     <h3 data-pt="Painel de Gestão Inteligente" data-en="Smart Management Dashboard" data-es="Panel de Gestión Inteligente">Painel de Gestão Inteligente</h3>
-                    <div class="portfolio-preco" data-pt="A partir de R$ 3.000" data-en="From $1,500" data-es="Desde $1,500">A partir de R$ 3.000</div>
+                    <div class="portfolio-preço" data-pt="A partir de R$ 3.000" data-en="From $1,400" data-es="Desde $1,400">A partir de R$ 3.000</div>
                     <p data-pt="Dashboard interativo com gráficos em tempo real, relatórios automáticos, KPIs personalizados e exportação de dados para tomada de decisão." data-en="Interactive dashboard with real-time charts, automated reports, custom KPIs and data exports for decision making." data-es="Dashboard interactivo con gráficos en tiempo real, informes automáticos, KPIs personalizados y exportación de datos para toma de decisiones.">Dashboard interativo com gráficos em tempo real, relatórios automáticos, KPIs personalizados e exportação de dados para tomada de decisão.</p>
                 </div>
             </div>
@@ -3236,7 +3236,7 @@
                 </div>
                 <div class="portfolio-info">
                     <h3 data-pt="Site Profissional Multilíngue" data-en="Multilingual Professional Website" data-es="Sitio Profesional Multilingüe">Site Profissional Multilíngue</h3>
-                    <div class="portfolio-preco" data-pt="A partir de R$ 1.000" data-en="From $600" data-es="Desde $600">A partir de R$ 1.000</div>
+                    <div class="portfolio-preço" data-pt="A partir de R$ 1.000" data-en="From $500" data-es="Desde $500">A partir de R$ 1.000</div>
                     <p data-pt="Site institucional com suporte a múltiplos idiomas, otimização SEO avançada, blog integrado e design responsivo que se adapta a qualquer dispositivo." data-en="Institutional website with multi-language support, advanced SEO optimization, integrated blog and responsive design that adapts to any device." data-es="Sitio institucional con soporte a múltiples idiomas, optimización SEO avanzada, blog integrado y diseño responsivo que se adapta a cualquier dispositivo.">Site institucional com suporte a múltiplos idiomas, otimização SEO avançada, blog integrado e design responsivo que se adapta a qualquer dispositivo.</p>
                 </div>
             </div>
@@ -3250,7 +3250,7 @@
         </div>
     </section>
 
-    <div class="cta-intermediario fade-in">
+    <div class="cta-intermediário fade-in">
         <a href="#contato" class="btn-primary" data-pt="Quero um projeto assim" data-en="I want a project like this" data-es="Quiero un proyecto así">Quero um projeto assim</a>
     </div>
 
@@ -3288,7 +3288,7 @@
                     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
-                <p class="depoimento-text" data-pt="A integração de inteligência artificial no nosso site foi um divisor de águas. Agora o conteúdo é gerado de forma dinâmica e personalizada para cada visitante. A equipe domina IA de verdade." data-en="The AI integration on our website was a game changer. Now content is generated dynamically and personalized for each visitor. The team truly masters AI." data-es="La integración de inteligencia artificial en nuestro sitio fue un cambio radical. Ahora el contenido se genera de forma dinámica y personalizada para cada visitante. El equipo realmente domina la IA.">A integração de inteligência artificial no nosso site foi um divisor de águas. Agora o conteúdo é gerado de forma dinâmica e personalizada para cada visitante. A equipe domina IA de verdade.</p>
+                <p class="depoimento-text" data-pt="A integração de inteligência artificial no nosso site foi um divisor de águas. Agora o conteúdo é gerado de forma dinâmica é personalizada para cada visitante. A equipe domina IA de verdade." data-en="The AI integration on our website was a game changer. Now content is generated dynamically and personalized for each visitor. The team truly masters AI." data-es="La integración de inteligencia artificial en nuestro sitio fue un cambio radical. Ahora el contenido se genera de forma dinámica y personalizada para cada visitante. El equipo realmente domina la IA.">A integração de inteligência artificial no nosso site foi um divisor de águas. Agora o conteúdo é gerado de forma dinâmica é personalizada para cada visitante. A equipe domina IA de verdade.</p>
                 <div class="depoimento-author">
                     <div class="depoimento-avatar" style="background: linear-gradient(135deg, #FF7043, #E64A19);">DP</div>
                     <div class="depoimento-author-info">
@@ -3414,7 +3414,7 @@
         </div>
     </section>
 
-    <div class="cta-intermediario fade-in">
+    <div class="cta-intermediário fade-in">
         <a href="#contato" class="btn-primary" data-pt="Comece seu Projeto" data-en="Start your Project" data-es="Comienza tu Proyecto">Comece seu Projeto</a>
     </div>
 
@@ -3472,7 +3472,7 @@
                     <input type="text" name="nome" required placeholder="Seu nome" data-pt-ph="Seu nome" data-en-ph="Your name" data-es-ph="Tu nombre">
                     <input type="email" name="email" required placeholder="Seu e-mail" data-pt-ph="Seu e-mail" data-en-ph="Your email" data-es-ph="Tu email">
                 </div>
-                <select name="servico" required>
+                <select name="serviço" required>
                     <option value="" disabled selected data-pt="Selecione o serviço" data-en="Select a service" data-es="Selecciona el servicio">Selecione o serviço</option>
                     <option value="Criação de Site" data-pt="Criação de Site" data-en="Website Development" data-es="Creación de Sitio Web">Criação de Site</option>
                     <option value="Desenvolvimento de App" data-pt="Desenvolvimento de App" data-en="App Development" data-es="Desarrollo de App">Desenvolvimento de App</option>
@@ -3548,7 +3548,7 @@
             var status = document.getElementById('formStatus');
             var nome = this.nome.value;
             var email = this.email.value;
-            var servico = this.servico.value;
+            var serviço = this.serviço.value;
             var mensagem = this.mensagem.value;
 
             btn.disabled = true;
@@ -3558,15 +3558,15 @@
             emailjs.send('service_55mo2iq', 'template_x4d5rmt', {
                 from_name: nome,
                 from_email: email,
-                service: servico,
-                service_type: servico,
+                service: serviço,
+                service_type: serviço,
                 message: mensagem
             }).then(function() {
                 btn.disabled = false;
                 e.target.reset();
                 mostrarConfirmacao('email');
             }, function() {
-                var texto = encodeURIComponent('Olá! Meu nome é ' + nome + '.\nEmail: ' + email + '\nServiço: ' + servico + '\n\n' + mensagem);
+                var texto = encodeURIComponent('Olá! Meu nome é ' + nome + '.\nEmail: ' + email + '\nServiço: ' + serviço + '\n\n' + mensagem);
                 window.open('https://wa.me/5584999183580?text=' + texto, '_blank');
                 btn.disabled = false;
                 mostrarConfirmacao('whatsapp');
@@ -3925,7 +3925,7 @@
             });
         }
 
-        applyTilt(document.querySelectorAll('.servico-card'), 20);
+        applyTilt(document.querySelectorAll('.serviço-card'), 20);
         applyTilt(document.querySelectorAll('.diferencial-item'), 14);
 
         // ===== CAROUSEL (2 cards desktop, 1 mobile, auto-advance, drag/swipe) =====
