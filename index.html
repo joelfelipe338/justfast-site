@@ -80,7 +80,7 @@
           "name": "Qual o investimento para criar um site ou app personalizado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Cada projeto é único, por isso trabalhamos com orçamentos personalizados. Agende uma call para conversarmos sobre suas necessidades e apresentarmos uma proposta que cabe no seu bolso."
+            "text": "Cada projeto é único, por isso trabalhamos com orçamentos personalizados. O pagamento é flexível: pode ser parcelado em até 4 vezes, pago por marcos do projeto — e a última parcela só é cobrada após o site ou app estar publicado e funcionando."
           }
         },
         {
@@ -97,6 +97,54 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês fazem contrato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Todo projeto é formalizado com contrato, garantindo segurança e transparência para ambas as partes. O contrato detalha escopo, prazos, valores, condições de pagamento e entregas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona o pagamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O pagamento é feito por marcos do projeto e pode ser parcelado em até 4 vezes. A última parcela só é cobrada após o site ou app estar publicado e funcionando em produção."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Existem custos mensais para manter o projeto no ar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, todo projeto online tem custos de manutenção. Um site simples custa entre R$0 e R$50/mês. Projetos com banco de dados ficam entre R$50 e R$200/mês. Apps com pagamento, assinaturas e IA podem custar de R$200 a R$800/mês."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se eu não gostar do resultado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabalhamos com aprovação por etapas — cada fase só avança após sua validação. Se algo não estiver do seu agrado, ajustamos antes de seguir em frente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Eu sou dono do código e do projeto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Após a conclusão do pagamento, todo o código-fonte, domínio, acessos e credenciais são transferidos integralmente para você. O projeto é 100% seu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso entender de tecnologia para contratar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não! Cuidamos de toda a parte técnica. Você só precisa nos dizer o que precisa e validar as entregas."
           }
         }
       ]
@@ -1357,71 +1405,59 @@
             margin: 0 auto;
         }
 
-        .faq-item {
-            background: linear-gradient(145deg, #1a1a3a, #222248);
-            border: 1px solid rgba(33, 150, 243, 0.1);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: border-color 0.3s;
-        }
-
-        .faq-item:hover {
-            border-color: rgba(33, 150, 243, 0.3);
-        }
-
-        .faq-question {
+        .faq-select {
             width: 100%;
-            padding: 20px 24px;
-            background: none;
-            border: none;
+            padding: 16px 20px;
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            border: 1px solid rgba(33, 150, 243, 0.25);
+            border-radius: 12px;
             color: #fff;
             font-size: 16px;
             font-weight: 600;
             font-family: inherit;
-            text-align: left;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232196F3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 20px;
+            transition: border-color 0.3s;
         }
 
-        .faq-question:hover {
-            color: #64B5F6;
+        .faq-select:hover,
+        .faq-select:focus {
+            border-color: rgba(33, 150, 243, 0.5);
+            outline: none;
         }
 
-        .faq-chevron {
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-            stroke: #2196F3;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: transform 0.3s;
+        .faq-select option {
+            background: #1a1a3a;
+            color: #e8e8f0;
+            padding: 12px;
         }
 
-        .faq-item.open .faq-chevron {
-            transform: rotate(180deg);
+        .faq-answer-panel {
+            background: linear-gradient(145deg, #1a1a3a, #222248);
+            border: 1px solid rgba(33, 150, 243, 0.15);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 16px;
+            min-height: 120px;
         }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-        }
-
-        .faq-item.open .faq-answer {
-            max-height: 500px;
-        }
-
-        .faq-answer p {
-            padding: 0 24px 20px;
+        .faq-answer-panel p {
             color: #b0b0c8;
             font-size: 15px;
-            line-height: 1.7;
+            line-height: 1.8;
+        }
+
+        .faq-answer-content {
+            display: none;
+        }
+
+        .faq-answer-content.active {
+            display: block;
         }
 
         /* ===== CONTATO ===== */
@@ -3425,41 +3461,59 @@
     <section id="faq">
         <h2 class="section-title fade-in" data-pt="Perguntas Frequentes" data-en="FAQ" data-es="Preguntas Frecuentes">Perguntas Frequentes</h2>
         <p class="section-subtitle fade-in" data-pt="Tire suas dúvidas antes de agendar" data-en="Get your questions answered before scheduling" data-es="Resuelve tus dudas antes de agendar">Tire suas dúvidas antes de agendar</p>
-        <div class="faq-container">
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span data-pt="Quanto tempo leva para desenvolver um projeto?" data-en="How long does it take to develop a project?" data-es="&iquest;Cuánto tiempo lleva desarrollar un proyecto?">Quanto tempo leva para desenvolver um projeto?</span>
-                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-answer">
+        <div class="faq-container fade-in">
+            <select class="faq-select" id="faqSelect" onchange="selectFaq(this.value)">
+                <option value="0" data-pt="Quanto tempo leva para desenvolver um projeto?" data-en="How long does it take to develop a project?" data-es="&iquest;Cuánto tiempo lleva desarrollar un proyecto?">Quanto tempo leva para desenvolver um projeto?</option>
+                <option value="1" data-pt="Qual o investimento para criar um site ou app?" data-en="What's the investment to create a website or app?" data-es="&iquest;Cuál es la inversión para crear un sitio web o app?">Qual o investimento para criar um site ou app?</option>
+                <option value="2" data-pt="Como funciona o processo de trabalho?" data-en="How does the work process work?" data-es="&iquest;Cómo funciona el proceso de trabajo?">Como funciona o processo de trabalho?</option>
+                <option value="3" data-pt="Vocês oferecem suporte após a entrega?" data-en="Do you offer support after delivery?" data-es="&iquest;Ofrecen soporte después de la entrega?">Vocês oferecem suporte após a entrega?</option>
+                <option value="4" data-pt="Vocês fazem contrato?" data-en="Do you provide a contract?" data-es="&iquest;Hacen contrato?">Vocês fazem contrato?</option>
+                <option value="5" data-pt="Como funciona o pagamento?" data-en="How does payment work?" data-es="&iquest;Cómo funciona el pago?">Como funciona o pagamento?</option>
+                <option value="6" data-pt="Existem custos mensais para manter no ar?" data-en="Are there monthly costs to keep it online?" data-es="&iquest;Hay costos mensuales para mantenerlo en línea?">Existem custos mensais para manter no ar?</option>
+                <option value="7" data-pt="E se eu não gostar do resultado?" data-en="What if I don't like the result?" data-es="&iquest;Y si no me gusta el resultado?">E se eu não gostar do resultado?</option>
+                <option value="8" data-pt="Eu sou dono do código e do projeto?" data-en="Do I own the code and the project?" data-es="&iquest;Soy dueño del código y del proyecto?">Eu sou dono do código e do projeto?</option>
+                <option value="9" data-pt="Preciso entender de tecnologia?" data-en="Do I need to understand technology?" data-es="&iquest;Necesito entender de tecnología?">Preciso entender de tecnologia?</option>
+            </select>
+            <div class="faq-answer-panel">
+                <div class="faq-answer-content active" data-faq="0">
+                    <h3 data-pt="Quanto tempo leva para desenvolver um projeto?" data-en="How long does it take to develop a project?" data-es="&iquest;Cuánto tiempo lleva desarrollar un proyecto?">Quanto tempo leva para desenvolver um projeto?</h3>
                     <p data-pt="Depende da complexidade. Um site institucional leva em média 2 a 4 semanas, enquanto sistemas e apps mais complexos podem levar de 1 a 3 meses. Na call inicial, definimos prazos realistas para o seu projeto." data-en="It depends on complexity. An institutional website takes on average 2 to 4 weeks, while more complex systems and apps can take 1 to 3 months. In the initial call, we set realistic deadlines for your project." data-es="Depende de la complejidad. Un sitio institucional tarda en promedio de 2 a 4 semanas, mientras que sistemas y apps más complejos pueden llevar de 1 a 3 meses. En la llamada inicial, definimos plazos realistas para tu proyecto.">Depende da complexidade. Um site institucional leva em média 2 a 4 semanas, enquanto sistemas e apps mais complexos podem levar de 1 a 3 meses. Na call inicial, definimos prazos realistas para o seu projeto.</p>
                 </div>
-            </div>
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span data-pt="Qual o investimento para criar um site ou app?" data-en="What's the investment to create a website or app?" data-es="&iquest;Cuál es la inversión para crear un sitio web o app?">Qual o investimento para criar um site ou app?</span>
-                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-answer">
-                    <p data-pt="Cada projeto é único, por isso trabalhamos com orçamentos personalizados. Agende uma call para conversarmos sobre suas necessidades e apresentarmos uma proposta que cabe no seu bolso." data-en="Each project is unique, so we work with custom budgets. Schedule a call to discuss your needs and we'll present a proposal that fits your budget." data-es="Cada proyecto es único, por eso trabajamos con presupuestos personalizados. Agenda una llamada para conversar sobre tus necesidades y presentarte una propuesta que se ajuste a tu bolsillo.">Cada projeto é único, por isso trabalhamos com orçamentos personalizados. Agende uma call para conversarmos sobre suas necessidades e apresentarmos uma proposta que cabe no seu bolso.</p>
+                <div class="faq-answer-content" data-faq="1">
+                    <h3 data-pt="Qual o investimento para criar um site ou app?" data-en="What's the investment to create a website or app?" data-es="&iquest;Cuál es la inversión para crear un sitio web o app?">Qual o investimento para criar um site ou app?</h3>
+                    <p data-pt="Cada projeto é único, por isso trabalhamos com orçamentos personalizados. O pagamento é flexível: pode ser parcelado em até 4 vezes, pago por marcos do projeto — e a última parcela só é cobrada após o site ou app estar publicado e funcionando. Agende uma call para conversarmos sobre suas necessidades." data-en="Each project is unique, so we work with custom budgets. Payment is flexible: it can be split into up to 4 installments, paid by project milestones — and the last installment is only charged after the site or app is published and working. Schedule a call to discuss your needs." data-es="Cada proyecto es único, por eso trabajamos con presupuestos personalizados. El pago es flexible: puede dividirse en hasta 4 cuotas, pagadas por hitos del proyecto — y la última cuota solo se cobra después de que el sitio o app esté publicado y funcionando. Agenda una llamada para conversar sobre tus necesidades.">Cada projeto é único, por isso trabalhamos com orçamentos personalizados. O pagamento é flexível: pode ser parcelado em até 4 vezes, pago por marcos do projeto — e a última parcela só é cobrada após o site ou app estar publicado e funcionando. Agende uma call para conversarmos sobre suas necessidades.</p>
                 </div>
-            </div>
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span data-pt="Como funciona o processo de trabalho?" data-en="How does the work process work?" data-es="&iquest;Cómo funciona el proceso de trabajo?">Como funciona o processo de trabalho?</span>
-                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-answer">
+                <div class="faq-answer-content" data-faq="2">
+                    <h3 data-pt="Como funciona o processo de trabalho?" data-en="How does the work process work?" data-es="&iquest;Cómo funciona el proceso de trabajo?">Como funciona o processo de trabalho?</h3>
                     <p data-pt="Começamos com uma call de briefing para entender seu projeto. Depois, enviamos uma proposta detalhada. Aprovada, iniciamos o desenvolvimento com atualizações frequentes até a entrega final." data-en="We start with a briefing call to understand your project. Then, we send a detailed proposal. Once approved, we begin development with frequent updates until final delivery." data-es="Comenzamos con una llamada de briefing para entender tu proyecto. Luego, enviamos una propuesta detallada. Aprobada, iniciamos el desarrollo con actualizaciones frecuentes hasta la entrega final.">Começamos com uma call de briefing para entender seu projeto. Depois, enviamos uma proposta detalhada. Aprovada, iniciamos o desenvolvimento com atualizações frequentes até a entrega final.</p>
                 </div>
-            </div>
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span data-pt="Vocês oferecem suporte após a entrega?" data-en="Do you offer support after delivery?" data-es="&iquest;Ofrecen soporte después de la entrega?">Vocês oferecem suporte após a entrega?</span>
-                    <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-answer">
+                <div class="faq-answer-content" data-faq="3">
+                    <h3 data-pt="Vocês oferecem suporte após a entrega?" data-en="Do you offer support after delivery?" data-es="&iquest;Ofrecen soporte después de la entrega?">Vocês oferecem suporte após a entrega?</h3>
                     <p data-pt="Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias." data-en="Yes! We offer ongoing support and maintenance to ensure everything works perfectly. We're always available for adjustments and improvements." data-es="&iexcl;Sí! Ofrecemos soporte continuo y mantenimiento para garantizar que todo funcione perfectamente. Estamos siempre disponibles para ajustes y mejoras.">Sim! Oferecemos suporte contínuo e manutenção para garantir que tudo funcione perfeitamente. Estamos sempre disponíveis para ajustes e melhorias.</p>
+                </div>
+                <div class="faq-answer-content" data-faq="4">
+                    <h3 data-pt="Vocês fazem contrato?" data-en="Do you provide a contract?" data-es="&iquest;Hacen contrato?">Vocês fazem contrato?</h3>
+                    <p data-pt="Sim! Todo projeto é formalizado com contrato, garantindo segurança e transparência para ambas as partes. O contrato detalha escopo, prazos, valores, condições de pagamento e entregas — para que você tenha total tranquilidade do início ao fim." data-en="Yes! Every project is formalized with a contract, ensuring security and transparency for both parties. The contract details scope, deadlines, pricing, payment terms and deliverables — so you have complete peace of mind from start to finish." data-es="&iexcl;Sí! Todo proyecto se formaliza con contrato, garantizando seguridad y transparencia para ambas partes. El contrato detalla alcance, plazos, valores, condiciones de pago y entregas — para que tengas total tranquilidad de inicio a fin.">Sim! Todo projeto é formalizado com contrato, garantindo segurança e transparência para ambas as partes. O contrato detalha escopo, prazos, valores, condições de pagamento e entregas — para que você tenha total tranquilidade do início ao fim.</p>
+                </div>
+                <div class="faq-answer-content" data-faq="5">
+                    <h3 data-pt="Como funciona o pagamento?" data-en="How does payment work?" data-es="&iquest;Cómo funciona el pago?">Como funciona o pagamento?</h3>
+                    <p data-pt="O pagamento é feito por marcos do projeto e pode ser parcelado em até 4 vezes, dependendo do valor. Você acompanha cada etapa e só paga conforme o progresso. A última parcela só é cobrada após o site ou app estar publicado e funcionando em produção — você não paga tudo antes de ver o resultado." data-en="Payment is made by project milestones and can be split into up to 4 installments, depending on the total value. You follow each stage and only pay as progress is made. The last installment is only charged after the site or app is published and working in production — you don't pay everything before seeing the result." data-es="El pago se realiza por hitos del proyecto y puede dividirse en hasta 4 cuotas, dependiendo del valor. Acompañas cada etapa y solo pagas conforme avanza el progreso. La última cuota solo se cobra después de que el sitio o app esté publicado y funcionando en producción — no pagas todo antes de ver el resultado.">O pagamento é feito por marcos do projeto e pode ser parcelado em até 4 vezes, dependendo do valor. Você acompanha cada etapa e só paga conforme o progresso. A última parcela só é cobrada após o site ou app estar publicado e funcionando em produção — você não paga tudo antes de ver o resultado.</p>
+                </div>
+                <div class="faq-answer-content" data-faq="6">
+                    <h3 data-pt="Existem custos mensais para manter no ar?" data-en="Are there monthly costs to keep it online?" data-es="&iquest;Hay costos mensuales para mantenerlo en línea?">Existem custos mensais para manter no ar?</h3>
+                    <p data-pt="Sim, todo projeto online tem custos de manutenção que variam conforme os recursos utilizados. Um site simples com hospedagem básica custa R$50/mês. Projetos com banco de dados e autenticação ficam entre R$50 e R$200/mês. Já apps completos com sistema de pagamento, assinaturas e inteligência artificial podem custar de R$200 a R$500/mês. Na proposta, detalhamos exatamente quais serão os custos mensais do seu projeto." data-en="Yes, every online project has maintenance costs that vary based on the features used. A simple website with basic hosting costs $15/month. Projects with database and authentication range from $15 to $50/month. Full apps with payment systems, subscriptions and artificial intelligence can cost from $50 to $150/month. In our proposal, we detail exactly what the monthly costs of your project will be." data-es="Sí, todo proyecto online tiene costos de mantenimiento que varían según los recursos utilizados. Un sitio simple con hosting básico cuesta $15/mes. Proyectos con base de datos y autenticación van de $15 a $50/mes. Apps completas con sistema de pago, suscripciones e inteligencia artificial pueden costar de $50 a $150/mes. En nuestra propuesta, detallamos exactamente cuáles serán los costos mensuales de tu proyecto.">Sim, todo projeto online tem custos de manutenção que variam conforme os recursos utilizados. Um site simples com hospedagem básica custa entre R$0 e R$50/mês. Projetos com banco de dados e autenticação ficam entre R$50 e R$200/mês. Já apps completos com sistema de pagamento, assinaturas e inteligência artificial podem custar de R$200 a R$800/mês. Na proposta, detalhamos exatamente quais serão os custos mensais do seu projeto.</p>
+                </div>
+                <div class="faq-answer-content" data-faq="7">
+                    <h3 data-pt="E se eu não gostar do resultado?" data-en="What if I don't like the result?" data-es="&iquest;Y si no me gusta el resultado?">E se eu não gostar do resultado?</h3>
+                    <p data-pt="Trabalhamos com aprovação por etapas — cada fase do projeto só avança após sua validação. Se algo não estiver do seu agrado, ajustamos antes de seguir em frente. Você participa de todo o processo e tem revisões incluídas dentro do escopo contratado." data-en="We work with stage-by-stage approval — each phase only moves forward after your validation. If something isn't to your liking, we adjust before moving on. You participate in the entire process and have revisions included within the contracted scope." data-es="Trabajamos con aprobación por etapas — cada fase solo avanza después de tu validación. Si algo no es de tu agrado, ajustamos antes de seguir adelante. Participas de todo el proceso y tienes revisiones incluidas dentro del alcance contratado.">Trabalhamos com aprovação por etapas — cada fase do projeto só avança após sua validação. Se algo não estiver do seu agrado, ajustamos antes de seguir em frente. Você participa de todo o processo e tem revisões incluídas dentro do escopo contratado.</p>
+                </div>
+                <div class="faq-answer-content" data-faq="8">
+                    <h3 data-pt="Eu sou dono do código e do projeto?" data-en="Do I own the code and the project?" data-es="&iquest;Soy dueño del código y del proyecto?">Eu sou dono do código e do projeto?</h3>
+                    <p data-pt="Sim! Após a conclusão do pagamento, todo o código-fonte, domínio, acessos e credenciais são transferidos integralmente para você. O projeto é 100% seu." data-en="Yes! After payment is completed, all source code, domain, access and credentials are fully transferred to you. The project is 100% yours." data-es="&iexcl;Sí! Después de completar el pago, todo el código fuente, dominio, accesos y credenciales se transfieren íntegramente a ti. El proyecto es 100% tuyo.">Sim! Após a conclusão do pagamento, todo o código-fonte, domínio, acessos e credenciais são transferidos integralmente para você. O projeto é 100% seu.</p>
+                </div>
+                <div class="faq-answer-content" data-faq="9">
+                    <h3 data-pt="Preciso entender de tecnologia?" data-en="Do I need to understand technology?" data-es="&iquest;Necesito entender de tecnología?">Preciso entender de tecnologia?</h3>
+                    <p data-pt="Não! Cuidamos de toda a parte técnica. Você só precisa nos dizer o que precisa e validar as entregas. Explicamos tudo de forma simples e acompanhamos você em cada etapa." data-en="No! We handle all the technical side. You just need to tell us what you need and validate the deliveries. We explain everything simply and guide you through every step." data-es="&iexcl;No! Nos encargamos de toda la parte técnica. Solo necesitas decirnos lo que necesitas y validar las entregas. Explicamos todo de forma simple y te acompañamos en cada etapa.">Não! Cuidamos de toda a parte técnica. Você só precisa nos dizer o que precisa e validar as entregas. Explicamos tudo de forma simples e acompanhamos você em cada etapa.</p>
                 </div>
             </div>
         </div>
@@ -3748,7 +3802,7 @@
 
         // ===== RIPPLE CLICK (GLOBAL - SUTIL) =====
         document.addEventListener('click', (e) => {
-            if (e.target.closest('a, button, input, textarea, select, [onclick], .btn-primary, .faq-question, .lang-option, .lang-current, .menu-toggle, .nav-links a, .contato-alt-item, .whatsapp-float, .back-to-top, .footer-links a')) return;
+            if (e.target.closest('a, button, input, textarea, select, [onclick], .btn-primary, .faq-select, .lang-option, .lang-current, .menu-toggle, .nav-links a, .contato-alt-item, .whatsapp-float, .back-to-top, .footer-links a')) return;
             const size = 80;
 
             // Círculo principal (suave)
@@ -4258,14 +4312,10 @@
         }, { threshold: 0.5 });
         document.querySelectorAll('.contador-numero').forEach(el => contadorObserver.observe(el));
 
-        // FAQ Accordion
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            const isOpen = item.classList.contains('open');
-            // Fechar todos
-            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
-            // Abrir o clicado (se não estava aberto)
-            if (!isOpen) item.classList.add('open');
+        // FAQ Select
+        function selectFaq(idx) {
+            document.querySelectorAll('.faq-answer-content').forEach(function(el) { el.classList.remove('active'); });
+            document.querySelector('.faq-answer-content[data-faq="' + idx + '"]').classList.add('active');
         }
     </script>
 
