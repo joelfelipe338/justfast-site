@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Just Fast Technologies</title>
+    <meta name="description" content="Conheça os projetos que já entregamos. Sites, apps, dashboards e soluções com IA desenvolvidos pela Just Fast Technologies.">
+    <meta name="keywords" content="portfólio desenvolvimento web, projetos entregues, cases de sucesso, Just Fast Technologies, freelancer desenvolvimento">
+    <meta name="author" content="Just Fast Technologies">
+    <link rel="canonical" href="https://justfast.com.br/portfolio.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://justfast.com.br/portfolio.html">
+    <link rel="alternate" hreflang="en" href="https://justfast.com.br/portfolio.html">
+    <link rel="alternate" hreflang="es" href="https://justfast.com.br/portfolio.html">
+    <link rel="alternate" hreflang="x-default" href="https://justfast.com.br/portfolio.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon_32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="imagens/favicon_192.png">
+    <link rel="apple-touch-icon" href="imagens/favicon_192.png">
+    <meta name="theme-color" content="#2196F3">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://justfast.com.br/portfolio.html">
+    <meta property="og:title" content="Portfólio | Just Fast Technologies">
+    <meta property="og:description" content="Conheça os projetos que já entregamos. Sites, apps, dashboards e soluções com IA.">
+    <meta property="og:image" content="https://justfast.com.br/imagens/bannerUrl.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:site_name" content="Just Fast Technologies">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfólio | Just Fast Technologies">
+    <meta name="twitter:description" content="Conheça os projetos que já entregamos. Sites, apps, dashboards e soluções com IA.">
+    <meta name="twitter:image" content="https://justfast.com.br/imagens/bannerUrl.png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111128;
+            color: #e8e8f0;
+            overflow-x: hidden;
+            max-width: 100vw;
+            line-height: 1.7;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(17, 17, 40, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.08);
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .navbar-logo .navbar-icon { height: 38px; }
+        .navbar-logo .navbar-text { height: 18px; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #b8b8cc;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            padding: 6px 0;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2196F3, #64B5F6, #2196F3, transparent);
+            border-radius: 2px;
+            transform: translateX(-50%);
+            transition: width 0.4s ease;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 12px rgba(33, 150, 243, 0.6);
+        }
+        .nav-links a:hover::before { width: 100%; }
+        .nav-links a:active { transform: scale(0.95); }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #b8b8cc;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ===== HERO ===== */
+        .portfolio-hero {
+            padding: 140px 40px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .portfolio-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #e8e8f0 0%, #64B5F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .portfolio-hero p {
+            color: #a0a0b8;
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== PROJECT SECTION ===== */
+        .project-section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        .project-header {
+            margin-bottom: 32px;
+        }
+        .project-tag {
+            display: inline-block;
+            background: rgba(33, 150, 243, 0.15);
+            color: #64B5F6;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .project-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .project-header .project-desc {
+            color: #a0a0b8;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ===== STATS BAR ===== */
+        .project-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .project-stat {
+            flex: 1;
+            min-width: 140px;
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.12);
+            border-radius: 14px;
+            padding: 20px 24px;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .project-stat:hover {
+            border-color: rgba(33, 150, 243, 0.3);
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.08);
+        }
+        .project-stat .stat-label {
+            display: block;
+            color: #7a7a90;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .project-stat .stat-value {
+            display: block;
+            color: #64B5F6;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* ===== GALLERY ===== */
+        .project-gallery {
+            margin-bottom: 32px;
+        }
+        .project-gallery-main {
+            display: block;
+            width: 100%;
+            cursor: pointer;
+        }
+        .project-gallery-main img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 16px;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s;
+        }
+        .project-gallery-main img:hover {
+            border-color: rgba(33, 150, 243, 0.3);
+        }
+        .project-gallery-thumbs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .project-gallery-thumbs a {
+            display: block;
+            cursor: pointer;
+        }
+        .project-gallery-thumbs img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .project-gallery-thumbs img:hover {
+            border-color: rgba(33, 150, 243, 0.3);
+            transform: translateY(-4px);
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 17, 40, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .lightbox:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            color: #b0b0c0;
+            font-size: 32px;
+            text-decoration: none;
+            line-height: 1;
+            transition: color 0.3s;
+            z-index: 10000;
+        }
+        .lightbox-close:hover { color: #fff; }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b0b0c0;
+            font-size: 40px;
+            text-decoration: none;
+            padding: 20px;
+            transition: color 0.3s;
+        }
+        .lightbox-nav:hover { color: #fff; }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+
+        /* ===== PROJECT DETAILS ===== */
+        .project-details h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin: 32px 0 14px;
+        }
+        .project-details p {
+            color: #c0c0d0;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .project-details strong {
+            color: #e8e8f0;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 16px 0 24px;
+            padding: 0;
+        }
+        .feature-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            color: #c0c0d0;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background: #2196F3;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.15);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0 24px;
+        }
+        .tech-badge {
+            background: rgba(33, 150, 243, 0.1);
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            color: #64B5F6;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== DIVIDER ===== */
+        .project-divider {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto 80px;
+            padding: 0 40px;
+        }
+        .project-divider-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.2), transparent);
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-final {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+            text-align: center;
+        }
+        .cta-card {
+            background: rgba(26, 26, 58, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            border-radius: 20px;
+            padding: 48px 40px;
+        }
+        .cta-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 16px;
+        }
+        .cta-card p {
+            color: #a0a0b8;
+            font-size: 16px;
+            margin-bottom: 28px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(13, 13, 34, 0.6);
+            padding: 40px 40px 24px;
+            text-align: center;
+        }
+        .footer img {
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+        .footer p {
+            color: #7a7a90;
+            font-size: 14px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px 24px;
+            margin-bottom: 16px;
+            list-style: none;
+            flex-wrap: wrap;
+            padding: 0 16px;
+        }
+        .footer-links a {
+            color: #8a8aa0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: #2196F3; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar { padding: 14px 20px; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(17, 17, 40, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 8px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid rgba(33, 150, 243, 0.1);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 16px; padding: 12px 0; }
+            .menu-toggle { display: flex; }
+            .portfolio-hero { padding: 100px 20px 40px; }
+            .portfolio-hero h1 { font-size: 1.8rem; }
+            .project-section { padding: 0 20px 60px; }
+            .project-header h2 { font-size: 1.5rem; }
+            .project-stats { gap: 10px; flex-wrap: wrap; }
+            .project-stat { min-width: calc(50% - 6px); flex: 1 1 calc(50% - 6px); }
+            .project-stat .stat-value { font-size: 18px; }
+            .project-stat .stat-label { font-size: 11px; }
+            .project-gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
+            .project-gallery-thumbs img { height: 120px; }
+            .feature-list li { font-size: 15px; }
+            .lightbox-nav { font-size: 28px; padding: 10px; }
+            .lightbox-prev { left: 8px; }
+            .lightbox-next { right: 8px; }
+            .lightbox img { max-width: 95vw; max-height: 80vh; }
+            .cta-final { padding: 0 20px 60px; }
+            .cta-card { padding: 36px 24px; }
+            .cta-card h2 { font-size: 22px; }
+            .footer { padding: 32px 20px 20px; }
+            .footer-links { gap: 12px 16px; }
+            .footer-links a { font-size: 13px; }
+            .project-divider { padding: 0 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-hero h1 { font-size: 1.5rem; }
+            .project-header h2 { font-size: 1.3rem; }
+            .tech-badges { gap: 8px; }
+            .tech-badge { font-size: 12px; padding: 5px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <img src="imagens/logo.png" alt="Just Fast Technologies logo" class="navbar-icon">
+            <img src="imagens/sublogo.png" alt="Just Fast - Desenvolvimento web e mobile" class="navbar-text">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#inicio" data-pt="Inicio" data-en="Home" data-es="Inicio">Inicio</a></li>
+            <li><a href="index.html#serviços" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a></li>
+            <li><a href="blog.html" data-pt="Blog" data-en="Blog" data-es="Blog">Blog</a></li>
+            <li><a href="index.html#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="portfolio-hero">
+        <h1 data-pt="Projetos que Entregamos" data-en="Projects We Delivered" data-es="Proyectos que Entregamos">Projetos que Entregamos</h1>
+        <p data-pt="Conheça alguns dos projetos reais que desenvolvemos. Cada um com detalhes, tecnologias e resultados." data-en="Explore some of the real projects we've built. Each with details, technologies and results." data-es="Conoce algunos de los proyectos reales que desarrollamos. Cada uno con detalles, tecnologias y resultados.">Conheça alguns dos projetos reais que desenvolvemos. Cada um com detalhes, tecnologias e resultados.</p>
+    </section>
+
+    <!-- ==================== PROJETO 1 — ADMIN DASHBOARD ==================== -->
+    <section class="project-section" id="projeto-1">
+        <div class="project-header">
+            <span class="project-tag" data-pt="Dashboard / Painel Admin" data-en="Dashboard / Admin Panel" data-es="Dashboard / Panel Admin">Dashboard / Painel Admin</span>
+            <h2 data-pt="Painel Administrativo Bilingue" data-en="Bilingual Admin Panel" data-es="Panel Administrativo Bilingue">Painel Administrativo Bilingue</h2>
+            <p class="project-desc" data-pt="Painel administrativo completo com dashboard de metricas, gestao de pedidos, produtos e usuarios. Suporte bilingue (ingles e arabe) com layout RTL e totalmente responsivo para desktop e mobile." data-en="Complete admin panel with metrics dashboard, order management, products and users. Bilingual support (English and Arabic) with RTL layout and fully responsive for desktop and mobile." data-es="Panel administrativo completo con dashboard de metricas, gestion de pedidos, productos y usuarios. Soporte bilingue (ingles y arabe) con diseño RTL y totalmente responsivo para escritorio y movil.">Painel administrativo completo com dashboard de metricas, gestao de pedidos, produtos e usuarios. Suporte bilingue (ingles e arabe) com layout RTL e totalmente responsivo para desktop e mobile.</p>
+        </div>
+
+        <div class="project-stats">
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Valor" data-en="Price" data-es="Precio">Valor</span>
+                <span class="stat-value" data-pt="R$ 3.500" data-en="$1,600" data-es="$1,600">R$ 3.500</span>
+            </div>
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Prazo" data-en="Timeline" data-es="Plazo">Prazo</span>
+                <span class="stat-value" data-pt="30 dias" data-en="30 days" data-es="30 dias">30 dias</span>
+            </div>
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Tipo" data-en="Type" data-es="Tipo">Tipo</span>
+                <span class="stat-value" data-pt="Web App" data-en="Web App" data-es="Web App">Web App</span>
+            </div>
+        </div>
+
+        <div class="project-gallery">
+            <a href="#p1-img1" class="project-gallery-main">
+                <img src="imagens/portfolio/projeto1.3.png" alt="Admin Panel Dashboard - desktop view with sidebar, KPI cards and charts">
+            </a>
+            <div class="project-gallery-thumbs">
+                <a href="#p1-img2"><img src="imagens/portfolio/projeto1.1.png" alt="Dashboard mobile view with stats and charts" loading="lazy"></a>
+                <a href="#p1-img3"><img src="imagens/portfolio/projeto1.2.png" alt="Orders management list with filters and pagination" loading="lazy"></a>
+            </div>
+        </div>
+
+        <div class="project-details">
+            <h3 data-pt="O Desafio" data-en="The Challenge" data-es="El Desafio">O Desafio</h3>
+            <p data-pt="O cliente, baseado na Arabia Saudita, precisava de um painel administrativo para gerenciar seu e-commerce com suporte completo ao idioma arabe (incluindo layout RTL — direita para esquerda) e ingles. Alem disso, o painel precisava funcionar perfeitamente tanto em desktop quanto em dispositivos moveis, ja que parte da equipe gerencia pedidos pelo celular." data-en="The client, based in Saudi Arabia, needed an admin panel to manage their e-commerce with full Arabic language support (including RTL — right-to-left layout) and English. Additionally, the panel needed to work perfectly on both desktop and mobile devices, as part of the team manages orders from their phones." data-es="El cliente, ubicado en Arabia Saudita, necesitaba un panel administrativo para gestionar su e-commerce con soporte completo al idioma arabe (incluyendo diseño RTL — derecha a izquierda) e ingles. Ademas, el panel debia funcionar perfectamente tanto en escritorio como en dispositivos moviles.">O cliente, baseado na Arabia Saudita, precisava de um painel administrativo para gerenciar seu e-commerce com suporte completo ao idioma arabe (incluindo layout RTL — direita para esquerda) e ingles. Alem disso, o painel precisava funcionar perfeitamente tanto em desktop quanto em dispositivos moveis, ja que parte da equipe gerencia pedidos pelo celular.</p>
+
+            <h3 data-pt="A Solucao" data-en="The Solution" data-es="La Solucion">A Solucao</h3>
+            <p data-pt="Desenvolvemos um dashboard administrativo completo com alternancia de idioma em tempo real entre ingles e arabe, graficos interativos de vendas e status de pedidos, gestao completa de pedidos com filtros por cidade, status e vendedor, e layout totalmente adaptavel com sidebar no desktop e menu hamburger no mobile." data-en="We built a complete admin dashboard with real-time language switching between English and Arabic, interactive sales and order status charts, full order management with city, status and seller filters, and a fully adaptive layout with sidebar on desktop and hamburger menu on mobile." data-es="Desarrollamos un dashboard administrativo completo con cambio de idioma en tiempo real entre ingles y arabe, graficos interactivos de ventas y estado de pedidos, gestion completa de pedidos con filtros por ciudad, estado y vendedor, y un diseño totalmente adaptable.">Desenvolvemos um dashboard administrativo completo com alternancia de idioma em tempo real entre ingles e arabe, graficos interativos de vendas e status de pedidos, gestao completa de pedidos com filtros por cidade, status e vendedor, e layout totalmente adaptavel com sidebar no desktop e menu hamburger no mobile.</p>
+
+            <h3 data-pt="Funcionalidades" data-en="Features" data-es="Funcionalidades">Funcionalidades</h3>
+            <div class="glass-card">
+                <ul class="feature-list">
+                    <li data-pt="Dashboard com KPIs em tempo real (pedidos, receita, produtos, usuarios)" data-en="Real-time KPI dashboard (orders, revenue, products, users)" data-es="Dashboard con KPIs en tiempo real (pedidos, ingresos, productos, usuarios)">Dashboard com KPIs em tempo real (pedidos, receita, produtos, usuarios)</li>
+                    <li data-pt="Graficos interativos de pedidos por mes e status (entregue, em processo, cancelado)" data-en="Interactive charts for orders by month and status (delivered, in process, cancelled)" data-es="Graficos interactivos de pedidos por mes y estado (entregado, en proceso, cancelado)">Graficos interativos de pedidos por mes e status (entregue, em processo, cancelado)</li>
+                    <li data-pt="Suporte bilingue completo (ingles/arabe) com layout RTL automatico" data-en="Full bilingual support (English/Arabic) with automatic RTL layout" data-es="Soporte bilingue completo (ingles/arabe) con diseño RTL automatico">Suporte bilingue completo (ingles/arabe) com layout RTL automatico</li>
+                    <li data-pt="Gestao de pedidos com filtros avancados por numero, cidade, status e vendedor" data-en="Order management with advanced filters by number, city, status and seller" data-es="Gestion de pedidos con filtros avanzados por numero, ciudad, estado y vendedor">Gestao de pedidos com filtros avancados por numero, cidade, status e vendedor</li>
+                    <li data-pt="Layout responsivo com sidebar completa no desktop e menu otimizado no mobile" data-en="Responsive layout with full sidebar on desktop and optimized mobile menu" data-es="Diseño responsivo con sidebar completa en escritorio y menu optimizado en movil">Layout responsivo com sidebar completa no desktop e menu otimizado no mobile</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="project-divider"><div class="project-divider-line"></div></div>
+
+    <!-- ==================== PROJETO 2 — APP de Fe e Espiritualidade ==================== -->
+    <section class="project-section" id="projeto-2">
+        <div class="project-header">
+            <span class="project-tag" data-pt="App + Painel Admin + IA" data-en="App + Admin Panel + AI" data-es="App + Panel Admin + IA">App + Painel Admin + IA</span>
+            <h2 data-pt="App de Fe e Espiritualidade" data-en="Faith & Spirituality App" data-es="App de Fe y Espiritualidad">App de Fe e Espiritualidade</h2>
+            <p class="project-desc" data-pt="Projeto completo com app mobile com assinatura, painel administrativo, chat em tempo real e integracao com IA para geracao automatica de conteudo no admin. Inclui tarefas diarias, meditacoes guiadas, comunidade social com forum e chat, e gamificacao com arvore da fe." data-en="Full project with mobile app with subscription, admin panel, real-time chat and AI integration for automatic content generation in the admin. Includes daily tasks, guided meditations, social community with forum and chat, and gamification with faith tree." data-es="Proyecto completo con app movil con suscripcion, panel administrativo, chat en tiempo real e integracion con IA para generacion automatica de contenido en el admin. Incluye tareas diarias, meditaciones guiadas, comunidad social con foro y chat, y gamificacion con arbol de fe.">Projeto completo com app mobile com assinatura, painel administrativo, chat em tempo real e integracao com IA para geracao automatica de conteudo no admin. Inclui tarefas diarias, meditacoes guiadas, comunidade social com forum e chat, e gamificacao com arvore da fe.</p>
+        </div>
+
+        <div class="project-stats">
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Valor" data-en="Price" data-es="Precio">Valor</span>
+                <span class="stat-value" data-pt="R$ 7.500" data-en="$3,000" data-es="$3,000">R$ 7.500</span>
+            </div>
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Prazo" data-en="Timeline" data-es="Plazo">Prazo</span>
+                <span class="stat-value" data-pt="60 dias" data-en="60 days" data-es="60 dias">60 dias</span>
+            </div>
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Tipo" data-en="Type" data-es="Tipo">Tipo</span>
+                <span class="stat-value" data-pt="App + Admin + IA" data-en="App + Admin + AI" data-es="App + Admin + IA">App + Admin + IA</span>
+            </div>
+        </div>
+
+        <div class="project-gallery">
+            <a href="#p2-img1" class="project-gallery-main">
+                <img src="imagens/portfolio/projeto2.1.png" alt="App home screen with faith tree, daily verse and spiritual tasks">
+            </a>
+            <div class="project-gallery-thumbs">
+                <a href="#p2-img2"><img src="imagens/portfolio/projeto2.3.png" alt="Community forum with posts and discussions" loading="lazy"></a>
+                <a href="#p2-img3"><img src="imagens/portfolio/projeto2.4.png" alt="Meditation audio player with ambient sounds" loading="lazy"></a>
+                <a href="#p2-img4"><img src="imagens/portfolio/projeto2.2.png" alt="Faith graph and weekly tasks tracking" loading="lazy"></a>
+            </div>
+        </div>
+
+        <div class="project-details">
+            <h3 data-pt="O Desafio" data-en="The Challenge" data-es="El Desafio">O Desafio</h3>
+            <p data-pt="Criar um ecossistema completo para engajamento espiritual: um app mobile com assinatura, um painel administrativo para gestao de conteudo, chat em tempo real e integracao com IA para gerar conteudos automaticamente no admin. O projeto precisava de comunidade social, gamificacao e meditacoes guiadas." data-en="Build a complete ecosystem for spiritual engagement: a mobile app with subscription, an admin panel for content management, real-time chat and AI integration to automatically generate content in the admin. The project needed social community, gamification and guided meditations." data-es="Crear un ecosistema completo para engagement espiritual: una app movil con suscripcion, un panel administrativo para gestion de contenido, chat en tiempo real e integracion con IA para generar contenidos automaticamente en el admin. El proyecto necesitaba comunidad social, gamificacion y meditaciones guiadas.">Criar um ecossistema completo para engajamento espiritual: um app mobile com assinatura, um painel administrativo para gestao de conteudo, chat em tempo real e integracao com IA para gerar conteudos automaticamente no admin. O projeto precisava de comunidade social, gamificacao e meditacoes guiadas.</p>
+
+            <h3 data-pt="A Solucao" data-en="The Solution" data-es="La Solucion">A Solucao</h3>
+            <p data-pt="Desenvolvemos o app com tres frentes: o app mobile com assinatura, gamificacao (arvore da fe) e comunidade social; o painel administrativo com integracao de IA para gerar conteudos como meditacoes, reflexoes e tarefas automaticamente; e o sistema de chat em tempo real. O app conta com player de meditacoes, grafico de progresso semanal, forum e grupos tematicos." data-en="We built the app with three fronts: the mobile app with subscription, gamification (faith tree) and social community; the admin panel with AI integration to automatically generate content like meditations, reflections and tasks; and the real-time chat system. The app features a meditation player, weekly progress chart, forum and themed groups." data-es="Desarrollamos la aplicación con tres frentes: la app movil con suscripcion, gamificacion (arbol de fe) y comunidad social; el panel administrativo con integracion de IA para generar contenidos como meditaciones, reflexiones y tareas automaticamente; y el sistema de chat en tiempo real. La app cuenta con reproductor de meditaciones, grafico de progreso semanal, foro y grupos tematicos.">Desenvolvemos o app com tres frentes: o app mobile com assinatura, gamificacao (arvore da fe) e comunidade social; o painel administrativo com integracao de IA para gerar conteudos como meditacoes, reflexoes e tarefas automaticamente; e o sistema de chat em tempo real. O app conta com player de meditacoes, grafico de progresso semanal, forum e grupos tematicos.</p>
+
+            <h3 data-pt="Funcionalidades" data-en="Features" data-es="Funcionalidades">Funcionalidades</h3>
+            <div class="glass-card">
+                <ul class="feature-list">
+                    <li data-pt="App mobile com sistema de assinatura recorrente e gamificacao (arvore da fe)" data-en="Mobile app with recurring subscription system and gamification (faith tree)" data-es="App movil con sistema de suscripcion recurrente y gamificacion (arbol de fe)">App mobile com sistema de assinatura recorrente e gamificacao (arvore da fe)</li>
+                    <li data-pt="Painel administrativo completo para gestao de conteudo e usuarios" data-en="Full admin panel for content and user management" data-es="Panel administrativo completo para gestion de contenido y usuarios">Painel administrativo completo para gestao de conteudo e usuarios</li>
+                    <li data-pt="Integracao com IA para geracao automatica de conteudo no admin" data-en="AI integration for automatic content generation in the admin" data-es="Integracion con IA para generacion automatica de contenido en el admin">Integracao com IA para geracao automatica de conteudo no admin</li>
+                    <li data-pt="Chat em tempo real e comunidade com forum e grupos tematicos" data-en="Real-time chat and community with forum and themed groups" data-es="Chat en tiempo real y comunidad con foro y grupos tematicos">Chat em tempo real e comunidade com forum e grupos tematicos</li>
+                    <li data-pt="Player de meditacoes, tarefas diarias e grafico de progresso semanal" data-en="Meditation player, daily tasks and weekly progress chart" data-es="Reproductor de meditaciones, tareas diarias y grafico de progreso semanal">Player de meditacoes, tarefas diarias e grafico de progresso semanal</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="project-divider"><div class="project-divider-line"></div></div>
+
+    <!-- ==================== PROJETO 3 — BEAUTY SHOP E-COMMERCE ==================== -->
+    <section class="project-section" id="projeto-3">
+        <div class="project-header">
+            <span class="project-tag" data-pt="E-commerce Web" data-en="Web E-commerce" data-es="E-commerce Web">E-commerce Web</span>
+            <h2 data-pt="Beauty Shop — E-commerce de Produtos TikTok" data-en="Beauty Shop — TikTok Products E-commerce" data-es="Beauty Shop — E-commerce de Productos TikTok">Beauty Shop — E-commerce de Produtos TikTok</h2>
+            <p class="project-desc" data-pt="Loja virtual completa para venda de produtos de beleza virais do TikTok. Catalogo com filtros por categoria e preco, carrinho de compras com calculo de frete, pagina de produto detalhada com avaliacoes e checkout completo com acompanhamento de rastreio." data-en="Complete online store for selling viral TikTok beauty products. Catalog with category and price filters, shopping cart with shipping calculator, detailed product page with reviews, and full checkout with order tracking." data-es="Tienda virtual completa para venta de productos de belleza virales de TikTok. Catalogo con filtros por categoria y precio, carrito de compras con calculo de envio, pagina de producto detallada con evaluaciones y checkout completo con seguimiento de pedidos.">Loja virtual completa para venda de produtos de beleza virais do TikTok. Catalogo com filtros por categoria e preco, carrinho de compras com calculo de frete, pagina de produto detalhada com avaliacoes e checkout completo com acompanhamento de rastreio.</p>
+        </div>
+
+        <div class="project-stats">
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Valor" data-en="Price" data-es="Precio">Valor</span>
+                <span class="stat-value" data-pt="R$ 5.000" data-en="$2,300" data-es="$2,300">R$ 5.000</span>
+            </div>
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Prazo" data-en="Timeline" data-es="Plazo">Prazo</span>
+                <span class="stat-value" data-pt="45 dias" data-en="45 days" data-es="45 dias">45 dias</span>
+            </div>
+            <div class="project-stat">
+                <span class="stat-label" data-pt="Tipo" data-en="Type" data-es="Tipo">Tipo</span>
+                <span class="stat-value" data-pt="Site Web" data-en="Website" data-es="Sitio Web">Site Web</span>
+            </div>
+        </div>
+
+        <div class="project-gallery">
+            <a href="#p3-img1" class="project-gallery-main">
+                <img src="imagens/portfolio/projeto3.4.png" alt="Beauty Shop homepage with neon pink branding and TikTok Shop products">
+            </a>
+            <div class="project-gallery-thumbs">
+                <a href="#p3-img2"><img src="imagens/portfolio/projeto3.1.png" alt="Product catalog with categories, filters and viral badges" loading="lazy"></a>
+                <a href="#p3-img3"><img src="imagens/portfolio/projeto3.3.png" alt="Product detail page with reviews, pricing and add to cart" loading="lazy"></a>
+                <a href="#p3-img4"><img src="imagens/portfolio/projeto3.2.png" alt="Shopping cart with items, quantities and shipping calculator" loading="lazy"></a>
+            </div>
+        </div>
+
+        <div class="project-details">
+            <h3 data-pt="O Desafio" data-en="The Challenge" data-es="El Desafio">O Desafio</h3>
+            <p data-pt="Criar uma loja online moderna que trouxesse a experiencia do TikTok Shop para o mercado brasileiro, com design atraente e fluxo de compra simplificado. O cliente queria uma estetica ousada e impactante que conectasse com o publico jovem das redes sociais, com produtos virais em destaque." data-en="Build a modern online store that brought the TikTok Shop experience to the Brazilian market, with attractive design and simplified purchase flow. The client wanted a bold and impactful aesthetic that connected with the young social media audience, featuring viral products prominently." data-es="Crear una tienda online moderna que trajera la experiencia de TikTok Shop al mercado brasileno, con diseno atractivo y flujo de compra simplificado. El cliente queria una estetica audaz e impactante que conectara con el publico joven de las redes sociales, con productos virales destacados.">Criar uma loja online moderna que trouxesse a experiencia do TikTok Shop para o mercado brasileiro, com design atraente e fluxo de compra simplificado. O cliente queria uma estetica ousada e impactante que conectasse com o publico jovem das redes sociais, com produtos virais em destaque.</p>
+
+            <h3 data-pt="A Solucao" data-en="The Solution" data-es="La Solucion">A Solucao</h3>
+            <p data-pt="Desenvolvemos o Beauty Shop, um e-commerce responsivo com estetica dark e neon rosa inspirada no TikTok. Os produtos virais recebem badges 'VIRAL' em destaque, com descontos visiveis e avaliacoes com estrelas. O carrinho mostra resumo com calculo de frete por CEP e o checkout e completo com acompanhamento do pedido em tempo real." data-en="We built Beauty Shop, a responsive e-commerce with dark and neon pink aesthetics inspired by TikTok. Viral products get highlighted 'VIRAL' badges, with visible discounts and star ratings. The cart shows a summary with shipping calculation by zip code and checkout is complete with real-time order tracking." data-es="Desarrollamos Beauty Shop, un e-commerce responsivo con estetica oscura y neon rosa inspirada en TikTok. Los productos virales reciben insignias 'VIRAL' destacadas, con descuentos visibles y evaluaciones con estrellas. El carrito muestra resumen con calculo de envio por codigo postal y el checkout es completo con seguimiento de pedidos en tiempo real.">Desenvolvemos o Beauty Shop, um e-commerce responsivo com estetica dark e neon rosa inspirada no TikTok. Os produtos virais recebem badges "VIRAL" em destaque, com descontos visiveis e avaliacoes com estrelas. O carrinho mostra resumo com calculo de frete por CEP e o checkout e completo com acompanhamento do pedido em tempo real.</p>
+
+            <h3 data-pt="Funcionalidades" data-en="Features" data-es="Funcionalidades">Funcionalidades</h3>
+            <div class="glass-card">
+                <ul class="feature-list">
+                    <li data-pt="Catalogo de produtos com filtros por categoria (Skincare, Maquiagem, Cabelos, etc.) e faixa de preco" data-en="Product catalog with category filters (Skincare, Makeup, Hair, etc.) and price range" data-es="Catalogo de productos con filtros por categoria (Skincare, Maquillaje, Cabello, etc.) y rango de precio">Catalogo de produtos com filtros por categoria (Skincare, Maquiagem, Cabelos, etc.) e faixa de preco</li>
+                    <li data-pt="Pagina de produto detalhada com avaliacoes, estoque, desconto e botao de favoritar" data-en="Detailed product page with reviews, stock, discount and wishlist button" data-es="Pagina de producto detallada con evaluaciones, stock, descuento y boton de favoritos">Pagina de produto detalhada com avaliacoes, estoque, desconto e botao de favoritar</li>
+                    <li data-pt="Carrinho de compras com quantidades, resumo do pedido e calculo de frete por CEP" data-en="Shopping cart with quantities, order summary and shipping calculation by zip code" data-es="Carrito de compras con cantidades, resumen del pedido y calculo de envio por codigo postal">Carrinho de compras com quantidades, resumo do pedido e calculo de frete por CEP</li>
+                    <li data-pt="Checkout completo com pagamento integrado e acompanhamento de rastreio" data-en="Full checkout with integrated payment and order tracking" data-es="Checkout completo con pago integrado y seguimiento de pedidos">Checkout completo com pagamento integrado e acompanhamento de rastreio</li>
+                    <li data-pt="Badges 'VIRAL' e porcentagem de desconto nos produtos em destaque do TikTok" data-en="'VIRAL' badges and discount percentage on featured TikTok products" data-es="Insignias 'VIRAL' y porcentaje de descuento en productos destacados de TikTok">Badges "VIRAL" e porcentagem de desconto nos produtos em destaque do TikTok</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <section class="cta-final">
+        <div class="cta-card">
+            <h2 data-pt="Quer um projeto como esses?" data-en="Want a project like these?" data-es="Quieres un proyecto como estos?">Quer um projeto como esses?</h2>
+            <p data-pt="Agende uma conversa gratuita e vamos transformar sua ideia em realidade." data-en="Schedule a free call and let's turn your idea into reality." data-es="Agenda una conversacion gratuita y transformemos tu idea en realidad.">Agende uma conversa gratuita e vamos transformar sua ideia em realidade.</p>
+            <a href="index.html#contato" class="btn-primary" data-pt="Falar Sobre Meu Projeto" data-en="Talk About My Project" data-es="Hablar Sobre Mi Proyecto">Falar Sobre Meu Projeto</a>
+        </div>
+    </section>
+
+    <!-- ==================== LIGHTBOX OVERLAYS ==================== -->
+    <!-- Projeto 1 -->
+    <div id="p1-img1" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p1-img3" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto1.3.png" alt="Admin Panel Dashboard - desktop view">
+        <a href="#p1-img2" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p1-img2" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p1-img1" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto1.1.png" alt="Dashboard mobile view">
+        <a href="#p1-img3" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p1-img3" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p1-img2" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto1.2.png" alt="Orders management list">
+        <a href="#p1-img1" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+
+    <!-- Projeto 2 -->
+    <div id="p2-img1" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p2-img4" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto2.1.png" alt="App home screen">
+        <a href="#p2-img2" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p2-img2" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p2-img1" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto2.3.png" alt="Community forum">
+        <a href="#p2-img3" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p2-img3" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p2-img2" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto2.4.png" alt="Meditation audio player">
+        <a href="#p2-img4" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p2-img4" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p2-img3" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto2.2.png" alt="Faith graph and tasks">
+        <a href="#p2-img1" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+
+    <!-- Projeto 3 -->
+    <div id="p3-img1" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p3-img4" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto3.4.png" alt="Beauty Shop homepage">
+        <a href="#p3-img2" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p3-img2" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p3-img1" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto3.1.png" alt="Product catalog">
+        <a href="#p3-img3" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p3-img3" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p3-img2" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto3.3.png" alt="Product detail page">
+        <a href="#p3-img4" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+    <div id="p3-img4" class="lightbox">
+        <a href="#_" class="lightbox-close">&times;</a>
+        <a href="#p3-img3" class="lightbox-nav lightbox-prev">&#8249;</a>
+        <img src="imagens/portfolio/projeto3.2.png" alt="Shopping cart">
+        <a href="#p3-img1" class="lightbox-nav lightbox-next">&#8250;</a>
+    </div>
+
+    <footer class="footer">
+        <img src="imagens/logo_completa_2.png" alt="Just Fast Technologies" loading="lazy" width="200" height="60">
+        <ul class="footer-links">
+            <li><a href="index.html#inicio" data-pt="Inicio" data-en="Home" data-es="Inicio">Inicio</a></li>
+            <li><a href="index.html#serviços" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a></li>
+            <li><a href="blog.html" data-pt="Blog" data-en="Blog" data-es="Blog">Blog</a></li>
+            <li><a href="index.html#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a></li>
+        </ul>
+        <p data-pt="&copy; 2026 Just Fast Technologies. Todos os direitos reservados." data-en="&copy; 2026 Just Fast Technologies. All rights reserved." data-es="&copy; 2026 Just Fast Technologies. Todos los derechos reservados.">&copy; 2026 Just Fast Technologies. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+    // ===== MENU MOBILE =====
+    (function() {
+        var toggle = document.getElementById('menuToggle');
+        var navLinks = document.getElementById('navLinks');
+        toggle.addEventListener('click', function() {
+            toggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                toggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    })();
+
+    // ===== APPLY LANGUAGE =====
+    (function applyLang() {
+        var saved = localStorage.getItem('jf-lang');
+        var lang;
+        if (saved) {
+            lang = saved;
+        } else {
+            var browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            if (browserLang.startsWith('pt')) lang = 'pt';
+            else if (browserLang.startsWith('es')) lang = 'es';
+            else lang = 'en';
+        }
+
+        var htmlLangs = { pt: 'pt-BR', en: 'en', es: 'es' };
+        document.documentElement.lang = htmlLangs[lang] || 'en';
+
+        document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+            var text = el.getAttribute('data-' + lang);
+            if (text) el.innerHTML = text;
+        });
+    })();
+
+    // ===== LIGHTBOX: KEYBOARD + SWIPE + DRAG =====
+    (function() {
+        function getActiveLightbox() {
+            var hash = location.hash;
+            if (!hash || hash === '#_') return null;
+            var el = document.querySelector(hash + '.lightbox');
+            return el;
+        }
+
+        function navigateLightbox(direction) {
+            var lb = getActiveLightbox();
+            if (!lb) return;
+            var link = lb.querySelector(direction === 'next' ? '.lightbox-next' : '.lightbox-prev');
+            if (link) location.hash = link.getAttribute('href').substring(1);
+        }
+
+        function closeLightbox() {
+            location.hash = '_';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (!getActiveLightbox()) return;
+            if (e.key === 'ArrowRight' || e.key === 'Right') { e.preventDefault(); navigateLightbox('next'); }
+            else if (e.key === 'ArrowLeft' || e.key === 'Left') { e.preventDefault(); navigateLightbox('prev'); }
+            else if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); closeLightbox(); }
+        });
+
+        var startX = 0;
+        var startY = 0;
+        var isDragging = false;
+
+        function onPointerDown(e) {
+            if (!getActiveLightbox()) return;
+            startX = e.touches ? e.touches[0].clientX : e.clientX;
+            startY = e.touches ? e.touches[0].clientY : e.clientY;
+            isDragging = true;
+        }
+
+        function onPointerUp(e) {
+            if (!isDragging || !getActiveLightbox()) { isDragging = false; return; }
+            var endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+            var endY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+            var diffX = endX - startX;
+            var diffY = endY - startY;
+            isDragging = false;
+            if (Math.abs(diffX) < 50 || Math.abs(diffX) < Math.abs(diffY)) return;
+            if (diffX < 0) navigateLightbox('next');
+            else navigateLightbox('prev');
+        }
+
+        document.addEventListener('touchstart', onPointerDown, { passive: true });
+        document.addEventListener('touchend', onPointerUp, { passive: true });
+        document.addEventListener('mousedown', function(e) {
+            if (e.target.closest('.lightbox')) onPointerDown(e);
+        });
+        document.addEventListener('mouseup', function(e) {
+            if (isDragging) onPointerUp(e);
+        });
+    })();
+    </script>
+
+</body>
+</html>
